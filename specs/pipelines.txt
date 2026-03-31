@@ -1,0 +1,238 @@
+# Pipelines
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /crm/pipelines/2026-03/{objectType}
+Retrieve all pipelines
+Parameters:
+  - objectType (path, required): 
+Response 200: successful operation
+Response default: 
+
+### POST /crm/pipelines/2026-03/{objectType}
+Create a pipeline
+Parameters:
+  - objectType (path, required): 
+Request body: PipelineInput
+Response 201: successful operation
+Response default: 
+
+### GET /crm/pipelines/2026-03/{objectType}/{pipelineId}
+Return a pipeline by ID
+Parameters:
+  - objectType (path, required): 
+  - pipelineId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### PUT /crm/pipelines/2026-03/{objectType}/{pipelineId}
+Replace a pipeline
+Parameters:
+  - objectType (path, required): 
+  - pipelineId (path, required): 
+  - validateDealStageUsagesBeforeDelete (query, optional): 
+  - validateReferencesBeforeDelete (query, optional): 
+Request body: PipelineReplaceInput
+Response 200: successful operation
+Response default: 
+
+### DELETE /crm/pipelines/2026-03/{objectType}/{pipelineId}
+Delete a pipeline
+Parameters:
+  - objectType (path, required): 
+  - pipelineId (path, required): 
+  - validateDealStageUsagesBeforeDelete (query, optional): 
+  - validateReferencesBeforeDelete (query, optional): 
+Response 204: No content
+Response default: 
+
+### PATCH /crm/pipelines/2026-03/{objectType}/{pipelineId}
+
+Parameters:
+  - objectType (path, required): 
+  - pipelineId (path, required): 
+  - validateDealStageUsagesBeforeDelete (query, optional): 
+  - validateReferencesBeforeDelete (query, optional): 
+Request body: PipelinePatchInput
+Response 200: successful operation
+Response default: 
+
+### GET /crm/pipelines/2026-03/{objectType}/{pipelineId}/audit
+Return an audit of all changes to the pipeline
+Parameters:
+  - objectType (path, required): 
+  - pipelineId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### GET /crm/pipelines/2026-03/{objectType}/{pipelineId}/stages
+Return all stages of a pipeline
+Parameters:
+  - objectType (path, required): 
+  - pipelineId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### POST /crm/pipelines/2026-03/{objectType}/{pipelineId}/stages
+Create a pipeline stage
+Parameters:
+  - objectType (path, required): 
+  - pipelineId (path, required): 
+Request body: PipelineStageInput
+Response 201: successful operation
+Response default: 
+
+### GET /crm/pipelines/2026-03/{objectType}/{pipelineId}/stages/{stageId}
+Return a pipeline stage by ID
+Parameters:
+  - objectType (path, required): 
+  - pipelineId (path, required): 
+  - stageId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### PUT /crm/pipelines/2026-03/{objectType}/{pipelineId}/stages/{stageId}
+Replace a pipeline stage
+Parameters:
+  - objectType (path, required): 
+  - pipelineId (path, required): 
+  - stageId (path, required): 
+Request body: PipelineStageReplaceInput
+Response 200: successful operation
+Response default: 
+
+### DELETE /crm/pipelines/2026-03/{objectType}/{pipelineId}/stages/{stageId}
+Delete a pipeline stage
+Parameters:
+  - objectType (path, required): 
+  - pipelineId (path, required): 
+  - stageId (path, required): 
+Response 204: No content
+Response default: 
+
+### PATCH /crm/pipelines/2026-03/{objectType}/{pipelineId}/stages/{stageId}
+
+Parameters:
+  - objectType (path, required): 
+  - pipelineId (path, required): 
+  - stageId (path, required): 
+Request body: PipelineStagePatchInput
+Response 200: successful operation
+Response default: 
+
+### GET /crm/pipelines/2026-03/{objectType}/{pipelineId}/stages/{stageId}/audit
+
+Parameters:
+  - objectType (path, required): 
+  - pipelineId (path, required): 
+  - stageId (path, required): 
+Response 200: successful operation
+Response default: 
+
+## Schemas
+
+### PipelineStagePatchInput
+  - archived (boolean, optional): Whether the pipeline is archived.
+  - displayOrder (integer, optional): The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+  - label (string, optional): A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+  - metadata (object, required): A JSON object containing properties that are not present on all object pipelines.
+
+For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
+
+For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+
+### PipelinePatchInput
+  - archived (boolean, optional): Whether the pipeline is archived. This property should only be provided when restoring an archived pipeline. If it's provided in any other call, the request will fail and a `400 Bad Request` will be returned.
+  - displayOrder (integer, optional): The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+  - label (string, optional): A unique label used to organize pipelines in HubSpot's UI
+
+### PipelineStage
+  - archived (boolean, required): Whether the pipeline is archived.
+  - archivedAt (string, optional): The date the pipeline was archived. `archivedAt` will only be present if the pipeline is archived.
+  - createdAt (string, required): The date the pipeline stage was created. The stages on default pipelines will have createdAt = 0.
+  - displayOrder (integer, required): The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+  - id (string, required): A unique identifier generated by HubSpot that can be used to retrieve and update the pipeline stage.
+  - label (string, required): A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+  - metadata (object, required): A JSON object containing properties that are not present on all object pipelines.
+
+For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
+
+For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+  - updatedAt (string, required): The date the pipeline stage was last updated.
+  - writePermissions (string, required): Defines the level of write access for the pipeline stage, with possible values being CRM_PERMISSIONS_ENFORCEMENT, READ_ONLY, or INTERNAL_ONLY.
+
+### CollectionResponsePipelineStageNoPaging
+  - results (array, required): 
+
+### PublicAuditInfo
+  - action (string, required): The action performed that triggered the audit event.
+  - fromUserId (integer, optional): The ID of the user who initiated the audit event.
+  - identifier (string, required): A unique string identifier for the audit event.
+  - message (string, optional): A descriptive message related to the audit event.
+  - portalId (integer, required): The unique identifier for the HubSpot portal where the audit event occurred.
+  - rawObject (object, optional): An object containing the raw data associated with the audit event.
+  - timestamp (string, optional): The date and time when the audit event took place.
+
+### Error
+  - category (string, required): The error category
+  - context (object, optional): Context about the error condition
+  - correlationId (string, required): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array, optional): further information about the error
+  - links (object, optional): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### CollectionResponsePublicAuditInfoNoPaging
+  - results (array, required): 
+
+### Pipeline
+  - archived (boolean, required): Whether the pipeline is archived.
+  - archivedAt (string, optional): The date the pipeline was archived. `archivedAt` will only be present if the pipeline is archived.
+  - createdAt (string, required): The date the pipeline was created. The default pipelines will have createdAt = 0.
+  - displayOrder (integer, required): The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+  - id (string, required): A unique identifier generated by HubSpot that can be used to retrieve and update the pipeline.
+  - label (string, required): A unique label used to organize pipelines in HubSpot's UI
+  - stages (array, required): The stages associated with the pipeline. They can be retrieved and updated via the pipeline stages endpoints.
+  - updatedAt (string, required): The date the pipeline was last updated.
+
+### ErrorDetail
+  - code (string, optional): The status code associated with the error detail
+  - context (object, optional): Context about the error condition
+  - in (string, optional): The name of the field or parameter in which the error was found.
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### PipelineStageInput
+  - displayOrder (integer, required): The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+  - label (string, required): A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+  - metadata (object, required): A JSON object containing properties that are not present on all object pipelines.
+
+For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
+
+For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+  - stageId (string, optional): 
+
+### CollectionResponsePipelineNoPaging
+  - results (array, required): 
+
+### PipelineInput
+  - displayOrder (integer, required): The order for displaying this pipeline. If two pipelines have a matching `displayOrder`, they will be sorted alphabetically by label.
+  - label (string, required): A unique label used to organize pipelines in HubSpot's UI
+  - pipelineId (string, optional): 
+  - stages (array, required): Pipeline stage inputs used to create the new or replacement pipeline.
+
+### PipelineReplaceInput
+  - displayOrder (integer, required): The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+  - label (string, required): A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+  - stages (array, required): The stages associated with the pipeline. They can be retrieved and updated via the pipeline stages endpoints.
+
+### PipelineStageReplaceInput
+  - displayOrder (integer, required): The order for displaying this pipeline stage. If two pipeline stages have a matching `displayOrder`, they will be sorted alphabetically by label.
+  - label (string, required): A label used to organize pipeline stages in HubSpot's UI. Each pipeline stage's label must be unique within that pipeline.
+  - metadata (object, required): A JSON object containing properties that are not present on all object pipelines.
+
+For `deals` pipelines, the `probability` field is required (`{ "probability": 0.5 }`), and represents the likelihood a deal will close. Possible values are between 0.0 and 1.0 in increments of 0.1.
+
+For `tickets` pipelines, the `ticketState` field is optional (`{ "ticketState": "OPEN" }`), and represents whether the ticket remains open or has been closed by a member of your Support team. Possible values are `OPEN` or `CLOSED`.
+

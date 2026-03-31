@@ -1,0 +1,96 @@
+# CRM Exports
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### POST /crm/exports/2026-03/export/async
+Start an export
+  Response 202: accepted
+  Response default: 
+
+### GET /crm/exports/2026-03/export/async/tasks/{taskId}/status
+Get the status of the export including the URL to download the file
+  - taskId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/exports/2026-03/export/{exportId}
+Retrieve details of a specific export by its unique ID.
+  - exportId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### PublicExportResponse
+  - createdAt (string): The timestamp when the export was created, in ISO 8601 format.
+  - exportName (string): The name assigned to the export.
+  - exportState (string): The current state of the export process.
+  - exportType (string): The type of export, which can be either VIEW or LIST.
+  - id (string): The unique ID of the export.
+  - objectProperties (array): The list of properties exported for the associated object.
+  - objectType (string): The associated CRM object being exported.
+  - recordCount (integer): The total number of records included in the export.
+  - updatedAt (string): The timestamp when the export was last updated, in ISO 8601 format.
+
+### ActionResponseWithSingleResultURI
+  - completedAt (string): The timestamp when the export was completed, in ISO 8601 format.
+  - errors (array): 
+  - links (object): A collection of related links associated with the export.
+  - numErrors (integer): The number of errors encountered during the export process.
+  - requestedAt (string): The timestamp when the export request was made, in ISO 8601 format.
+  - result (string): The URL of the resulting file if the export status is COMPLETE.
+  - startedAt (string): The timestamp when the export process started, in ISO 8601 format.
+  - status (string): The current status of the export, which can be PENDING, PROCESSING, COMPLETE or CANCELED.
+
+### StandardError
+  - category (string): The main category of the error.
+  - context (object): Context about the error condition
+  - errors (array): The detailed error objects.
+  - id (string): A unique ID for the error instance.
+  - links (object): URLs linking to documentation or resources associated with the error.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - status (string): The HTTP status code associated with the error.
+  - subCategory (object): A specific category that contains more specific detail about the error
+
+### PublicExportViewRequest
+
+### Filter
+  - highValue (string): The upper boundary value when using ranged-based filters.
+  - operator (string): The comparison operator used in the filter, such as "EQ" or "GT".
+  - propertyName (string): The name of the property to apply the filter to.
+  - value (string): The value to match against the property.
+  - values (array): The values to match against the property.
+
+### PublicExportRequest
+
+### PublicCrmSearchRequest
+  - filterGroups (array): 
+  - filters (array): 
+  - query (string): The search query string, to filter CRM records.
+  - sorts (array): Defines the order in which the CRM records should be returned.
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### FilterGroup
+  - filters (array): 
+
+### PublicExportListRequest
+
+### TaskLocator
+  - id (string): The unique ID of the export.
+  - links (object): An object containing relevant links related to the export process.

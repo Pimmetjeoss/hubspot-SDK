@@ -1,0 +1,646 @@
+# Marketing Marketing Events
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /marketing/marketing-events/2026-03
+
+  - after (query, opt): The cursor indicating the position of the last retrieved item.
+  - limit (query, opt): The limit for response size. The default value is 10, the max number is 100
+  Response 200: successful operation
+  Response default: 
+
+### GET /marketing/marketing-events/2026-03/associations/{externalAccountId}/{externalEventId}/lists
+Get lists associated with a marketing event
+  - externalAccountId (path, req): The accountId that is associated with this marketing event in the external event application.
+  - externalEventId (path, req): The id of the marketing event in the external event application.
+  Response 200: successful operation
+  Response default: 
+
+### PUT /marketing/marketing-events/2026-03/associations/{externalAccountId}/{externalEventId}/lists/{listId}
+Associate a list with a marketing event
+  - externalAccountId (path, req): The accountId that is associated with this marketing event in the external event application.
+  - externalEventId (path, req): The id of the marketing event in the external event application.
+  - listId (path, req): The ILS ID of the list.
+  Response 204: No content
+  Response default: 
+
+### DELETE /marketing/marketing-events/2026-03/associations/{externalAccountId}/{externalEventId}/lists/{listId}
+Disassociate a list from a marketing event
+  - externalAccountId (path, req): The accountId that is associated with this marketing event in the external event application.
+  - externalEventId (path, req): The id of the marketing event in the external event application.
+  - listId (path, req): The ILS ID of the list.
+  Response 204: No content
+  Response default: 
+
+### GET /marketing/marketing-events/2026-03/associations/{marketingEventId}/lists
+Get lists associated with a marketing event
+  - marketingEventId (path, req): The internal id of the marketing event in HubSpot.
+  Response 200: successful operation
+  Response default: 
+
+### PUT /marketing/marketing-events/2026-03/associations/{marketingEventId}/lists/{listId}
+Associate a list with a marketing event
+  - listId (path, req): The ILS ID of the list.
+  - marketingEventId (path, req): The internal id of the marketing event in HubSpot.
+  Response 204: No content
+  Response default: 
+
+### DELETE /marketing/marketing-events/2026-03/associations/{marketingEventId}/lists/{listId}
+Disassociate a list from a marketing event
+  - listId (path, req): The ILS ID of the list.
+  - marketingEventId (path, req): The internal id of the marketing event in HubSpot.
+  Response 204: No content
+  Response default: 
+
+### POST /marketing/marketing-events/2026-03/attendance/{externalEventId}/{subscriberState}/create
+Record Participants by ContactId with Marketing Event External Ids
+  - externalEventId (path, req): 
+  - subscriberState (path, req): 
+  - externalAccountId (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /marketing/marketing-events/2026-03/attendance/{externalEventId}/{subscriberState}/email-create
+Record Participants by Email with Marketing Event External Ids
+  - externalEventId (path, req): 
+  - subscriberState (path, req): 
+  - externalAccountId (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /marketing/marketing-events/2026-03/batch/archive
+Delete Multiple Marketing Events by ObjectId
+  Response default: 
+
+### POST /marketing/marketing-events/2026-03/batch/update
+Update Multiple Marketing Events by ObjectId
+  Response 200: successful operation
+  Response default: 
+
+### POST /marketing/marketing-events/2026-03/events
+Create a marketing event
+  Response 200: successful operation
+  Response default: 
+
+### POST /marketing/marketing-events/2026-03/events/delete
+Delete Multiple Marketing Events by External Ids
+  Response default: 
+
+### GET /marketing/marketing-events/2026-03/events/search
+Find App-Specific Marketing Events by External Event Id
+  - q (query, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /marketing/marketing-events/2026-03/events/upsert
+Create or Update Multiple Marketing Events
+  Response 200: successful operation
+  Response default: 
+
+### GET /marketing/marketing-events/2026-03/events/{externalEventId}
+Get Marketing Event by External IDs
+  - externalEventId (path, req): 
+  - externalAccountId (query, req): 
+  Response 200: successful operation
+  Response default: 
+
+### PUT /marketing/marketing-events/2026-03/events/{externalEventId}
+Create or update a marketing event
+  - externalEventId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /marketing/marketing-events/2026-03/events/{externalEventId}
+Delete Marketing Event by External Ids
+  - externalEventId (path, req): 
+  - externalAccountId (query, req): 
+  Response 204: No content
+  Response default: 
+
+### PATCH /marketing/marketing-events/2026-03/events/{externalEventId}
+Update Marketing Event by External IDs
+  - externalEventId (path, req): 
+  - externalAccountId (query, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /marketing/marketing-events/2026-03/events/{externalEventId}/cancel
+Mark a marketing event as cancelled
+  - externalEventId (path, req): 
+  - externalAccountId (query, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /marketing/marketing-events/2026-03/events/{externalEventId}/complete
+Mark a marketing event as completed
+  - externalEventId (path, req): 
+  - externalAccountId (query, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /marketing/marketing-events/2026-03/events/{externalEventId}/{subscriberState}/email-upsert
+Record a subscriber state by contact email
+  - externalEventId (path, req): 
+  - subscriberState (path, req): 
+  - externalAccountId (query, req): 
+  Response default: 
+
+### POST /marketing/marketing-events/2026-03/events/{externalEventId}/{subscriberState}/upsert
+Record a subscriber state by contact ID
+  - externalEventId (path, req): 
+  - subscriberState (path, req): 
+  - externalAccountId (query, req): 
+  Response default: 
+
+### GET /marketing/marketing-events/2026-03/participations/contacts/{contactIdentifier}/breakdown
+Read participations breakdown by Contact identifier
+  - contactIdentifier (path, req): The identifier of the Contact. It may be email or internal id.
+  - after (query, opt): The cursor indicating the position of the last retrieved item.
+  - limit (query, opt): The limit for response size. The default value is 10, the max number is 100
+  - state (query, opt): The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW
+  Response 200: successful operation
+  Response default: 
+
+### GET /marketing/marketing-events/2026-03/participations/{externalAccountId}/{externalEventId}
+Read participations counters by Marketing Event external identifier
+  - externalAccountId (path, req): The accountId that is associated with this marketing event in the external event application.
+  - externalEventId (path, req): The id of the marketing event in the external event application.
+  Response 200: successful operation
+  Response default: 
+
+### GET /marketing/marketing-events/2026-03/participations/{externalAccountId}/{externalEventId}/breakdown
+Read participations breakdown by Marketing Event external identifier
+  - externalAccountId (path, req): The accountId that is associated with this marketing event in the external event application.
+  - externalEventId (path, req): The id of the marketing event in the external event application.
+  - after (query, opt): The cursor indicating the position of the last retrieved item.
+  - contactIdentifier (query, opt): The identifier of the Contact. It may be email or internal id.
+  - limit (query, opt): The limit for response size. The default value is 10, the max number is 100
+  - state (query, opt): The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW
+  Response 200: successful operation
+  Response default: 
+
+### GET /marketing/marketing-events/2026-03/participations/{marketingEventId}
+Read participations counters by Marketing Event internal identifier
+  - marketingEventId (path, req): The internal id of the marketing event in HubSpot.
+  Response 200: successful operation
+  Response default: 
+
+### GET /marketing/marketing-events/2026-03/participations/{marketingEventId}/breakdown
+Read participations breakdown by Marketing Event internal identifier
+  - marketingEventId (path, req): The internal id of the marketing event in HubSpot.
+  - after (query, opt): The cursor indicating the position of the last retrieved item.
+  - contactIdentifier (query, opt): The identifier of the Contact. It may be email or internal id.
+  - limit (query, opt): The limit for response size. The default value is 10, the max number is 100
+  - state (query, opt): The participation state value. It may be REGISTERED, CANCELLED, ATTENDED, NO_SHOW
+  Response 200: successful operation
+  Response default: 
+
+### GET /marketing/marketing-events/2026-03/{appId}/settings
+Retrieve the application settings
+  - appId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /marketing/marketing-events/2026-03/{appId}/settings
+Update the application settings
+  - appId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /marketing/marketing-events/2026-03/{externalEventId}/identifiers
+Find Marketing Events by External Event Id
+  - externalEventId (path, req): The id of the marketing event in the external event application.
+  Response 200: successful operation
+  Response default: 
+
+### GET /marketing/marketing-events/2026-03/{objectId}
+Get Marketing Event by objectId
+  - objectId (path, req): The internal id of the marketing event in HubSpot.
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /marketing/marketing-events/2026-03/{objectId}
+Delete Marketing Event by objectId
+  - objectId (path, req): The internal id of the marketing event in HubSpot.
+  Response 204: No content
+  Response default: 
+
+### PATCH /marketing/marketing-events/2026-03/{objectId}
+Update Marketing Event by objectId
+  - objectId (path, req): The internal id of the marketing event in HubSpot.
+  Response 200: successful operation
+  Response default: 
+
+### POST /marketing/marketing-events/2026-03/{objectId}/attendance/{subscriberState}/create
+Record Participants by ContactId with Marketing Event Object Id
+  - objectId (path, req): The internal id of the marketing event in HubSpot.
+  - subscriberState (path, req): The attendance state value. It may be 'register', 'attend' or 'cancel'
+  Response 200: successful operation
+  Response default: 
+
+### POST /marketing/marketing-events/2026-03/{objectId}/attendance/{subscriberState}/email-create
+Record Participants by Email with Marketing Event Object Id
+  - objectId (path, req): The internal id of the marketing event in HubSpot.
+  - subscriberState (path, req): The attendance state value. It may be 'register', 'attend' or 'cancel'
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### MarketingEventCompleteRequestParams
+  - endDateTime (string): The end date and time of the marketing event in ISO 8601 format
+  - startDateTime (string): The start date and time of the marketing event in ISO 8601 format
+
+### ParticipationProperties
+  - attendanceDurationSeconds (integer): The number of seconds the participation lasted
+  - attendancePercentage (string): Percentage of the participation duration relative to the event duration
+  - attendanceState (string): The state of the participation
+  - occurredAt (integer): Timestamp of when the participation occurred
+
+### SubscriberEmailResponse
+  - email (string): The email of the contact
+  - vid (integer): The internal ID of the contact
+
+### MarketingEventPublicReadResponse
+  - attendees (integer): The number of HubSpot contacts that attended this marketing event.
+  - cancellations (integer): The number of HubSpot contacts that registered for this marketing event, but later cancelled their registration.
+  - createdAt (string): The creation date and time of the marketing event.
+  - customProperties (array): A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
+In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
+
+  - endDateTime (string): The end date and time of the marketing event.
+  - eventCancelled (boolean): Indicates if the marketing event has been cancelled.
+  - eventCompleted (boolean): Indicates if the marketing event has been completed.
+  - eventDescription (string): The description of the marketing event.
+  - eventName (string): The name of the marketing event.
+  - eventOrganizer (string): The name of the organizer of the marketing event.
+  - eventType (string): The type of the marketing event.
+  - eventUrl (string): A URL in the external event application where the marketing event can be managed.
+  - externalEventId (string): The id of the marketing event in the external event application.
+  - id (string): The ID of the marketing event CRM object.
+  - noShows (integer): The number of HubSpot contacts that registered for this marketing event, but did not attend. This field only had a value when the event is over.
+  - objectId (string): The ID of the marketing event CRM object.
+  - registrants (integer): The number of HubSpot contacts that registered for this marketing event.
+  - startDateTime (string): The start date and time of the marketing event.
+  - updatedAt (string): The update date and time of the marketing event.
+
+### MarketingEventAssociation
+  - externalAccountId (string): The account ID that is associated with this marketing event in the external event application
+  - externalEventId (string): The event ID that is associated with this marketing event in the external event application
+  - marketingEventId (string): The internal ID of the marketing event in HubSpot
+  - name (string): The name of the marketing event in HubSpot
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### MarketingEventEmailSubscriber
+  - contactProperties (object): The key-value set that contains properties of the contact.
+  - email (string): The email address of the contact in HubSpot to associate with the event.
+  - interactionDateTime (integer): Timestamp in milliseconds at which the contact subscribed to the event.
+  - properties (object): The key-value set that contains properties of the marketing event.
+
+### ForwardPaging
+  - next (): 
+
+### PublicList
+  - createdAt (string): Timestamp of the creation of the list
+  - createdById (string): The ID of the user who created the list
+  - deletedAt (string): Timestamp of the deletion of the list
+  - filtersUpdatedAt (string): Timestamp of the last update of the list filters
+  - listId (string): An internal ID of the list
+  - listVersion (integer): A number that represents a version of the list
+  - name (string): The name of the list
+  - objectTypeId (string): The internal ID of the object type of the list
+  - processingStatus (string): Represents the current processing status of the list
+  - processingType (string): Processing type of the list
+  - size (integer): The size of the result list
+  - updatedAt (string): Timestamp of the last update of the list
+  - updatedById (string): The ID of the user who last updated the list
+
+### CollectionResponseWithTotalMarketingEventIdentifiersResponse
+  - paging (): 
+  - results (array): 
+  - total (integer): 
+
+### MarketingEventExternalUniqueIdentifier
+  - appId (integer): The id of the application that created the marketing event in HubSpot.
+  - externalAccountId (string): The accountId that is associated with this marketing event in the external event application.
+  - externalEventId (string): The id of the marketing event in the external event application.
+
+### CrmPropertyWrapper
+  - name (string): The name of the property in the CRM
+  - value (string): The value of the property in the CRM
+
+### SearchPublicResponseWrapper
+  - appId (integer): The ID of the source application of the marketing event
+  - externalAccountId (string): The account ID associated with this marketing event in the external application
+  - externalEventId (string): The ID of the marketing event in the external event application
+  - objectId (string): The internal ID of the marketing event in HubSpot
+
+### SubscriberVidResponse
+  - vid (integer): The internal ID of the contact
+
+### MarketingEventPublicUpdateRequestV2
+  - customProperties (array): 
+  - endDateTime (string): The end date and time of the marketing event
+  - eventCancelled (boolean): Indicates if the marketing event has been cancelled
+  - eventDescription (string): The description of the marketing event
+  - eventName (string): The name of the marketing event
+  - eventOrganizer (string): The name of the organizer of the marketing event
+  - eventType (string): The type of the marketing event
+  - eventUrl (string): A URL in the external event application where the marketing event can be managed
+  - startDateTime (string): The start date and time of the marketing event
+
+### Paging
+  - next (): 
+  - prev (): 
+
+### MarketingEventIdentifiersResponse
+  - appInfo (): 
+  - externalAccountId (string): The accountId that is associated with this marketing event in the external event application
+  - externalEventId (string): The ID that is associated with this marketing event in the external event application
+  - marketingEventName (string): The name of the marketing event
+  - objectId (string): The internal ID of the marketing event in HubSpot CRM
+
+### PropertyValue
+  - dataSensitivity (string): Level of data sensitivity
+  - isEncrypted (boolean): Indicates whether the property is encrypted
+  - isLargeValue (boolean): Indicates whether the property value is stored as a large value in the storage
+  - name (string): Name of custom property
+  - persistenceTimestamp (integer): The timestamp that indicates when the value being written is persisted in storage
+  - requestId (string): The ID of the request
+  - selectedByUser (boolean): Indicates whether the property is selected
+  - selectedByUserTimestamp (integer): Timestamp of when the property was selected by the user
+  - source (string): Source of the property
+  - sourceId (string): ID of the source of the property
+  - sourceLabel (string): Label of the source of the property
+  - sourceMetadata (string): Source metadata encoded as a base64 string
+  - sourceUpstreamDeployable (string): Indicates which upstream service made the property change
+  - sourceVid (array): The unique identifier associated with the source.
+  - timestamp (integer): Timestamp of the request
+  - unit (string): The unit
+  - updatedByUserId (integer): The ID of the user who last updated the property
+  - useTimestampAsPersistenceTimestamp (boolean): Indicates if the persistence timestamp is the same as storage version timestamp
+  - value (string): Custom property value
+
+### BatchInputMarketingEventExternalUniqueIdentifier
+  - inputs (array): 
+
+### MarketingEventUpdateRequestParams
+  - customProperties (array): A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
+In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
+
+  - endDateTime (string): The end date and time of the marketing event.
+  - eventCancelled (boolean): Indicates if the marketing event has been cancelled. Defaults to `false`
+  - eventCompleted (boolean): Indicates if the marketing event has been completed. Defaults to `false`
+  - eventDescription (string): The description of the marketing event.
+  - eventName (string): The name of the marketing event.
+  - eventOrganizer (string): The name of the organizer of the marketing event.
+  - eventType (string): Describes what type of event this is.  For example: `WEBINAR`, `CONFERENCE`, `WORKSHOP`
+  - eventUrl (string): A URL in the external event application where the marketing event can be managed.
+  - startDateTime (string): The start date and time of the marketing event.
+
+### AppInfo
+  - id (string): The ID of the application
+  - name (string): The name of the application
+
+### ContactAssociation
+  - contactId (string): The internal ID of the contact in HubSpot
+  - email (string): The email of the contact in HubSpot
+  - firstname (string): The first name of the contact in HubSpot
+  - lastname (string): The last name of the contact in HubSpot
+
+### ParticipationBreakdown
+  - associations (): 
+  - createdAt (string): The creation time and date of the target marketing event
+  - id (string): The internal ID of the target marketing event
+  - properties (): 
+
+### CollectionResponseWithTotalPublicList
+  - paging (): 
+  - results (array): 
+  - total (integer): 
+
+### MarketingEventPublicDefaultResponse
+  - createdAt (string): The creation date and time of the marketing event.
+  - customProperties (array): A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
+In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
+
+  - endDateTime (string): The end date and time of the marketing event.
+  - eventCancelled (boolean): Indicates if the marketing event has been cancelled.
+  - eventCompleted (boolean): Indicates if the marketing event has been completed.
+  - eventDescription (string): The description of the marketing event.
+  - eventName (string): The name of the marketing event.
+  - eventOrganizer (string): The name of the organizer of the marketing event.
+  - eventType (string): The type of the marketing event.
+  - eventUrl (string): A URL in the external event application where the marketing event can be managed.
+  - id (string): The ID of the marketing event CRM object.
+  - objectId (string): The ID of the marketing event CRM object.
+  - startDateTime (string): The start date and time of the marketing event.
+  - updatedAt (string): The update date and time of the marketing event.
+
+### BatchResponseSubscriberVidResponse
+  - completedAt (string): Timestamp that represents when the request finished processing
+  - errors (array): 
+  - links (object): Result of the request
+  - numErrors (integer): The number of errors that occurred during the processing
+  - requestedAt (string): Timestamp that represents when the request was made
+  - results (array): 
+  - startedAt (string): Timestamp that represents when the request started processing
+  - status (string): The status of the request processing
+
+### MarketingEventDefaultResponse
+  - customProperties (array): A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
+In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
+
+  - endDateTime (string): The end date and time of the marketing event.
+  - eventCancelled (boolean): Indicates if the marketing event has been cancelled.
+  - eventCompleted (boolean): Indicates if the marketing event has been completed.
+  - eventDescription (string): The description of the marketing event.
+  - eventName (string): The name of the marketing event.
+  - eventOrganizer (string): The name of the organizer of the marketing event.
+  - eventType (string): The type of the marketing event.
+  - eventUrl (string): The URL in the external event application where the marketing event can be managed.
+  - objectId (string): The ID of the marketing event CRM object
+  - startDateTime (string): The start date and time of the marketing event.
+
+### ParticipationAssociations
+  - contact (): 
+  - marketingEvent (): 
+
+### BatchInputMarketingEventSubscriber
+  - inputs (array): List of HubSpot contacts to subscribe to the marketing event
+
+### StandardError
+  - category (string): The category of the error
+  - context (object): The object that contains details of the errors
+  - errors (array): The detailed error objects.
+  - id (string): The ID of the request
+  - links (object): Results of the request
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - status (string): Status of the response
+  - subCategory (object): The Sub-category of the error
+
+### MarketingEventCreateRequestParams
+  - customProperties (array): A list of PropertyValues. These can be whatever kind of property names and values you want. However, they must already exist on the HubSpot account's definition of the MarketingEvent Object. If they don't they will be filtered out and not set.
+In order to do this you'll need to create a new PropertyGroup on the HubSpot account's MarketingEvent object for your specific app and create the Custom Property you want to track on that HubSpot account. Do not create any new default properties on the MarketingEvent object as that will apply to all HubSpot accounts.
+
+  - endDateTime (string): The end date and time of the marketing event.
+  - eventCancelled (boolean): Indicates if the marketing event has been cancelled.  Defaults to `false`
+  - eventCompleted (boolean): Indicates if the marketing event has been completed.  Defaults to `false`
+  - eventDescription (string): The description of the marketing event.
+  - eventName (string): The name of the marketing event.
+  - eventOrganizer (string): The name of the organizer of the marketing event.
+  - eventType (string): Describes what type of event this is.  For example: `WEBINAR`, `CONFERENCE`, `WORKSHOP`
+  - eventUrl (string): A URL in the external event application where the marketing event can be managed.
+  - externalAccountId (string): The accountId that is associated with this marketing event in the external event application.
+  - externalEventId (string): The id of the marketing event in the external event application.
+  - startDateTime (string): The start date and time of the marketing event.
+
+### BatchInputMarketingEventPublicUpdateRequestFullV2
+  - inputs (array): 
+
+### EventDetailSettings
+  - appId (integer): The id of the application the settings are for
+  - eventDetailsUrl (string): The url that will be used to fetch marketing event details by id
+
+### MarketingEventSubscriber
+  - interactionDateTime (integer): Timestamp in milliseconds at which the contact subscribed to the event.
+  - properties (object): The key-value set of the properties of the contact
+  - vid (integer): The ID of the contact in HubSpot
+
+### CollectionResponseWithTotalParticipationBreakdown
+  - paging (): 
+  - results (array): 
+  - total (integer): 
+
+### EventDetailSettingsUrl
+  - eventDetailsUrl (string): The url that will be used to fetch marketing event details by id. Must contain a `%s` character sequence that will be substituted with the event id. For example: `https://my.event.app/events/%s`
+
+### BatchInputMarketingEventEmailSubscriber
+  - inputs (array): List of marketing event details to create or update
+
+### CollectionResponseMarketingEventPublicReadResponseV2ForwardPaging
+  - paging (): 
+  - results (array): 
+
+### MarketingEventPublicDefaultResponseV2
+  - appInfo (): 
+  - createdAt (string): The creation date and time of the marketing event
+  - customProperties (array): 
+  - endDateTime (string): The end date and time of the marketing event
+  - eventCancelled (boolean): Indicates if the marketing event has been cancelled
+  - eventCompleted (boolean): Indicates if the marketing event has been completed
+  - eventDescription (string): The description of the marketing event
+  - eventName (string): The name of the marketing event
+  - eventOrganizer (string): The name of the organizer of the marketing event
+  - eventType (string): The type of the marketing event
+  - eventUrl (string): A URL in the external event application where the marketing event can be managed
+  - objectId (string): The internal ID of the marketing event in HubSpot
+  - startDateTime (string): The start date and time of the marketing event
+  - updatedAt (string): The update date and time of the marketing event
+
+### MarketingEventPublicUpdateRequestFullV2
+  - customProperties (array): 
+  - endDateTime (string): The end date and time of the marketing event
+  - eventCancelled (boolean): Indicates if the marketing event has been cancelled
+  - eventDescription (string): The description of the marketing event
+  - eventName (string): The name of the marketing event
+  - eventOrganizer (string): The name of the organizer of the marketing event
+  - eventType (string): The type of the marketing event
+  - eventUrl (string): A URL in the external event application where the marketing event can be managed
+  - objectId (string): The internal ID of the marketing event in HubSpot
+  - startDateTime (string): The start date and time of the marketing event
+
+### MarketingEventPublicReadResponseV2
+  - appInfo (): 
+  - attendees (integer): Number of attended contact records of a marketing event
+  - cancellations (integer): Number of cancelled contact records of a marketing event
+  - createdAt (string): The creation date and time of the marketing event
+  - customProperties (array): 
+  - endDateTime (string): The end date and time of the marketing event
+  - eventCancelled (boolean): Indicates if the marketing event has been cancelled
+  - eventCompleted (boolean): Indicates if the marketing event has been completed
+  - eventDescription (string): The description of the marketing event
+  - eventName (string): The name of the marketing event
+  - eventOrganizer (string): The name of the organizer of the marketing event
+  - eventStatus (string): The status of the marketing event
+  - eventStatusV2 (string): 
+  - eventType (string): The type of the marketing event
+  - eventUrl (string): A URL in the external event application where the marketing event can be managed
+  - externalEventId (string): The ID that is associated with this marketing event in the external event application
+  - noShows (integer): Number of no-show contact records of a marketing event
+  - objectId (string): The internal ID of the marketing event in HubSpot
+  - registrants (integer): Number of registered contact records of a marketing event
+  - startDateTime (string): The start date and time of the marketing event
+  - updatedAt (string): The update date and time of the marketing event
+
+### BatchInputMarketingEventCreateRequestParams
+  - inputs (array): 
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### BatchInputMarketingEventPublicObjectIdDeleteRequest
+  - inputs (array): 
+
+### CollectionResponseSearchPublicResponseWrapperNoPaging
+  - results (array): 
+
+### AttendanceCounters
+  - attended (integer): Number of attended contact records of a marketing event
+  - cancelled (integer): Number of cancelled contact records of a marketing event
+  - noShows (integer): Number of no-show contact records of a marketing event
+  - registered (integer): Number of registered contact records of a marketing event
+
+### BatchResponseSubscriberEmailResponse
+  - completedAt (string): Timestamp that represents when the request finished processing
+  - errors (array): 
+  - links (object): Result of the request
+  - numErrors (integer): The number of errors that occurred during the processing
+  - requestedAt (string): Timestamp that represents when the request was made
+  - results (array): 
+  - startedAt (string): Timestamp that represents when the request started processing
+  - status (string): The status of the request processing
+
+### MarketingEventPublicObjectIdDeleteRequest
+  - objectId (string): The internal ID of the marketing event in HubSpot
+
+### PreviousPage
+  - before (string): A paging cursor token for retrieving previous pages.
+  - link (string): A URL that can be used to retrieve the previous pages' results.
+
+### BatchResponseMarketingEventPublicDefaultResponseV2
+  - completedAt (string): Timestamp of when the request was processed.
+  - errors (array): 
+  - links (object): Result object of the request.
+  - numErrors (integer): 
+  - requestedAt (string): Timestamp of when the request was sent.
+  - results (array): 
+  - startedAt (string): Timestamp of when the request started processing.
+  - status (string): The status of the response.
+
+### NextPage
+  - after (string): The ID element at the start of the page
+  - link (string): Link to the next page
+
+### BatchResponseMarketingEventPublicDefaultResponse
+  - completedAt (string): Timestamp of when the request was completed.
+  - errors (array): 
+  - links (object): Result of the request.
+  - numErrors (integer): The number of errors that occurred during the request.
+  - requestedAt (string): Timestamp of when the request was sent.
+  - results (array): 
+  - startedAt (string): Timestamp of when the request started processing.
+  - status (string): Status of the response.

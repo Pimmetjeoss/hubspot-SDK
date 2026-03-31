@@ -1,0 +1,360 @@
+# Files Files
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### POST /files/2026-03/files
+Upload file
+Response 201: successful operation
+Response default: 
+
+### POST /files/2026-03/files/import-from-url/async
+Import file from URL
+Request body: ImportFromUrlInput
+Response 202: accepted
+Response default: 
+
+### GET /files/2026-03/files/import-from-url/async/tasks/{taskId}/status
+Check import status
+Parameters:
+  - taskId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### GET /files/2026-03/files/search
+Search files
+Parameters:
+  - after (query, optional): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - allowsAnonymousAccess (query, optional): 
+  - before (query, optional): 
+  - createdAt (query, optional): 
+  - createdAtGte (query, optional): 
+  - createdAtLte (query, optional): 
+  - encoding (query, optional): 
+  - expiresAt (query, optional): 
+  - expiresAtGte (query, optional): 
+  - expiresAtLte (query, optional): 
+  - extension (query, optional): 
+  - fileMd5 (query, optional): 
+  - height (query, optional): 
+  - heightGte (query, optional): 
+  - heightLte (query, optional): 
+  - idGte (query, optional): 
+  - idLte (query, optional): 
+  - ids (query, optional): 
+  - isUsableInContent (query, optional): 
+  - limit (query, optional): The maximum number of results to display per page.
+  - name (query, optional): 
+  - parentFolderIds (query, optional): 
+  - path (query, optional): 
+  - properties (query, optional): 
+  - size (query, optional): 
+  - sizeGte (query, optional): 
+  - sizeLte (query, optional): 
+  - sort (query, optional): 
+  - type (query, optional): 
+  - updatedAt (query, optional): 
+  - updatedAtGte (query, optional): 
+  - updatedAtLte (query, optional): 
+  - url (query, optional): 
+  - width (query, optional): 
+  - widthGte (query, optional): 
+  - widthLte (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### GET /files/2026-03/files/stat/{path}
+Retrieve file by path
+Parameters:
+  - path (path, required): 
+  - properties (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### GET /files/2026-03/files/{fileId}
+Retrieve file by ID
+Parameters:
+  - fileId (path, required): 
+  - properties (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### PUT /files/2026-03/files/{fileId}
+Replace file
+Parameters:
+  - fileId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### DELETE /files/2026-03/files/{fileId}
+Delete file by ID
+Parameters:
+  - fileId (path, required): 
+Response 204: No content
+Response default: 
+
+### PATCH /files/2026-03/files/{fileId}
+Update file properties
+Parameters:
+  - fileId (path, required): 
+Request body: FileUpdateInput
+Response 200: successful operation
+Response default: 
+
+### DELETE /files/2026-03/files/{fileId}/gdpr-delete
+GDPR-delete file
+Parameters:
+  - fileId (path, required): 
+Response 204: No content
+Response default: 
+
+### GET /files/2026-03/files/{fileId}/signed-url
+Get signed URL to access private file
+Parameters:
+  - fileId (path, required): 
+  - expirationSeconds (query, optional): 
+  - size (query, optional): 
+  - upscale (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### POST /files/2026-03/folders
+Create folder
+Request body: FolderInput
+Response 201: successful operation
+Response default: 
+
+### GET /files/2026-03/folders/search
+Search folders
+Parameters:
+  - after (query, optional): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - before (query, optional): 
+  - createdAt (query, optional): 
+  - createdAtGte (query, optional): 
+  - createdAtLte (query, optional): 
+  - idGte (query, optional): 
+  - idLte (query, optional): 
+  - ids (query, optional): 
+  - limit (query, optional): The maximum number of results to display per page.
+  - name (query, optional): 
+  - parentFolderIds (query, optional): 
+  - path (query, optional): 
+  - properties (query, optional): 
+  - sort (query, optional): 
+  - updatedAt (query, optional): 
+  - updatedAtGte (query, optional): 
+  - updatedAtLte (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### POST /files/2026-03/folders/update/async
+Update folder properties
+Request body: FolderUpdateInputWithId
+Response 202: accepted
+Response default: 
+
+### GET /files/2026-03/folders/update/async/tasks/{taskId}/status
+Check folder update status
+Parameters:
+  - taskId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### GET /files/2026-03/folders/{folderId}
+Retrieve folder by ID
+Parameters:
+  - folderId (path, required): 
+  - properties (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### DELETE /files/2026-03/folders/{folderId}
+Delete folder by ID
+Parameters:
+  - folderId (path, required): 
+Response 204: No content
+Response default: 
+
+### PATCH /files/2026-03/folders/{folderId}
+Update folder properties by folder ID
+Parameters:
+  - folderId (path, required): 
+Request body: FolderUpdateInput
+Response 200: successful operation
+Response default: 
+
+### GET /files/2026-03/folders/{folderPath}
+Retrieve folder by path
+Parameters:
+  - folderPath (path, required): 
+  - properties (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### DELETE /files/2026-03/folders/{folderPath}
+Delete folder by path
+Parameters:
+  - folderPath (path, required): 
+Response 204: No content
+Response default: 
+
+## Schemas
+
+### StandardError
+  - category (string, required): The main category of the error.
+  - context (object, required): Additional context-specific information related to the error.
+  - errors (array, required): The detailed error objects.
+  - id (string, optional): A unique ID for the error instance.
+  - links (object, required): URLs linking to documentation or resources associated with the error.
+  - message (string, required): A human-readable string describing the error and possible remediation steps.
+  - status (string, required): The HTTP status code associated with the error.
+  - subCategory (object, optional): A more specific error category within each main category.
+
+### FolderUpdateInput
+  - name (string, optional): New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
+  - parentFolderId (integer, optional): New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
+
+### FolderActionResponse
+  - completedAt (string, required): When the requested changes have been completed.
+  - errors (array, optional): Detailed errors resulting from the task.
+  - links (object, optional): Link to check the status of the task.
+  - numErrors (integer, optional): Number of errors resulting from the requested changes.
+  - requestedAt (string, optional): Timestamp representing when the task was requested.
+  - result (Folder, optional): 
+  - startedAt (string, required): Timestamp representing when the task was started at.
+  - status (string, required): Current status of the task.
+  - taskId (string, required): ID of the task.
+
+### Paging
+  - next (NextPage, optional): 
+  - prev (PreviousPage, optional): 
+
+### Error
+  - category (string, required): The error category
+  - context (object, optional): Context about the error condition
+  - correlationId (string, required): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array, optional): further information about the error
+  - links (object, optional): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### Folder
+  - archived (boolean, required): Marks whether the folder is deleted or not.
+  - archivedAt (string, optional): Timestamp of folder deletion.
+  - createdAt (string, required): Timestamp of folder creation.
+  - id (string, required): ID of the folder.
+  - name (string, optional): Name of the folder.
+  - parentFolderId (string, optional): ID of the parent folder.
+  - path (string, optional): Path of the folder in the file manager.
+  - updatedAt (string, required): Timestamp of the latest update to the folder.
+
+### CollectionResponseFile
+  - paging (Paging, optional): 
+  - results (array, required): 
+
+### ErrorDetail
+  - code (string, optional): The status code associated with the error detail
+  - context (object, optional): Context about the error condition
+  - in (string, optional): The name of the field or parameter in which the error was found.
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### FileActionResponse
+  - completedAt (string, required): Time of completion of task.
+  - errors (array, optional): Descriptive error messages.
+  - links (object, optional): Link to check the status of the requested task.
+  - numErrors (integer, optional): Number of errors resulting from the task.
+  - requestedAt (string, optional): Timestamp of when the task was requested.
+  - result (File, optional): 
+  - startedAt (string, required): Timestamp of when the task was started.
+  - status (string, required): Current status of the task.
+  - taskId (string, required): ID of the requested task.
+
+### CollectionResponseFolder
+  - paging (Paging, optional): 
+  - results (array, required): 
+
+### FileStat
+  - file (File, optional): 
+  - folder (Folder, optional): 
+
+### ImportFromUrlInput
+  - access (string, required): PUBLIC_INDEXABLE: File is publicly accessible by anyone who has the URL. Search engines can index the file. PUBLIC_NOT_INDEXABLE: File is publicly accessible by anyone who has the URL. Search engines *can't* index the file. PRIVATE: File is NOT publicly accessible. Requires a signed URL to see content. Search engines *can't* index the file.
+  - duplicateValidationScope (string, required): ENTIRE_PORTAL: Look for a duplicate file in the entire account. EXACT_FOLDER: Look for a duplicate file in the provided folder.
+  - duplicateValidationStrategy (string, required): NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.
+  - expiresAt (string, optional): Specifies the date and time when the file will expire.
+  - folderId (string, optional): One of folderId or folderPath is required. Destination folderId for the uploaded file.
+  - folderPath (string, optional): One of folderPath or folderId is required. Destination folder path for the uploaded file. If the folder path does not exist, there will be an attempt to create the folder path.
+  - name (string, optional): Name to give the resulting file in the file manager.
+  - overwrite (boolean, required): If true, will overwrite existing file if one with the same name and extension exists in the given folder. The overwritten file will be deleted and the uploaded file will take its place with a new ID. If unset or set as false, the new file's name will be updated to prevent colliding with existing file if one exists with the same path, name, and extension
+  - ttl (string, optional): Time to live. If specified the file will be deleted after the given time frame. If left unset, the file will exist indefinitely
+  - url (string, optional): URL to download the new file from.
+
+### FileUpdateInput
+  - access (string, optional): NONE: Do not run any duplicate validation. REJECT: Reject the upload if a duplicate is found. RETURN_EXISTING: If a duplicate file is found, do not upload a new file and return the found duplicate instead.
+  - clearExpires (boolean, required): 
+  - expiresAt (string, optional): 
+  - isUsableInContent (boolean, optional): Mark whether the file should be used in new content or not.
+  - name (string, optional): New name for the file.
+  - parentFolderId (string, optional): FolderId where the file should be moved to. folderId and folderPath parameters cannot be set at the same time.
+  - parentFolderPath (string, optional): Folder path where the file should be moved to. folderId and folderPath parameters cannot be set at the same time.
+
+### SignedUrl
+  - expiresAt (string, required): Timestamp of when the URL will no longer grant access to the file.
+  - extension (string, optional): Extension of the requested file.
+  - height (integer, optional): For image and video files. The height of the file.
+  - name (string, optional): Name of the requested file.
+  - size (integer, optional): Size in bytes of the requested file.
+  - type (string, optional): Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.
+  - url (string, required): Signed URL with access to the specified file. Anyone with this URL will be able to access the file until it expires.
+  - width (integer, optional): For image and video files. The width of the file.
+
+### PreviousPage
+  - before (string, required): A paging cursor token for retrieving previous pages.
+  - link (string, optional): A URL that can be used to retrieve the previous pages' results.
+
+### FolderInput
+  - name (string, required): Desired name for the folder.
+  - parentFolderId (string, optional): FolderId of the parent of the created folder. If not specified, the folder will be created at the root level. parentFolderId and parentFolderPath cannot be set at the same time.
+  - parentPath (string, optional): Path of the parent of the created folder. If not specified the folder will be created at the root level. parentFolderPath and parentFolderId cannot be set at the same time.
+
+### FolderUpdateInputWithId
+  - id (string, required): The unique identifier of the folder to be updated.
+  - name (string, optional): New name. If specified the folder's name and fullPath will change. All children of the folder will be updated accordingly.
+  - parentFolderId (integer, optional): New parent folderId. If changed, the folder and all it's children will be moved into the specified folder. parentFolderId and parentFolderPath cannot be specified at the same time.
+
+### ImportFromUrlTaskLocator
+  - id (string, required): ID of the task
+  - links (object, optional): Links for where to check information related to the task. The `status` link gives the URL for where to check the status of the task.
+
+### File
+  - access (string, optional): File access. Can be PUBLIC_INDEXABLE, PUBLIC_NOT_INDEXABLE, PRIVATE.
+  - archived (boolean, required): If the file is deleted.
+  - archivedAt (string, optional): Deletion time of the file object.
+  - createdAt (string, required): Creation time of the file object.
+  - defaultHostingUrl (string, optional): Default hosting URL of the file. This will use one of HubSpot's provided URLs to serve the file.
+  - encoding (string, optional): Encoding of the file.
+  - expiresAt (integer, optional): 
+  - extension (string, optional): Extension of the file. ex: .jpg, .png, .gif, .pdf, etc.
+  - fileMd5 (string, optional): The MD5 hash of the file.
+  - height (integer, optional): For image and video files, the height of the content.
+  - id (string, required): File ID.
+  - isUsableInContent (boolean, optional): Previously "archied". Indicates if the file should be used when creating new content like web pages.
+  - name (string, optional): Name of the file.
+  - parentFolderId (string, optional): ID of the folder the file is in.
+  - path (string, optional): Path of the file in the file manager.
+  - size (integer, optional): Size of the file in bytes.
+  - sourceGroup (string, optional): 
+  - type (string, optional): Type of the file. Can be IMG, DOCUMENT, AUDIO, MOVIE, or OTHER.
+  - updatedAt (string, required): Timestamp of the latest update to the file.
+  - url (string, optional): URL of the given file. This URL can change depending on the domain settings of the account. Will use the select file hosting domain.
+  - width (integer, optional): For image and video files, the width of the content.
+
+### NextPage
+  - after (string, required): A paging cursor token for retrieving subsequent pages.
+  - link (string, optional): A URL that can be used to retrieve the next page results.
+
+### FolderUpdateTaskLocator
+  - id (string, required): ID of the task
+  - links (object, optional): Links for where to check information related to the task. The `status` link gives the URL for where to check the status of the task.
+

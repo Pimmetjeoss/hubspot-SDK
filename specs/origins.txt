@@ -1,0 +1,45 @@
+# Meta Origins
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /meta/network-origins/2026-03/ip-ranges
+Retrieve IP ranges
+  - direction (query, opt): 
+  - service (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /meta/network-origins/2026-03/ip-ranges/simple
+Retrieve simple list
+  - direction (query, opt): 
+  - service (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### IpRange
+  - cidr (string): The CIDR notation representing the IP range.
+  - description (string): A description of the IP range.
+  - direction (string): The direction of the IP traffic, which can be INGRESS or EGRESS.
+  - service (string): The service associated with the IP range, such as EMAIL, API, DNS, or WEB_SCRAPING.
+
+### CollectionResponseIpRangeNoPaging
+  - results (array): An array of IpRange objects, each representing a specific IP range with associated details such as CIDR, direction, service, and description.
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error

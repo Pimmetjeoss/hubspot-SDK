@@ -1,0 +1,70 @@
+# CRM Property Validations
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /crm/property-validations/2026-03/{objectTypeId}
+Read all property validation rules for an object
+  - objectTypeId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/property-validations/2026-03/{objectTypeId}/{propertyName}
+Read validation rules for a property
+  - objectTypeId (path, req): 
+  - propertyName (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/property-validations/2026-03/{objectTypeId}/{propertyName}/rule-type/{ruleType}
+Retrieve a validation rule for a specific property and rule type, providing details on how property values should be formatted.
+  - objectTypeId (path, req): 
+  - propertyName (path, req): 
+  - ruleType (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### PUT /crm/property-validations/2026-03/{objectTypeId}/{propertyName}/rule-type/{ruleType}
+Update a validation rule for a specific property and rule type, allowing customization of property value constraints.
+  - objectTypeId (path, req): 
+  - propertyName (path, req): 
+  - ruleType (path, req): 
+  Response 204: No content
+  Response default: 
+
+## Schemas
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### PublicPropertyValidationRuleMap
+  - propertyName (string): The name of the property for which validation rules are defined.
+  - propertyValidationRules (array): A list of validation rules applicable to the property.
+
+### PublicPropertyValidationRuleUpdate
+  - ruleArguments (array): A list of arguments that define the constraints for the validation rule.
+  - shouldApplyNormalization (boolean): 
+
+### CollectionResponsePublicPropertyValidationRuleNoPaging
+  - results (array): Collection of validation rules configured for the specified property. Each rule defines a constraint that property values must satisfy (e.g., format requirements, length limits, allowed values).
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### CollectionResponsePublicPropertyValidationRuleMapNoPaging
+  - results (array): Collection of properties with their validation rules. Each item maps a property name to its configured validation rules for the specified object type.
+
+### PublicPropertyValidationRule
+  - ruleArguments (array): A list of arguments that define the specific conditions or parameters for the validation rule.
+  - ruleType (string): The category of validation applied to the property, such as FORMAT, ALPHANUMERIC, or MAX_LENGTH.
+  - shouldApplyNormalization (boolean): 

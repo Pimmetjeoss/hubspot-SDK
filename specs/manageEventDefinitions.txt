@@ -1,0 +1,647 @@
+# Events Manage Event Definitions
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /events/2026-03/event-definitions
+Retrieve event definitions
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - includeProperties (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - searchString (query, opt): 
+  - sortOrder (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /events/2026-03/event-definitions
+Create custom event definition
+  Response 201: successful operation
+  Response default: 
+
+### GET /events/2026-03/event-definitions/{eventName}
+Retrieve a custom event definition
+  - eventName (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /events/2026-03/event-definitions/{eventName}
+Delete an event definition
+  - eventName (path, req): 
+  Response 204: No content
+  Response default: 
+
+### PATCH /events/2026-03/event-definitions/{eventName}
+Update a custom event definition
+  - eventName (path, req): 
+  Response 201: successful operation
+  Response default: 
+
+### POST /events/2026-03/event-definitions/{eventName}/property
+Create a property for an event definition
+  - eventName (path, req): 
+  Response 201: successful operation
+  Response default: 
+
+### DELETE /events/2026-03/event-definitions/{eventName}/property/{propertyName}
+Delete a property from a custom event definition
+  - eventName (path, req): 
+  - propertyName (path, req): 
+  Response 204: No content
+  Response default: 
+
+### PATCH /events/2026-03/event-definitions/{eventName}/property/{propertyName}
+Update an existing custom event property
+  - eventName (path, req): 
+  - propertyName (path, req): 
+  Response 201: successful operation
+  Response default: 
+
+### POST /events/2026-03/send/batch
+
+  Response 204: No content
+  Response default: 
+
+## Schemas
+
+### RollingPropertyUpdatedOperation
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - numberOfDays (integer): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+
+### ExternalPrimaryObjectResolutionRule
+  - eventPropertyName (string): 
+  - targetObjectPropertyName (string): 
+
+### TodayReference
+  - hour (integer): 
+  - millisecond (integer): 
+  - minute (integer): 
+  - referenceType (string): 
+  - second (integer): 
+
+### NowReference
+  - hour (integer): 
+  - millisecond (integer): 
+  - minute (integer): 
+  - referenceType (string): 
+  - second (integer): 
+
+### RangedTimeOperation
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - lowerBoundEndpointBehavior (string): 
+  - lowerBoundTimePoint (): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyParser (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+  - type (string): 
+  - upperBoundEndpointBehavior (string): 
+  - upperBoundTimePoint (): 
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### BehavioralEventHttpCompletionRequest
+  - email (string): Email of visitor
+  - eventName (string): Internal name of the event-type to trigger
+  - objectId (string): The object id that this event occurred on. Could be a contact id or a visitor id.
+  - occurredAt (string): The time when this event occurred (if any). If this isn't set, the current time will be used
+  - properties (object): Map of properties for the event in the format property internal name - property value
+  - utk (string): User token
+  - uuid (string): 
+
+### QuarterReference
+  - day (integer): 
+  - hour (integer): 
+  - millisecond (integer): 
+  - minute (integer): 
+  - month (integer): 
+  - referenceType (string): 
+  - second (integer): 
+
+### RelativeComparativeTimestampRefineBy
+  - comparison (string): 
+  - timeOffset (): 
+  - type (string): 
+
+### CalendarDatePropertyOperation
+  - defaultValue (string): 
+  - fiscalYearStart (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+  - timeUnit (string): 
+  - timeUnitCount (integer): 
+  - useFiscalYear (boolean): 
+
+### ExternalBehavioralEventTypeDefinitionPatch
+  - description (string): A description of the event that will be shown as help text in HubSpot.
+  - label (string): Human readable label for the event. Used in HubSpot UI
+
+### StringPropertyOperation
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+  - value (string): 
+
+### TimeOffset
+  - amount (integer): 
+  - offsetDirection (string): 
+  - timeUnit (string): 
+
+### ExternalBehavioralEventPropertyCreate
+  - description (string): A description of the property that will be shown as help text in HubSpot.
+  - label (string): Human readable label for the property. Used in HubSpot UI
+  - name (string): Internal property name, which must be used when referencing the property from the API
+  - options (array): A list of available options for the property if it is an enumeration. NOTE: This field is only applicable for enumerated properties.
+  - type (string): The data type of the property. Can be one of the following: [string, number, enumeration, datetime]
+
+### ExternalBehavioralEventTypeDefinitionEgg
+  - customMatchingId (): 
+  - description (string): A description of the event that will be shown as help text in HubSpot.
+  - includeDefaultProperties (boolean): 
+  - label (string): Human readable label for the event. Used in HubSpot UI
+  - name (string): Internal event name, which must be used when referencing the event from this event definitions API. If a name is not supplied, one will be generated based on the label. The `name` value will also be used to automatically generate a `fullyQualifiedName` for the event definition, which you'll use when sending event completions to this event. 
+  - primaryObject (string): The object type to associate this event to. Can be one of CONTACT, COMPANY, DEAL, TICKET. If no primaryObject is supplied, we will default to associating the event to CONTACT objects.
+  - propertyDefinitions (array): List of custom properties on event
+
+### FiscalQuarter
+  - day (integer): 
+  - hour (integer): 
+  - millisecond (integer): 
+  - minute (integer): 
+  - month (integer): 
+  - referenceType (string): 
+  - second (integer): 
+
+### YearReference
+  - day (integer): 
+  - hour (integer): 
+  - millisecond (integer): 
+  - minute (integer): 
+  - month (integer): 
+  - referenceType (string): 
+  - second (integer): 
+
+### ExternalObjectResolutionMappingRequest
+  - primaryObjectRule (): 
+
+### DatePoint
+  - day (integer): 
+  - hour (integer): 
+  - millisecond (integer): 
+  - minute (integer): 
+  - month (integer): 
+  - second (integer): 
+  - timeType (string): 
+  - timezoneSource (string): 
+  - year (integer): 
+  - zoneId (string): 
+
+### Paging
+  - next (): 
+  - prev (): 
+
+### AbsoluteRangedTimestampRefineBy
+  - lowerTimestamp (integer): 
+  - rangeType (string): 
+  - type (string): 
+  - upperTimestamp (integer): 
+
+### AllPropertyTypesOperation
+  - coalescingRefineBy (): 
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - pruningRefineBy (): 
+  - renderSpec (string): 
+
+### DateTimePropertyOperation
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+  - requiresTimeZoneConversion (boolean): 
+  - timestamp (integer): 
+
+### ComparativeDatePropertyOperation
+  - comparisonPropertyName (string): 
+  - defaultComparisonValue (string): 
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+
+### ComparativeStringPropertyOperation
+  - comparisonPropertyName (string): 
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+
+### ExternalBehavioralEventPropertyDefinitionPatch
+  - description (string): A description of the property that will be shown as help text in HubSpot.
+  - label (string): Human readable label for the property. Used in HubSpot UI
+  - options (array): A list of available options for the property if it is an enumeration. NOTE: This field is only applicable for enumerated properties.
+
+### PropertyModificationMetadata
+  - archivable (boolean): 
+  - readOnlyDefinition (boolean): 
+  - readOnlyOptions (boolean): 
+  - readOnlyValue (boolean): 
+
+### ExternalBehavioralEventTypeDefinition
+  - archived (boolean): 
+  - associations (array): 
+  - comboEventRules (): 
+  - createdAt (string): 
+  - createdUserId (integer): 
+  - customMatchingId (): 
+  - description (string): 
+  - fullyQualifiedName (string): 
+  - id (string): 
+  - labels (): 
+  - name (string): 
+  - objectTypeId (string): 
+  - primaryObject (string): 
+  - primaryObjectId (string): 
+  - properties (array): 
+  - trackingType (string): 
+  - updatedAt (string): 
+  - updatedUserId (integer): 
+
+### ExternalObjectResolutionMappingResponse
+  - primaryObjectRule (): 
+
+### MultiStringPropertyOperation
+  - coalescingRefineBy (): 
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - pruningRefineBy (): 
+  - renderSpec (string): 
+  - values (array): 
+
+### IndexOffset
+  - days (integer): 
+  - hours (integer): 
+  - milliseconds (integer): 
+  - minutes (integer): 
+  - months (integer): 
+  - quarters (integer): 
+  - seconds (integer): 
+  - weeks (integer): 
+  - years (integer): 
+
+### Option
+  - description (string): A description of the option.
+  - displayOrder (integer): The position of the item relative to others in the list.
+  - hidden (boolean): Whether the option is displayed in HubSpot's UI.
+  - label (string): A user-friendly label that identifies the option.
+  - value (string): The actual value of the option.
+
+### PropertyFilter
+  - context (): 
+  - filterInsightsId (integer): 
+  - filterType (string): 
+  - frameworkFilterId (integer): 
+  - operation (): 
+  - property (string): 
+
+### EnumerationPropertyOperation
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+  - values (array): 
+
+### WeekReference
+  - dayOfWeek (string): 
+  - hour (integer): 
+  - millisecond (integer): 
+  - minute (integer): 
+  - referenceType (string): 
+  - second (integer): 
+
+### RangedDatePropertyOperation
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - lowerBoundTimestamp (integer): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+  - requiresTimeZoneConversion (boolean): 
+  - upperBoundTimestamp (integer): 
+
+### IndexedTimePoint
+  - indexReference (): 
+  - offset (): 
+  - shouldGenerateRefreshTime (boolean): 
+  - timeType (string): 
+  - timezoneSource (string): 
+  - zoneId (string): 
+
+### RangedNumberPropertyOperation
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - lowerBound (number): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+  - upperBound (number): 
+
+### FiscalYear
+  - day (integer): 
+  - hour (integer): 
+  - millisecond (integer): 
+  - minute (integer): 
+  - month (integer): 
+  - referenceType (string): 
+  - second (integer): 
+
+### RollingDateRangePropertyOperation
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - numberOfDays (integer): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+  - requiresTimeZoneConversion (boolean): 
+
+### BoolPropertyOperation
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+  - value (boolean): 
+
+### NumberPropertyOperation
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+  - value (number): 
+
+### BatchedBehavioralEventHttpCompletionRequest
+  - inputs (array): 
+
+### TimePointOperation
+  - defaultValue (string): 
+  - endpointBehavior (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyParser (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+  - timePoint (): 
+  - type (string): 
+
+### NumOccurrencesRefineBy
+  - maxOccurrences (integer): 
+  - minOccurrences (integer): 
+  - type (string): 
+
+### MonthReference
+  - day (integer): 
+  - hour (integer): 
+  - millisecond (integer): 
+  - minute (integer): 
+  - referenceType (string): 
+  - second (integer): 
+
+### PropertyFilterContext
+  - objectTypeId (string): 
+
+### ComboEventRule
+  - count (integer): 
+  - eventTypeId (string): 
+  - lookbackWindowDays (integer): 
+  - propertyFilters (array): 
+
+### Property
+  - archived (boolean): Whether the property is archived.
+  - archivedAt (string): The timestamp when the property was archived, in ISO 8601 format.
+  - calculated (boolean): Whether the property is a calculated field.
+  - calculationFormula (string): The formula used for calculated properties.
+  - createdAt (string): The timestamp when the property was created, in ISO 8601 format.
+  - createdUserId (string): The ID of the user who created the property.
+  - dataSensitivity (string): Indicates the sensitivity level of the property, such as "non_sensitive", "sensitive", or "highly_sensitive".
+  - dateDisplayHint (string): 
+  - description (string): A summary of the property's purpose.
+  - displayOrder (integer): The position of the item relative to others in the list.
+  - externalOptions (boolean): Applicable only for enumeration type properties. Should be set to true with a 'referencedObjectType' of 'OWNER'. Otherwise false.
+  - fieldType (string): Determines how the property will appear in HubSpot's UI or on a form. Learn more in the properties API guide.
+  - formField (boolean): Whether the property can appear on forms.
+  - groupName (string): The name of the group to which the property is assigned.
+  - hasUniqueValue (boolean): Whether the property is a unique identifier property.
+  - hidden (boolean): Whether or not the property will be hidden from the HubSpot UI. It's recommended that this be set to false for custom properties.
+  - hubspotDefined (boolean): A boolean value set to true for HubSpot default properties.
+  - label (string): The display label for the property.
+  - modificationMetadata (): 
+  - name (string): The internal name for the property.
+  - options (array): A list of valid options for the property. This field is required for enumerated properties.
+  - referencedObjectType (string): Deprecated. Use externalOptionsReferenceType instead.
+  - sensitiveDataCategories (array): When sensitiveData is true, lists the type of sensitive data contained in the property (e.g., "HIPAA").
+  - showCurrencySymbol (boolean): Whether to show the currency symbol in HubSpot's UI.
+  - type (string): The data type of the property, such as string or number.
+  - updatedAt (string): The timestamp when the property was last updated, in ISO 8601 format.
+  - updatedUserId (string): 
+
+### RelativeRangedTimestampRefineBy
+  - lowerBoundOffset (): 
+  - rangeType (string): 
+  - type (string): 
+  - upperBoundOffset (): 
+
+### ComparativeBoolPropertyOperation
+  - comparisonPropertyName (string): 
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+
+### PropertyReferencedTime
+  - property (string): 
+  - referenceType (string): 
+  - timeType (string): 
+  - timezoneSource (string): 
+  - zoneId (string): 
+
+### OptionInput
+  - description (string): null
+  - displayOrder (integer): 
+  - hidden (boolean): 
+  - label (string): null
+  - value (string): null
+
+### RegexPropertyOperation
+  - caseSensitive (boolean): 
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - pattern (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+
+### BehavioralEventTypeDefinitionLabels
+  - plural (string): 
+  - singular (string): 
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### AllHistoryRefineBy
+  - type (string): 
+
+### ComparativePropertyUpdatedOperation
+  - comparisonPropertyName (string): 
+  - defaultComparisonValue (string): 
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+
+### SetOccurrencesRefineBy
+  - setType (string): 
+  - type (string): 
+
+### ComboEventRuleBranch
+  - composingRules (array): 
+  - operationType (string): 
+  - ruleBranches (array): 
+
+### ComparativeNumberPropertyOperation
+  - comparisonPropertyName (string): 
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+
+### AssociationDefinition
+  - allowsCustomLabels (boolean): Whether custom labels can be used in the association.
+  - cardinality (string): The cardinality from the source object's perspective, either "ONE_TO_ONE" or "ONE_TO_MANY".
+  - category (string): The error category
+  - fromObjectType (string): The name of the source object type (e.g,. "DEAL" or "QUOTE").
+  - fromObjectTypeId (string): The ID of the source object type (e.g., 0-1 for contacts).
+  - hasAllAssociatedObjects (boolean): Whether all potential linked objects are included in the association
+  - hasCascadingDeletes (boolean): Whether deletions in the association should cause cascading deletes to linked objects.
+  - hasUserEnforcedMaxFromObjectIds (boolean): Whether a user has set a limit for the number of source objects.
+  - hasUserEnforcedMaxToObjectIds (boolean): Whether a user has set a limit for the number of destination objects.
+  - hidden (boolean): Whether the association is hidden or not.
+  - hiddenReason (string): 
+  - id (integer): The unique ID of the associated object (e.g., a contact ID).
+  - inverseAllowsCustomLabels (boolean): Whether the reverse association can also support custom labels.
+  - inverseCardinality (string): The cardinality from the destination object's perspective, either "ONE_TO_ONE" or "ONE_TO_MANY".
+  - inverseHasAllAssociatedObjects (boolean): Whether all potential reverse linked objects are included in the association.
+  - inverseId (integer): The unique ID for the inverse side of the association.
+  - inverseLabel (string): The label used to describe the reverse relationship in an association.
+  - inverseName (string): The name used to describe the inverse relationship in this association
+  - isDefault (boolean): 
+  - isInversePrimary (boolean): Whether the inverse association is considered primary.
+  - isPrimary (boolean): Whether the association is the primary link between the entities involved.
+  - label (string): The label given to an association.
+  - maxFromObjectIds (integer): The maximum number of source object IDs allowed in the association.
+  - maxToObjectIds (integer): The maximum number of destination object IDs allowed in the association.
+  - name (string): For labeled association types, the internal name of the association.
+  - portalUniqueIdentifier (string): A unique across-portal ID applied to the association.
+  - readOnly (boolean): 
+  - toObjectType (string): The name of the destination object type (e.g,. "DEAL" or "QUOTE").
+  - toObjectTypeId (string): The ID of the destination object type (e.g., 0-3 for deals).
+
+### PreviousPage
+  - before (string): A paging cursor token for retrieving previous pages.
+  - link (string): A URL that can be used to retrieve the previous pages' results.
+
+### DatePropertyOperation
+  - day (integer): 
+  - defaultValue (string): 
+  - includeObjectsWithNoValueSet (boolean): 
+  - month (string): 
+  - operationType (string): 
+  - operator (string): 
+  - operatorName (string): 
+  - propertyType (string): 
+  - renderSpec (string): 
+  - year (integer): 
+
+### CollectionResponseWithTotalExternalBehavioralEventTypeDefinition
+  - paging (): 
+  - results (array): 
+  - total (integer): 
+
+### NextPage
+  - after (string): A paging cursor token for retrieving subsequent pages.
+  - link (string): A URL that can be used to retrieve the next page results.
+
+### AbsoluteComparativeTimestampRefineBy
+  - comparison (string): 
+  - timestamp (integer): 
+  - type (string): 

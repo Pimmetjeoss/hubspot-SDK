@@ -1,0 +1,170 @@
+# Payments
+
+
+## Endpoints
+
+### POST /crm/v3/objects/payments/batch/read
+Read a batch of payments by internal ID, or unique property values
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### GET /crm/v3/objects/payments/{paymentsId}
+Read
+  - paymentsId (path, req): 
+  - properties (query, opt): A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+  - propertiesWithHistory (query, opt): A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+  - associations (query, opt): A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - idProperty (query, opt): The name of a property whose values are unique for this object type
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/v3/objects/payments
+List
+  - limit (query, opt): The maximum number of results to display per page.
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - properties (query, opt): A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+  - propertiesWithHistory (query, opt): A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request.
+  - associations (query, opt): A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response default: 
+
+### POST /crm/v3/objects/payments/search
+
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### StandardError
+  - subCategory (object): 
+  - context (object): 
+  - links (object): 
+  - id (string): 
+  - category (string): 
+  - message (string): 
+  - errors (array): 
+  - status (string): 
+
+### CollectionResponseAssociatedId
+  - paging (): 
+  - results (array): 
+
+### Paging
+  - next (): 
+  - prev (): 
+
+### PublicObjectSearchRequest
+  - query (string): 
+  - limit (integer): 
+  - after (string): 
+  - sorts (array): 
+  - properties (array): 
+  - filterGroups (array): 
+
+### Error
+  - subCategory (string): A specific category that contains more specific detail about the error
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - category (string): The error category
+  - errors (array): further information about the error
+
+### BatchResponseSimplePublicObject
+  - completedAt (string): 
+  - requestedAt (string): 
+  - startedAt (string): 
+  - links (object): 
+  - results (array): 
+  - status (string): 
+
+### BatchResponseSimplePublicObjectWithErrors
+  - completedAt (string): 
+  - numErrors (integer): 
+  - requestedAt (string): 
+  - startedAt (string): 
+  - links (object): 
+  - results (array): 
+  - errors (array): 
+  - status (string): 
+
+### FilterGroup
+  - filters (array): 
+
+### ErrorDetail
+  - subCategory (string): A specific category that contains more specific detail about the error
+  - code (string): The status code associated with the error detail
+  - in (string): The name of the field or parameter in which the error was found.
+  - context (object): Context about the error condition
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+
+### CollectionResponseSimplePublicObjectWithAssociationsForwardPaging
+  - paging (): 
+  - results (array): 
+
+### ForwardPaging
+  - next (): 
+
+### SimplePublicObjectId
+  - id (string): 
+
+### SimplePublicObjectWithAssociations
+  - associations (object): 
+  - createdAt (string): 
+  - archived (boolean): 
+  - archivedAt (string): 
+  - propertiesWithHistory (object): 
+  - id (string): 
+  - properties (object): 
+  - updatedAt (string): 
+
+### BatchReadInputSimplePublicObjectId
+  - propertiesWithHistory (array): 
+  - idProperty (string): 
+  - inputs (array): 
+  - properties (array): 
+
+### Filter
+  - highValue (string): 
+  - propertyName (string): 
+  - values (array): 
+  - value (string): 
+  - operator (string): null
+
+### PreviousPage
+  - before (string): 
+  - link (string): 
+
+### ValueWithTimestamp
+  - sourceId (string): 
+  - sourceType (string): 
+  - sourceLabel (string): 
+  - updatedByUserId (integer): 
+  - value (string): 
+  - timestamp (string): 
+
+### AssociatedId
+  - id (string): 
+  - type (string): 
+
+### CollectionResponseWithTotalSimplePublicObjectForwardPaging
+  - total (integer): 
+  - paging (): 
+  - results (array): 
+
+### NextPage
+  - link (string): 
+  - after (string): 
+
+### SimplePublicObject
+  - createdAt (string): 
+  - archived (boolean): 
+  - archivedAt (string): 
+  - propertiesWithHistory (object): 
+  - id (string): 
+  - properties (object): 
+  - updatedAt (string): 

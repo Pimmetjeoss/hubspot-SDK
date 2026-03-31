@@ -1,0 +1,341 @@
+# Goal Targets
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /crm/objects/2026-03/goal_targets
+Retrieve goal targets
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - associations (query, opt): A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+  - limit (query, opt): The maximum number of results to display per page.
+  - properties (query, opt): A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+  - propertiesWithHistory (query, opt): A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored. Usage of this parameter will reduce the maximum number of objects that can be read by a single request.
+  Response 200: successful operation
+  Response default: 
+
+### POST /crm/objects/2026-03/goal_targets
+Create a goal target
+  Response 201: successful operation
+  Response default: 
+
+### POST /crm/objects/2026-03/goal_targets/batch/archive
+Delete goal targets
+  Response 204: No content
+  Response default: 
+
+### POST /crm/objects/2026-03/goal_targets/batch/create
+Create goal targets
+  Response 201: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /crm/objects/2026-03/goal_targets/batch/read
+Retrieve goal targets
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /crm/objects/2026-03/goal_targets/batch/update
+Update goal targets
+  Response 200: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /crm/objects/2026-03/goal_targets/batch/upsert
+Upsert goal tagets
+  Response 200: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /crm/objects/2026-03/goal_targets/search
+Search for goal targets
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/objects/2026-03/goal_targets/{goalTargetId}
+Retrieve a goal target
+  - goalTargetId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  - associations (query, opt): A comma separated list of object types to retrieve associated IDs for. If any of the specified associations do not exist, they will be ignored.
+  - idProperty (query, opt): The name of a property whose values are unique for this object type
+  - properties (query, opt): A comma separated list of the properties to be returned in the response. If any of the specified properties are not present on the requested object(s), they will be ignored.
+  - propertiesWithHistory (query, opt): A comma separated list of the properties to be returned along with their history of previous values. If any of the specified properties are not present on the requested object(s), they will be ignored.
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /crm/objects/2026-03/goal_targets/{goalTargetId}
+Delete a goal target
+  - goalTargetId (path, req): 
+  Response 204: No content
+  Response default: 
+
+### PATCH /crm/objects/2026-03/goal_targets/{goalTargetId}
+Update a goal target
+  - goalTargetId (path, req): 
+  - idProperty (query, opt): The name of a property whose values are unique for this object type
+  Response 200: successful operation
+  Response default: 
+
+### PUT /crm/objects/2026-03/{fromObjectType}/{fromObjectId}/associations/default/{toObjectType}/{toObjectId}
+
+  - fromObjectId (path, req): 
+  - fromObjectType (path, req): 
+  - toObjectId (path, req): 
+  - toObjectType (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### PUT /crm/objects/2026-03/{objectType}/{objectId}/associations/{toObjectType}/{toObjectId}
+
+  - objectId (path, req): 
+  - objectType (path, req): 
+  - toObjectId (path, req): 
+  - toObjectType (path, req): 
+  Response 201: successful operation
+  Response default: 
+
+### DELETE /crm/objects/2026-03/{objectType}/{objectId}/associations/{toObjectType}/{toObjectId}
+
+  - objectId (path, req): 
+  - objectType (path, req): 
+  - toObjectId (path, req): 
+  - toObjectType (path, req): 
+  Response 204: No content
+  Response default: 
+
+## Schemas
+
+### StandardError
+  - category (string): The main category of the error.
+  - context (object): Additional context-specific information related to the error.
+  - errors (array): The detailed error objects.
+  - id (string): A unique ID for the error instance.
+  - links (object): URLs linking to documentation or resources associated with the error.
+  - message (string): A human-readable string describing the error and possible remediation steps.
+  - status (string): The HTTP status code associated with the error.
+  - subCategory (object): A more specific error category within each main category.
+
+### CollectionResponseAssociatedId
+  - paging (): 
+  - results (array): 
+
+### CollectionResponseWithTotalSimplePublicObject
+  - paging (): 
+  - results (array): 
+  - total (integer): The number of available results
+
+### LabelsBetweenObjectPair
+  - fromObjectId (string): Source unique ID of the object.
+  - fromObjectTypeId (string): Source object type.
+  - labels (array): 
+  - toObjectId (string): Target unique ID of the object.
+  - toObjectTypeId (string): Target object type.
+
+### PublicAssociationsForObject
+  - to (): 
+  - types (array): 
+
+### BatchResponseSimplePublicObject
+  - completedAt (string): The timestamp when the batch processing was completed, in ISO 8601 format.
+  - links (object): An object containing relevant links related to the batch request.
+  - requestedAt (string): The timestamp when the batch request was initially made, in ISO 8601 format.
+  - results (array): 
+  - startedAt (string): The timestamp when the batch processing began, in ISO 8601 format.
+  - status (string): The status of the batch processing request: "PENDING", "PROCESSING", "CANCELLED", or "COMPLETE"
+
+### FilterGroup
+  - filters (array): 
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### ForwardPaging
+  - next (): 
+
+### SimplePublicObjectId
+  - id (string): The unique ID of the object.
+
+### BatchResponseSimplePublicUpsertObjectWithErrors
+  - completedAt (string): The timestamp when the batch process was completed, in ISO 8601 format.
+  - errors (array): 
+  - links (object): An object containing relevant links related to the batch request.
+  - numErrors (integer): The number of errors encountered during the batch process.
+  - requestedAt (string): The timestamp when the batch process was initiated, in ISO 8601 format.
+  - results (array): 
+  - startedAt (string): The timestamp when the batch process began execution, in ISO 8601 format.
+  - status (string): The status of the batch processing request. Can be: "PENDING", "PROCESSING", "CANCELLED", or "COMPLETE".
+
+### BatchReadInputSimplePublicObjectId
+  - idProperty (string): When using a custom unique value property to retrieve records, the name of the property. Do not include this parameter if retrieving by record ID.
+  - inputs (array): 
+  - properties (array): Key-value pairs for setting properties for the new object.
+  - propertiesWithHistory (array): Key-value pairs for setting properties for the new object and their histories.
+
+### BatchResponseSimplePublicUpsertObject
+  - completedAt (string): The timestamp when the batch process was completed, in ISO 8601 format.
+  - links (object): An object containing relevant links related to the batch request.
+  - requestedAt (string): The timestamp when the batch process was initiated, in ISO 8601 format.
+  - results (array): 
+  - startedAt (string): The timestamp when the batch process began execution, in ISO 8601 format.
+  - status (string): The status of the batch processing request. Can be: "PENDING", "PROCESSING", "CANCELED", or "COMPLETE".
+
+### BatchInputSimplePublicObjectId
+  - inputs (array): 
+
+### ValueWithTimestamp
+  - sourceId (string): The unique ID of the property.
+  - sourceLabel (string): A human-readable label.
+  - sourceType (string): The property type.
+  - timestamp (string): The timestamp when the property was updated, in ISO 8601 format.
+  - updatedByUserId (integer): The ID of the user who last updated the property.
+  - value (string): The property value.
+
+### BatchInputSimplePublicObjectBatchInputUpsert
+  - inputs (array): 
+
+### SimplePublicObject
+  - archived (boolean): Whether the object is archived.
+  - archivedAt (string): The timestamp when the object was archived, in ISO 8601 format.
+  - createdAt (string): The timestamp when the object was created, in ISO 8601 format.
+  - id (string): The unique ID of the object.
+  - objectWriteTraceId (string): An identifier used for tracing the write request for the object.
+  - properties (object): Key-value pairs representing the properties of the object.
+  - propertiesWithHistory (object): Key-value pairs representing the properties of the object along with their history.
+  - updatedAt (string): The timestamp when the object was last updated, in ISO 8601 format.
+  - url (string): The URL associated with the object.
+
+### PublicObjectId
+  - id (string): The unique ID of the object.
+
+### Paging
+  - next (): 
+  - prev (): 
+
+### PublicDefaultAssociation
+  - associationSpec (): 
+  - from (): 
+  - to (): 
+
+### PublicObjectSearchRequest
+  - after (string): A paging cursor token for retrieving subsequent pages.
+  - filterGroups (array): Up to 6 groups of filters defining additional query criteria.
+  - limit (integer): The maximum results to return, up to 200 objects.
+  - properties (array): A list of property names to include in the response.
+  - query (string): The search query string, up to 3000 characters.
+  - sorts (array): Specifies sorting order based on object properties.
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### SimplePublicObjectBatchInputUpsert
+  - id (string): The unique ID of the object.
+  - idProperty (string): The name of a property whose values are unique for this object
+  - objectWriteTraceId (string): An identifier for tracing the creation request.
+  - properties (object): Key value pairs representing the properties of the object.
+
+### BatchResponseSimplePublicObjectWithErrors
+  - completedAt (string): The timestamp when the batch process was completed, in ISO 8601 format.
+  - errors (array): 
+  - links (object): An object containing relevant links related to the batch request.
+  - numErrors (integer): The number of errors encountered during the batch process.
+  - requestedAt (string): The timestamp when the batch process was initiated, in ISO 8601 format.
+  - results (array): 
+  - startedAt (string): The timestamp when the batch process began execution, in ISO 8601 format.
+  - status (string): The status of the batch processing request - "PENDING", "PROCESSING", "CANCELLED", or "COMPLETE"
+
+### SimplePublicObjectInput
+  - properties (object): Key value pairs representing the properties of the object.
+
+### BatchResponsePublicDefaultAssociation
+  - completedAt (string): The timestamp when the batch process was completed, in ISO 8601 format.
+  - errors (array): 
+  - links (object): An object containing relevant links related to the batch request.
+  - numErrors (integer): The total number of errors that occurred during the operation.
+  - requestedAt (string): The timestamp when the batch process was initiated, in ISO 8601 format.
+  - results (array): 
+  - startedAt (string): The timestamp when the batch process began execution, in ISO 8601 format.
+  - status (string): The status of the batch processing request. Can be: "PENDING", "PROCESSING", "CANCELED", or "COMPLETE".
+
+### CollectionResponseSimplePublicObjectWithAssociationsForwardPaging
+  - paging (): 
+  - results (array): 
+
+### AssociationSpec
+  - associationCategory (string): The category of the association, such as "HUBSPOT_DEFINED".
+  - associationTypeId (integer): The ID representing the specific type of association.
+
+### SimplePublicObjectWithAssociations
+  - archived (boolean): Whether the object is archived.
+  - archivedAt (string): The timestamp when the object was archived, in ISO 8601 format.
+  - associations (object): A list defining relationships with other objects.
+  - createdAt (string): The timestamp when the object was created, in ISO 8601 format.
+  - id (string): The unique ID of the object.
+  - objectWriteTraceId (string): An identifier used for tracing the creation or update request of the object.
+  - properties (object): Key value pairs representing the properties of the object.
+  - propertiesWithHistory (object): Key-value pairs representing the properties of the object along with their history.
+  - updatedAt (string): The timestamp when the object was last updated, in ISO 8601 format.
+  - url (string): The URL on the API that provide direct navigation to the corresponding UI pages for the connectors.
+
+### Filter
+  - highValue (string): The upper boundary value when using ranged-based filters.
+  - operator (string): null
+  - propertyName (string): The name of the property to apply the filter to.
+  - value (string): The value to match against the property.
+  - values (array): The values to match against the property.
+
+### BatchInputSimplePublicObjectBatchInput
+  - inputs (array): 
+
+### PreviousPage
+  - before (string): A paging cursor token for retrieving previous pages.
+  - link (string): A URL that can be used to retrieve the previous pages' results.
+
+### SimplePublicUpsertObject
+  - archived (boolean): Whether the object is archived.
+  - archivedAt (string): The timestamp when the object was archived, in ISO 8601 format.
+  - createdAt (string): The timestamp when the object was created, in ISO 8601 format.
+  - id (string): The unique ID of the object.
+  - new (boolean): Whether the property is new.
+  - objectWriteTraceId (string): An identifier used for tracing the write request for the object.
+  - properties (object): Key value pairs representing the properties of the object.
+  - propertiesWithHistory (object): Key-value pairs representing the properties of the object along with their history.
+  - updatedAt (string): The timestamp when the object was last updated, in ISO 8601 format.
+  - url (string): The URL associated with the object.
+
+### SimplePublicObjectBatchInput
+  - id (string): The id to be updated. This can be the object id, or the unique property value of the idProperty property
+  - idProperty (string): The name of a property whose values are unique for this object
+  - objectWriteTraceId (string): A unique identifier for tracing the request.
+  - properties (object): Key-value pairs representing the properties of the object.
+
+### SimplePublicObjectBatchInputForCreate
+  - associations (array): 
+  - objectWriteTraceId (string): An identifier used for tracing the creation or update request of the object.
+  - properties (object): Key value pairs representing the properties of the object.
+
+### AssociatedId
+  - id (string): The ID for the association type.
+  - type (string): The type of associations.
+
+### NextPage
+  - after (string): A paging cursor token for retrieving subsequent pages.
+  - link (string): A URL that can be used to retrieve the next page results.
+
+### SimplePublicObjectInputForCreate
+  - associations (array): 
+  - properties (object): Key-value pairs for setting properties for the new object.
+
+### BatchInputSimplePublicObjectBatchInputForCreate
+  - inputs (array): 

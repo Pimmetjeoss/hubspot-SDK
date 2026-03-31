@@ -1,0 +1,71 @@
+# Url Mappings
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /url-mappings/2026-03/url-mappings
+List URL mappings
+  Response 200: successful operation
+  Response default: 
+
+### POST /url-mappings/2026-03/url-mappings
+Create URL mapping
+  Response default: 
+
+### GET /url-mappings/2026-03/url-mappings/{id}
+Retrieve URL mapping
+  - id (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /url-mappings/2026-03/url-mappings/{id}
+Delete URL mapping
+  - id (path, req): 
+  Response 204: No content
+  Response default: 
+
+## Schemas
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### UrlMapping
+  - cdnPurgeEmbargoTime (integer): A Unix timestamp in milliseconds indicating the embargo time for CDN purge related to the URL mapping.
+  - contentGroupId (integer): A 64-bit integer representing the content group associated with the URL mapping.
+  - cosObjectType (string): A string representing the type of content object associated with the URL mapping. Valid values include various content types such as 'CONTENT', 'LAYOUT', 'FILE', etc.
+  - created (integer): A Unix timestamp in milliseconds indicating when the URL mapping was created.
+  - createdById (integer): The identifier of the user who created the URL mapping.
+  - deletedAt (integer): A Unix timestamp in milliseconds indicating when the URL mapping was deleted.
+  - destination (string): The destination URL to which the routePrefix is redirected.
+  - id (integer): The unique identifier for the URL mapping, represented as a 64-bit integer.
+  - internallyCreated (boolean): A boolean indicating if the URL mapping was created internally by the system.
+  - isActive (boolean): A boolean indicating if the URL mapping is currently active.
+  - isMatchFullUrl (boolean): A boolean indicating if the full URL should be matched.
+  - isMatchQueryString (boolean): A boolean indicating if the query string should be matched.
+  - isOnlyAfterNotFound (boolean): A boolean indicating if the mapping should only be applied after a 404 Not Found response.
+  - isPattern (boolean): A boolean indicating if the routePrefix is a pattern.
+  - isProtocolAgnostic (boolean): A boolean indicating if the mapping should ignore the URL protocol (http/https).
+  - isRegex (boolean): A boolean indicating if the routePrefix should be treated as a regular expression.
+  - isTrailingSlashOptional (boolean): A boolean indicating if the trailing slash in the URL is optional.
+  - label (string): A label for the URL mapping.
+  - name (string): The name of the URL mapping.
+  - note (string): A string containing notes about the URL mapping.
+  - portalId (integer): The identifier for the HubSpot portal associated with this URL mapping.
+  - precedence (integer): An integer representing the precedence of the URL mapping, used to determine order of evaluation.
+  - redirectStyle (integer): An integer representing the style of redirection used.
+  - routePrefix (string): The prefix of the URL path that is being mapped.
+  - updated (integer): A Unix timestamp in milliseconds indicating when the URL mapping was last updated.
+  - updatedById (integer): The identifier of the user who last updated the URL mapping.
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error

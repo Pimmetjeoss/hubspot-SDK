@@ -1,0 +1,147 @@
+# CRM Imports
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /crm/imports/2026-03
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - limit (query, opt): The maximum number of results to display per page.
+  Response 200: successful operation
+  Response default: 
+
+### POST /crm/imports/2026-03
+
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/imports/2026-03/{importId}
+
+  - importId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /crm/imports/2026-03/{importId}/cancel
+
+  - importId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/imports/2026-03/{importId}/errors
+
+  - importId (path, req): 
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - includeErrorMessage (query, opt): 
+  - includeRowData (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### PublicObjectListRecord
+  - listId (string): The ID of the list containing the imported objects.
+  - objectType (string): The type of object contained in the list.
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### PropertyValue
+  - dataSensitivity (string): The sensitivity level of the property, such as "non_sensitive", "sensitive", and "highly_sensitive".
+  - isEncrypted (boolean): Whether the property value is encrypted.
+  - isLargeValue (boolean): Indicates if the value exceeds normal size limits.
+  - name (string): The unique property name.
+  - persistenceTimestamp (integer): When the value was persisted to database, in epoch milliseconds.
+  - requestId (string): A unique ID associated with this request.
+  - selectedByUser (boolean): Whether the value was selected by a user.
+  - selectedByUserTimestamp (integer): The timestamp when the value was selected by a user, if applicable.
+  - source (string): The origin of the property value, such as "IMPORT" or "API".
+  - sourceId (string): The ID of the property source indicating where it was created.
+  - sourceLabel (string): A human-readable label.
+  - sourceMetadata (string): Metadata providing additional context about the source.
+  - sourceUpstreamDeployable (string): 
+  - sourceVid (array): The unique identifier associated with the source.
+  - timestamp (integer): When the value was set, as a 64-bit integer.
+  - unit (string): The unit of measurement or context for the value.
+  - updatedByUserId (integer): The ID of the user who updated the property.
+  - useTimestampAsPersistenceTimestamp (boolean): Flag indicating whether to use the timestamp field as the persistence timestamp.
+  - value (string): The property value.
+
+### CollectionResponsePublicImportResponseForwardPaging
+  - paging (): 
+  - results (array): 
+
+### ImportRowCore
+  - additionalRowData (array): 
+  - containsEncryptedProperties (boolean): Indicates whether this row contains values that were encrypted.
+  - fileId (integer): The unique identifier of the uploaded file containing this row.
+  - lineNumber (integer): The 1-indexed line number of this row in the source file. Line number 0 is reserved for file-wide errors that don't correspond to a specific row.
+  - pageName (string): The name of the spreadsheet sheet/page containing this row.
+  - rowData (array): 
+
+### ImportTemplate
+  - templateId (integer): The unique identifier for the specific saved template or previous import being referenced.
+  - templateType (string): The classification of what type of template this represents, and what is its origin or purpose.
+
+### ActionResponse
+  - completedAt (string): The timestamp when the action was completed, in ISO 8601 format.
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - requestedAt (string): The timestamp when the export request was made, in ISO 8601 format.
+  - startedAt (string): The timestamp when the action was started, in ISO 8601 format.
+  - status (string): An enum representing the lifecycle state of the action.
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### ForwardPaging
+  - next (): 
+
+### PublicImportError
+  - createdAt (integer): The epoch millisecond timestamp when this error was recorded.
+  - errorMessage (string): A human-readable error message.
+  - errorType (string): The classification of what went wrong during import processing.
+  - extraContext (string): Additional human-readable context about the error.
+  - id (string): A unique, stable identifier for this specific error.
+  - invalidPropertyValue (): 
+  - invalidValue (string): The raw string value from the import file that caused the validation failure.
+  - invalidValueToDisplay (string): A convenience accessor that returns either the value from `invalidPropertyValue` or `invalidValue`, whichever is present (preferring the property value).
+  - knownColumnNumber (integer): The zero-based column index in the import file where the error occurred
+  - objectType (string): The CRM object type affected by this error.
+  - objectTypeId (string): The modern object type identifier for the CRM object affected by this error.
+  - sourceData (): 
+
+### PublicImportMetadata
+  - counters (object): Summarized outcomes of each row a developer attempted to import into HubSpot.
+  - fileIds (array): The IDs of files uploaded in the File Manager API.
+  - objectLists (array): The lists containing the imported objects.
+
+### CollectionResponsePublicImportErrorForwardPaging
+  - paging (): 
+  - results (array): 
+
+### PublicImportResponse
+  - createdAt (string): The timestamp when the object was created, in ISO 8601 format.
+  - id (string): The unique identifier for this import.
+  - importName (string): The user-provided name for this import.
+  - importRequestJson (object): The complete import request configuration as a JSON object.
+  - importSource (string): Indicates where/how the import was initiated.
+  - importTemplate (): 
+  - mappedObjectTypeIds (array): 
+  - metadata (): 
+  - optOutImport (boolean): Whether or not the import is a list of people disqualified from receiving emails.
+  - state (string): The status of the import.
+  - updatedAt (string): The timestamp when the import record was last updated, formatted as an ISO 8601 instant.
+
+### NextPage
+  - after (string): A paging cursor token for retrieving subsequent pages.
+  - link (string): A URL that can be used to retrieve the next page results.

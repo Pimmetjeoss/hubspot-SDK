@@ -1,0 +1,436 @@
+# Automation Actions V4
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /automation/actions/2026-03/{appId}
+Retrieve custom action definitions
+Parameters:
+  - appId (path, required): 
+  - after (query, optional): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, optional): Whether to return only results that have been archived.
+  - limit (query, optional): The maximum number of results to display per page.
+Response 200: successful operation
+Response default: 
+
+### POST /automation/actions/2026-03/{appId}
+Create a new custom action definition
+Parameters:
+  - appId (path, required): 
+Request body: PublicActionDefinitionEgg
+Response 201: successful operation
+Response default: 
+
+### GET /automation/actions/2026-03/{appId}/{definitionId}
+Retrieve a custom action definition
+Parameters:
+  - appId (path, required): 
+  - definitionId (path, required): 
+  - archived (query, optional): Whether to return only results that have been archived.
+Response 200: successful operation
+Response default: 
+
+### DELETE /automation/actions/2026-03/{appId}/{definitionId}
+Delete an action definition
+Parameters:
+  - appId (path, required): 
+  - definitionId (path, required): 
+Response 204: No content
+Response default: 
+
+### PATCH /automation/actions/2026-03/{appId}/{definitionId}
+Update an existing action definition
+Parameters:
+  - appId (path, required): 
+  - definitionId (path, required): 
+Request body: PublicActionDefinitionPatch
+Response 200: successful operation
+Response default: 
+
+### GET /automation/actions/2026-03/{appId}/{definitionId}/functions
+Retrieve functions for a given definition
+Parameters:
+  - appId (path, required): 
+  - definitionId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### GET /automation/actions/2026-03/{appId}/{definitionId}/functions/{functionType}
+Retrieve functions by a type for a given definition
+Parameters:
+  - appId (path, required): 
+  - definitionId (path, required): 
+  - functionType (path, required): 
+Response 200: successful operation
+Response default: 
+
+### PUT /automation/actions/2026-03/{appId}/{definitionId}/functions/{functionType}
+Insert a function for a definition
+Parameters:
+  - appId (path, required): 
+  - definitionId (path, required): 
+  - functionType (path, required): 
+Response 200: successful operation
+Response default: 
+
+### DELETE /automation/actions/2026-03/{appId}/{definitionId}/functions/{functionType}
+Delete a function for a definition
+Parameters:
+  - appId (path, required): 
+  - definitionId (path, required): 
+  - functionType (path, required): 
+Response 204: No content
+Response default: 
+
+### GET /automation/actions/2026-03/{appId}/{definitionId}/functions/{functionType}/{functionId}
+Retrieve a function from a given definition
+Parameters:
+  - appId (path, required): 
+  - definitionId (path, required): 
+  - functionId (path, required): 
+  - functionType (path, required): 
+Response 200: successful operation
+Response default: 
+
+### PUT /automation/actions/2026-03/{appId}/{definitionId}/functions/{functionType}/{functionId}
+Update a function for a definition
+Parameters:
+  - appId (path, required): 
+  - definitionId (path, required): 
+  - functionId (path, required): 
+  - functionType (path, required): 
+Response 200: successful operation
+Response default: 
+
+### DELETE /automation/actions/2026-03/{appId}/{definitionId}/functions/{functionType}/{functionId}
+Archive a function for a definition
+Parameters:
+  - appId (path, required): 
+  - definitionId (path, required): 
+  - functionId (path, required): 
+  - functionType (path, required): 
+Response 204: No content
+Response default: 
+
+### GET /automation/actions/2026-03/{appId}/{definitionId}/requires-object
+Retrieve the object requirement status for a custom action definition.
+Parameters:
+  - appId (path, required): 
+  - definitionId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### POST /automation/actions/2026-03/{appId}/{definitionId}/requires-object
+Set the object requirement for a custom action definition.
+Parameters:
+  - appId (path, required): 
+  - definitionId (path, required): 
+Request body: PublicActionDefinitionRequiresObjectRequest
+Response 204: No content
+Response default: 
+
+### GET /automation/actions/2026-03/{appId}/{definitionId}/revisions
+Retrieve revisions for a given definition
+Parameters:
+  - appId (path, required): 
+  - definitionId (path, required): 
+  - after (query, optional): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - limit (query, optional): The maximum number of results to display per page.
+Response 200: successful operation
+Response default: 
+
+### GET /automation/actions/2026-03/{appId}/{definitionId}/revisions/{revisionId}
+Retrieve a specific revision of a definition
+Parameters:
+  - appId (path, required): 
+  - definitionId (path, required): 
+  - revisionId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### POST /automation/actions/callbacks/2026-03/complete
+Complete a batch of callbacks
+Request body: BatchInputCallbackCompletionBatchRequest
+Response 204: No content
+Response default: 
+
+### POST /automation/actions/callbacks/2026-03/{callbackId}/complete
+Completes a callback
+Parameters:
+  - callbackId (path, required): 
+Request body: CallbackCompletionRequest
+Response 204: No content
+Response default: 
+
+## Schemas
+
+### TestRequestContext
+  - source (string, required): Indicates the source of the test request, with the only accepted value being 'TEST'.
+
+### PublicActionFunction
+  - functionSource (string, required): The source code or script that defines the function's behavior.
+  - functionType (string, required): The type of function, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS.
+  - id (string, optional): The unique identifier for the action function.
+
+### PublicFieldTypeDefinition
+  - description (string, optional): A detailed explanation of the field's purpose.
+  - fieldType (string, optional): The type of field, with accepted values including booleancheckbox, calculation_equation, checkbox, date, file, html, number, phonenumber, radio, select, text, and textarea.
+  - helpText (string, optional): Additional information or guidance about the field.
+  - label (string, optional): A user-friendly name for the field.
+  - name (string, required): The internal name used to identify the field.
+  - options (array, required): 
+  - optionsUrl (string, optional): A URL that provides options for the field.
+  - referencedObjectType (string, optional): The type of object that the field references, with accepted values including OWNER.
+  - type (string, required): The data type of the field, with accepted values including bool, date, datetime, enumeration, json, number, object_coordinates, phone_number, and string.
+
+### PublicActionDefinition
+  - actionUrl (string, required): 
+  - archivedAt (integer, optional): 
+  - executionRules (array, optional): 
+  - functions (array, required): 
+  - id (string, required): 
+  - inputFieldDependencies (array, optional): 
+  - inputFields (array, required): 
+  - labels (object, required): 
+  - objectRequestOptions (PublicObjectRequestOptions, optional): 
+  - objectTypes (array, required): 
+  - outputFields (array, optional): 
+  - published (boolean, required): 
+  - revisionId (string, required): 
+
+### PublicOption
+  - description (string, optional): A description of the option.
+  - displayOrder (integer, optional): The position of the option relative to others in the list.
+  - label (string, required): A user-friendly label that identifies the option.
+  - value (string, required): The actual value of the option.
+
+### PublicActionDefinitionRequiresObjectResponse
+  - requiresObject (boolean, required): Indicates whether a custom action definition requires an object.
+
+### PublicConditionalSingleFieldDependency
+  - controllingFieldName (string, required): The name of the field that determines the dependency.
+  - controllingFieldValue (string, required): The value of the controlling field that triggers the dependency.
+  - dependencyType (string, required): The type of dependency, with the default value being CONDITIONAL_SINGLE_FIELD.
+  - dependentFieldNames (array, required): 
+
+### ChirpAiContextObject
+  - applicationGroup (string, required): The group to which the application belongs.
+  - applicationId (string, required): The identifier for the application associated with the context.
+  - complianceIds (ComplianceIds, optional): 
+  - featureId (string, optional): The identifier for the feature associated with the context.
+  - inferenceId (string, optional): The identifier for the inference associated with the context.
+  - metadata (object, required): Additional metadata related to the context, represented as key-value pairs.
+  - otelContextHolder (object, required): Holds OpenTelemetry context information as key-value pairs.
+  - trajectoryId (string, optional): The identifier for the trajectory, formatted as a UUID.
+  - unstructuredSources (array, required): 
+
+### AgentRequestContext
+  - agentId (integer, required): The unique identifier for the agent making the request.
+  - chirpAiContextObject (ChirpAiContextObject, required): 
+  - source (string, required): Indicates the source of the request, with the default value being 'AGENTS'.
+  - trajectoryId (string, optional): The unique identifier for the trajectory associated with the agent request.
+
+### ContactId
+  - email (string, optional): The email address of the contact.
+  - portalId (integer, required): The ID of the portal associated with the contact.
+  - vid (integer, optional): The unique identifier for the contact.
+
+### DoubleFieldSchema
+  - maximum (number, optional): The maximum allowable value for the double field.
+  - minimum (number, optional): The minimum allowable value for the double field.
+  - type (string, required): Indicates the field type as DOUBLE.
+
+### PublicObjectRequestOptions
+  - properties (array, required): 
+
+### LongFieldSchema
+  - maximum (integer, optional): The maximum value allowed for the long field.
+  - minimum (integer, optional): The minimum value allowed for the long field.
+  - type (string, required): The type of the field, which is LONG by default.
+
+### ErrorDetail
+  - code (string, optional): The status code associated with the error detail
+  - context (object, optional): Context about the error condition
+  - in (string, optional): The name of the field or parameter in which the error was found.
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### PublicActionLabels
+  - actionCardContent (string, optional): Content displayed on the action card.
+  - actionDescription (string, optional): A description of what the action does.
+  - actionName (string, required): The name of the action.
+  - appDisplayName (string, optional): The display name of the application associated with the action.
+  - executionRules (object, optional): Rules that govern the execution of the action.
+  - inputFieldDescriptions (object, optional): Descriptions for each input field.
+  - inputFieldLabels (object, optional): Labels for the input fields.
+  - inputFieldOptionLabels (object, optional): Labels for the options available in input fields.
+  - outputFieldLabels (object, optional): Labels for the output fields.
+
+### PublicSingleFieldDependency
+  - controllingFieldName (string, required): The name of the field that controls the dependency.
+  - dependencyType (string, required): The type of dependency, with the default value being 'SINGLE_FIELD'.
+  - dependentFieldNames (array, required): 
+
+### ActionExecutionIndexIdentifier
+  - actionExecutionIndex (integer, required): The index number representing the execution order of the action.
+  - enrollmentId (integer, required): The ID associated with the enrollment process.
+
+### ForwardPaging
+  - next (NextPage, optional): 
+
+### PublicInputFieldDefinition
+  - isRequired (boolean, required): Indicates whether the input field is mandatory.
+  - supportedValueTypes (array, optional): 
+  - typeDefinition (PublicFieldTypeDefinition, required): 
+
+### FieldTypeDefinition
+  - description (string, optional): A detailed explanation of the field's purpose and usage.
+  - externalOptions (boolean, required): Indicates whether the field's options are sourced externally.
+  - externalOptionsReferenceType (string, optional): Specifies the type of external reference for options.
+  - fieldType (string, optional): Describes the field's type in the UI, with accepted values like booleancheckbox, calculation_equation, checkbox, date, file, html, number, phonenumber, radio, select, text, textarea, unknown.
+  - helpText (string, optional): Additional information or guidance about the field.
+  - label (string, optional): The user-friendly label for the field.
+  - name (string, required): The unique identifier for the field.
+  - options (array, required): 
+  - optionsUrl (string, optional): A URL that provides options for the field.
+  - referencedObjectType (string, optional): Indicates the type of object that the field references, with accepted values like OWNER.
+  - schema (, required): Defines the structure and constraints of the field.
+  - type (string, required): Specifies the data type of the field, with accepted values like bool, date, datetime, enumeration, json, number, object_coordinates, phone_number, string.
+  - useChirp (boolean, required): Specifies whether the field uses the Chirp feature.
+
+### CollectionResponsePublicActionFunctionIdentifierNoPaging
+  - results (array, required): 
+
+### StandaloneRequestContext
+  - chirpAiContextObject (ChirpAiContextObject, required): 
+  - source (string, required): Indicates the source of the request, with the default value being 'STANDALONE'.
+  - trajectoryId (string, optional): A unique identifier for tracking the trajectory of the request.
+
+### IntegerFieldSchema
+  - maximum (integer, optional): The maximum value allowed for the integer field.
+  - minimum (integer, optional): The minimum value allowed for the integer field.
+  - type (string, required): The type of the field, which is set to INTEGER.
+
+### PublicExecutionTranslationRule
+  - conditions (object, required): Defines the conditions that must be met for the execution rule to apply.
+  - labelName (string, required): Specifies the name of the label associated with the execution rule.
+
+### WorkflowsRequestContext
+  - actionExecutionIndexIdentifier (ActionExecutionIndexIdentifier, optional): 
+  - actionId (integer, optional): The ID of the action within the workflow context.
+  - source (string, required): Indicates the source of the request, with the default value being WORKFLOWS.
+  - workflowId (integer, required): The ID of the workflow associated with the request context.
+
+### ComplianceIds
+  - contactIds (array, required): 
+  - noContactIdReason (string, optional): The reason why no contact ID is available.
+  - noPortalIdReason (string, optional): The reason why no portal ID is available.
+  - noUserIdReason (string, optional): The reason why no user ID is available.
+  - portalIds (array, required): 
+  - userIds (array, required): 
+
+### PublicActionFunctionIdentifier
+  - functionType (string, required): The type of function, with accepted values: POST_ACTION_EXECUTION, POST_FETCH_OPTIONS, PRE_ACTION_EXECUTION, PRE_FETCH_OPTIONS.
+  - id (string, optional): The unique identifier for the function.
+
+### PublicActionRevision
+  - createdAt (string, required): The date and time when the action revision was created.
+  - definition (PublicActionDefinition, required): 
+  - id (string, required): The unique identifier for the action revision.
+  - revisionId (string, required): The unique identifier for the specific revision of the action.
+
+### CallbackCompletionRequest
+  - failureReasonType (string, optional): Indicates the reason for the failure of a callback completion.
+  - outputFields (object, required): Contains the output fields associated with the callback, with each field represented as a key-value pair.
+  - requestContext (, optional): Specifies the context in which the request is made, which can be one of several predefined contexts.
+  - typedOutputs (object, required): Holds the typed outputs related to the callback, structured as an object.
+
+### CollectionResponsePublicActionDefinitionForwardPaging
+  - paging (ForwardPaging, optional): 
+  - results (array, required): 
+
+### CopilotRequestContext
+  - source (string, required): Indicates the source of the request, with the default value being 'COPILOT'.
+  - trajectoryId (string, optional): The unique identifier for the trajectory.
+
+### Error
+  - category (string, required): The error category
+  - context (object, optional): Context about the error condition
+  - correlationId (string, required): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array, optional): further information about the error
+  - links (object, optional): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### CollectionResponsePublicActionRevisionForwardPaging
+  - paging (ForwardPaging, optional): 
+  - results (array, required): 
+
+### PublicActionDefinitionRequiresObjectRequest
+  - requiresObject (boolean, required): Indicates whether a custom action definition requires an associated object.
+
+### StringFieldSchema
+  - format (string, optional): Specifies the format of the string, with accepted values: DATE, DATE_TIME, OBJECT_COORDINATE, TIME, URI.
+  - type (string, required): Indicates that the type is a string, with the default value being STRING.
+
+### CallbackCompletionBatchRequest
+  - callbackId (string, required): The unique identifier for the callback.
+  - failureReasonType (string, optional): Specifies the type of failure reason for the callback completion.
+  - outputFields (object, required): Holds the output fields for the callback completion.
+  - requestContext (, optional): Defines the context of the request, which can be one of several predefined types.
+  - typedOutputs (object, required): Contains the typed outputs for the callback completion.
+
+### PublicActionDefinitionEgg
+  - actionUrl (string, required): The URL endpoint where the action is executed.
+  - archivedAt (integer, optional): The timestamp indicating when the action was archived.
+  - executionRules (array, optional): 
+  - functions (array, required): 
+  - inputFieldDependencies (array, optional): 
+  - inputFields (array, required): 
+  - labels (object, required): Holds various labels associated with the action, including names and descriptions.
+  - objectRequestOptions (PublicObjectRequestOptions, optional): 
+  - objectTypes (array, required): 
+  - outputFields (array, optional): 
+  - published (boolean, required): Indicates whether the action is published and available for use.
+
+### PublicActionDefinitionPatch
+  - actionUrl (string, optional): The URL endpoint where the action is executed.
+  - executionRules (array, optional): 
+  - inputFieldDependencies (array, optional): 
+  - inputFields (array, optional): 
+  - labels (object, optional): Contains labels for the action, including names and descriptions.
+  - objectRequestOptions (PublicObjectRequestOptions, optional): 
+  - objectTypes (array, optional): 
+  - outputFields (array, optional): 
+  - published (boolean, optional): Indicates whether the action is published and available for use.
+
+### BatchInputCallbackCompletionBatchRequest
+  - inputs (array, required): 
+
+### ArrayFieldSchema
+  - items (, required): Defines the type of elements contained within the array, which can be an integer, long, double, string, boolean, another array, or an object.
+  - type (string, required): Specifies that the field is of type 'ARRAY'.
+
+### BooleanFieldSchema
+  - type (string, required): Specifies the field type as BOOLEAN, indicating that the field can hold a true or false value.
+
+### Option
+  - description (string, required): A description of the option.
+  - displayOrder (integer, required): The position of the item relative to others in the list.
+  - doubleData (number, required): A numerical value associated with the option.
+  - hidden (boolean, required): Whether the option is displayed in HubSpot's UI.
+  - label (string, required): A user-friendly label that identifies the option.
+  - readOnly (boolean, required): Whether the option is read-only.
+  - value (string, required): The actual value of the option.
+
+### OutputFieldDefinition
+  - typeDefinition (FieldTypeDefinition, required): 
+
+### NextPage
+  - after (string, required): A paging cursor token for retrieving subsequent pages.
+  - link (string, optional): A URL that can be used to retrieve the next page results.
+
+### ObjectFieldSchema
+  - properties (object, required): Contains the properties of the object.
+  - type (string, required): Specifies the type of the field, which is 'OBJECT' by default.
+

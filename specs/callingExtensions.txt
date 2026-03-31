@@ -1,0 +1,196 @@
+# CRM Calling Extensions
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### POST /crm/extensions/calling/2026-03/inbound-call
+Submit details of an inbound call to the CRM.
+  Response 200: successful operation
+  Response default: 
+
+### POST /crm/extensions/calling/2026-03/recordings/ready
+Mark a call recording as ready for retrieval.
+  Response 204: No content
+  Response default: 
+
+### GET /crm/extensions/calling/2026-03/{appId}/settings
+Retrieve the calling extension settings for a specific app.
+  - appId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /crm/extensions/calling/2026-03/{appId}/settings
+Create new calling extension settings for a specific app.
+  - appId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /crm/extensions/calling/2026-03/{appId}/settings
+Delete the calling extension settings for a specific app.
+  - appId (path, req): 
+  Response 204: No content
+  Response default: 
+
+### PATCH /crm/extensions/calling/2026-03/{appId}/settings
+Update the calling extension settings for a specific app.
+  - appId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/extensions/calling/2026-03/{appId}/settings/channel-connection
+Retrieve the channel connection settings for a specific app.
+  - appId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /crm/extensions/calling/2026-03/{appId}/settings/channel-connection
+Create new channel connection settings for a specific app.
+  - appId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /crm/extensions/calling/2026-03/{appId}/settings/channel-connection
+Remove the channel connection settings for a specific app.
+  - appId (path, req): 
+  Response 204: No content
+  Response default: 
+
+### PATCH /crm/extensions/calling/2026-03/{appId}/settings/channel-connection
+Update the channel connection settings for a specific app.
+  - appId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/extensions/calling/2026-03/{appId}/settings/recording
+Retrieve recording settings for an app.
+  - appId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /crm/extensions/calling/2026-03/{appId}/settings/recording
+Create recording settings for an app.
+  - appId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### PATCH /crm/extensions/calling/2026-03/{appId}/settings/recording
+Update recording settings for an app.
+  - appId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### ChannelConnectionSettingsRequest
+  - isReady (boolean): Indicates whether the channel connection settings are ready.
+  - url (string): The URL associated with the channel connection settings.
+
+### CompanyCallerId
+  - callerIdType (string): Specifies the type of caller ID, which is set to 'COMPANY' by default.
+  - name (string): The name associated with the company caller ID.
+  - objectCoordinates (): 
+
+### RecordingSettingsResponse
+  - urlToRetrieveAuthedRecording (string): The URL used to retrieve authenticated call recordings.
+
+### RecordingSettingsPatchRequest
+  - urlToRetrieveAuthedRecording (string): The URL used to access authenticated call recordings.
+
+### RecordingSettingsRequest
+  - urlToRetrieveAuthedRecording (string): The URL used to access authenticated call recordings.
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### MarkRecordingAsReadyRequest
+  - engagementId (integer): The unique identifier for the engagement associated with the call recording.
+
+### SettingsPatchRequest
+  - height (integer): The height setting for the calling extension interface.
+  - isReady (boolean): Specifies whether the calling extension is ready for use.
+  - name (string): The name of the calling extension.
+  - supportsCustomObjects (boolean): Indicates if the calling extension supports custom objects.
+  - supportsInboundCalling (boolean): Indicates if the calling extension supports inbound calling.
+  - url (string): The URL associated with the calling extension settings.
+  - usesCallingWindow (boolean): Indicates if the calling extension uses a calling window.
+  - usesRemote (boolean): Indicates if the calling extension uses a remote connection.
+  - width (integer): The width setting for the calling extension interface.
+
+### CompletedThirdPartyCallResponse
+  - callerIdMatches (array): 
+
+### ContactCallerId
+  - callerIdType (string): Specifies the type of caller ID, with the default value being CONTACT.
+  - email (string): The email address of the contact.
+  - firstName (string): The first name of the contact.
+  - lastName (string): The last name of the contact.
+  - objectCoordinates (): 
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### CompletedThirdPartyCallRequest
+  - callStartedTimestamp (string): The timestamp indicating when the call started, formatted as a date-time string.
+  - createEngagement (boolean): Indicates whether an engagement should be created for the call.
+  - durationSeconds (integer): The duration of the call in seconds.
+  - engagementProperties (object): Contains additional properties related to the engagement.
+  - externalCallId (string): The unique identifier for the call from an external system.
+  - finalCallStatus (string): The final status of the call, with accepted values including: BUSY, CALLING_CRM_USER, CANCELED, COMPLETED, CONNECTING, FAILED, HOLD, IN_PROGRESS, MISSED, NO_ANSWER, QUEUED, RINGING, UNKNOWN.
+  - fromNumber (): 
+  - potentialRecipientUserIds (array): 
+  - toNumber (): 
+  - userId (integer): The ID of the user associated with the call.
+
+### SettingsResponse
+  - createdAt (string): The date and time when the calling extension settings were created.
+  - height (integer): The height of the calling extension interface.
+  - isReady (boolean): Specifies whether the calling extension settings are ready for use.
+  - name (string): The name of the calling extension.
+  - supportsCustomObjects (boolean): Indicates if the calling extension supports custom objects.
+  - supportsInboundCalling (boolean): Indicates if the calling extension supports inbound calling.
+  - updatedAt (string): The date and time when the calling extension settings were last updated.
+  - url (string): The URL associated with the calling extension.
+  - usesCallingWindow (boolean): Specifies if the calling extension uses a dedicated calling window.
+  - usesRemote (boolean): Indicates if the calling extension uses a remote service.
+  - width (integer): The width of the calling extension interface.
+
+### ChannelConnectionSettingsPatchRequest
+  - isReady (boolean): Indicates whether the channel connection settings are ready.
+  - url (string): The URL for the channel connection settings.
+
+### ObjectCoordinates
+  - objectId (integer): The unique identifier for the object.
+  - objectTypeId (string): The type identifier for the object.
+  - portalId (integer): The unique identifier for the portal.
+
+### SettingsRequest
+  - height (integer): Specifies the height of the calling extension interface.
+  - isReady (boolean): Indicates if the calling extension is ready for use.
+  - name (string): The name of the calling extension.
+  - supportsCustomObjects (boolean): Indicates if the calling extension supports custom objects.
+  - supportsInboundCalling (boolean): Indicates if the calling extension supports inbound calling.
+  - url (string): The URL associated with the calling extension.
+  - usesCallingWindow (boolean): Indicates if the calling extension uses a separate calling window.
+  - usesRemote (boolean): Indicates if the calling extension uses remote services.
+  - width (integer): Specifies the width of the calling extension interface.
+
+### FormattedPhoneNumber
+  - e164Number (string): The phone number formatted in E.164 standard.
+  - extension (string): The extension number associated with the phone number.
+  - phoneNumberType (string): The type of phone number, with accepted values including FIXED_LINE, MOBILE, VOIP, and others.
+
+### ChannelConnectionSettingsResponse
+  - createdAt (string): The date and time when the channel connection settings were created.
+  - isReady (boolean): Indicates whether the channel connection settings are ready for use.
+  - updatedAt (string): The date and time when the channel connection settings were last updated.
+  - url (string): The URL associated with the channel connection settings.

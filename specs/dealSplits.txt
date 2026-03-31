@@ -1,0 +1,92 @@
+# CRM Deal Splits
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### POST /deal-splits/2026-03/batch/read
+Read a batch of deal split objects by their associated deal object internal ID
+  Response 200: successful operation
+  Response default: 
+
+### POST /deal-splits/2026-03/batch/upsert
+Create or replace deal splits for deals with the provided IDs. Deal split percentages for each deal must sum up to 1.0 (100%) and may have up to 8 decimal places
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### PublicObjectId
+  - id (string): The unique identifier for the public object.
+
+### StandardError
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - errors (array): The detailed error objects.
+  - id (string): The id of the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): The error message
+  - status (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (object): A specific category that contains more specific detail about the error
+
+### BatchInputPublicObjectId
+  - inputs (array): An array of deal split inputs
+
+### PublicDealSplitInput
+  - ownerId (integer): The unique identifier of the owner receiving the deal split.
+  - percentage (number): The portion of the deal assigned to the owner, expressed as a percentage. The total percentage for all splits in a deal must sum up to 1.0 (100%) and can have up to 8 decimal places.
+
+### PublicDealSplitsCreateRequest
+  - id (integer): The unique identifier for the deal.
+  - splits (array): An array of deal split inputs, each containing an owner ID and a percentage of the deal split.
+
+### ValueWithTimestamp
+  - sourceId (string): The unique ID of the property.
+  - sourceLabel (string): A human-readable label.
+  - sourceType (string): The property type.
+  - timestamp (string): The timestamp when the property was updated, in ISO 8601 format.
+  - updatedByUserId (integer): The ID of the user who last updated the property.
+  - value (string): The property value.
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### DealToDealSplits
+  - id (string): The unique identifier for the deal associated with the deal splits.
+  - splits (array): An array of deal split objects, each representing a portion of the deal assigned to an owner.
+
+### PublicDealSplitsBatchCreateRequest
+  - inputs (array): An array of deal split inputs
+
+### BatchResponseDealToDealSplits
+  - completedAt (string): The timestamp indicating when the batch operation was completed, in date-time format.
+  - errors (array): 
+  - links (object): A map of link names to associated URIs for additional resources or documentation.
+  - numErrors (integer): 
+  - requestedAt (string): The timestamp indicating when the batch operation was requested, in date-time format.
+  - results (array): An array of deal-to-deal split objects representing the results of the batch operation.
+  - startedAt (string): The timestamp indicating when the batch operation started, in date-time format.
+  - status (string): The current status of the batch operation, with possible values: CANCELED, COMPLETE, PENDING, PROCESSING.
+
+### SimplePublicObject
+  - archived (boolean): Whether the object is archived.
+  - archivedAt (string): The timestamp when the object was archived, in ISO 8601 format.
+  - createdAt (string): The timestamp when the object was created, in ISO 8601 format.
+  - id (string): The unique ID of the object.
+  - objectWriteTraceId (string): An identifier used for tracing the write request for the object.
+  - properties (object): Key-value pairs representing the properties of the object.
+  - propertiesWithHistory (object): Key-value pairs representing the properties of the object along with their history.
+  - updatedAt (string): The timestamp when the object was last updated, in ISO 8601 format.
+  - url (string): The URL associated with the object.

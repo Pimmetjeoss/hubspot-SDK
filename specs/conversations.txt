@@ -1,0 +1,469 @@
+# Conversations Inbox & Messages
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### PUT /conversations/conversations/v3/threads/{threadId}/assignee
+
+  - threadId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /conversations/conversations/v3/threads/{threadId}/assignee
+
+  - threadId (path, req): 
+  Response 204: No content
+  Response default: 
+
+### POST /conversations/v3/conversations/actors/batch/read
+Get a group of actors
+  - property (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /conversations/v3/conversations/actors/{actorId}
+Get a single actor
+  - actorId (path, req): 
+  - property (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /conversations/v3/conversations/channel-accounts
+Get channel accounts
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - channelId (query, opt): 
+  - defaultPageLength (query, opt): 
+  - inboxId (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - sort (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /conversations/v3/conversations/channel-accounts/{channelAccountId}
+Get a single channel account
+  - channelAccountId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response default: 
+
+### GET /conversations/v3/conversations/channels
+Get channels
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - defaultPageLength (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - sort (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /conversations/v3/conversations/channels/{channelId}
+Get a single channel
+  - channelId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /conversations/v3/conversations/inboxes
+Get conversations inboxes
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - defaultPageLength (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - sort (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /conversations/v3/conversations/inboxes/{inboxId}
+Get a single conversations inbox
+  - inboxId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response default: 
+
+### GET /conversations/v3/conversations/threads
+Get threads
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - associatedContactId (query, opt): 
+  - associatedTicketId (query, opt): 
+  - association (query, opt): 
+  - inboxId (query, opt): 
+  - latestMessageTimestampAfter (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - threadStatus (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /conversations/v3/conversations/threads/{threadId}
+Get a single thread
+  - threadId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  - association (query, opt): 
+  - property (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /conversations/v3/conversations/threads/{threadId}
+Archives a thread
+  - threadId (path, req): 
+  Response 204: No content
+  Response default: 
+
+### PATCH /conversations/v3/conversations/threads/{threadId}
+Update a thread
+  - threadId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response default: 
+
+### GET /conversations/v3/conversations/threads/{threadId}/messages
+Get message history for a thread
+  - threadId (path, req): 
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /conversations/v3/conversations/threads/{threadId}/messages
+Send a message to a thread
+  - threadId (path, req): 
+  Response 201: successful operation
+  Response default: 
+
+### GET /conversations/v3/conversations/threads/{threadId}/messages/{messageId}
+Get a single message
+  - messageId (path, req): 
+  - threadId (path, req): 
+  - property (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /conversations/v3/conversations/threads/{threadId}/messages/{messageId}/original-content
+Get the original content of a single message
+  - messageId (path, req): 
+  - threadId (path, req): 
+  - property (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### PublicRecipient
+  - actorId (string): 
+  - deliveryIdentifier (): 
+  - name (string): 
+  - recipientField (string): 
+
+### PublicMessageEgg
+
+### PublicChannelAccount
+  - active (boolean): Whether the channel account is turned on.
+  - archived (boolean): 
+  - archivedAt (string): 
+  - authorized (boolean): 
+  - channelId (string): The ID of the channel that the channel account is an instance of.
+  - createdAt (string): 
+  - deliveryIdentifier (): 
+  - id (string): The ID of the channel account.
+  - inboxId (string): The ID of the conversations inbox that contains the channel account.
+  - name (string): The name of the channel account.
+
+### PublicMessageHeader
+  - fileId (integer): 
+  - text (string): 
+  - type (string): 
+
+### PublicThreadAssignRequest
+  - actorId (string): 
+
+### CollectionResponsePublicThreadForwardPaging
+  - paging (): 
+  - results (array): 
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### ForwardPaging
+  - next (): 
+
+### LlmActor
+
+### PublicContact
+  - contactProfile (): 
+  - type (string): 
+
+### BotActor
+
+### PublicAssignmentMessage
+
+### ContactAddress
+  - city (string): 
+  - country (string): 
+  - countryCode (string): 
+  - state (string): 
+  - street (string): 
+  - type (string): 
+  - zip (string): 
+
+### CollectionResponseWithTotalPublicInbox
+  - paging (): 
+  - results (array): 
+  - total (integer): 
+
+### PublicThreadInboxChange
+
+### PublicWelcomeMessage
+
+### Paging
+  - next (): 
+  - prev (): 
+
+### PublicUnsupportedContent
+  - type (string): 
+
+### PublicQuickReplies
+  - allowMultiSelect (boolean): 
+  - allowUserInput (boolean): 
+  - quickReplies (array): 
+  - type (string): 
+
+### QuickReply
+  - label (string): 
+  - value (string): 
+  - valueType (string): 
+
+### PublicInbox
+  - archived (boolean): 
+  - archivedAt (string): 
+  - createdAt (string): When the inbox was created.
+  - id (string): The ID of the inbox.
+  - name (string): The name of the inbox.
+  - type (string): Specifies whether this refers to a Conversations Inbox or to the Help Desk. Valid values are INBOX or HELP_DESK
+  - updatedAt (string): 
+
+### PublicSocialMetadataAttachment
+  - socialMetadata (): 
+  - type (string): 
+
+### PublicChannel
+  - id (string): The ID of the channel.
+  - name (string): The name of the channel.
+
+### SocialMetadata
+  - description (string): 
+  - id (string): 
+  - mediaTitle (string): 
+  - mediaType (string): 
+  - mediaUrl (string): 
+  - mediaUrlString (string): 
+  - thumbnailUrl (string): 
+
+### PublicLocation
+  - address (string): 
+  - latitude (number): 
+  - longitude (number): 
+  - name (string): 
+  - type (string): 
+  - url (string): 
+
+### PublicThreadStatusChange
+
+### PublicFileEgg
+  - fileId (string): 
+  - type (string): 
+
+### PublicActor
+
+### AgentActor
+
+### PublicRecipientEgg
+  - actorId (string): 
+  - deliveryIdentifier (): 
+  - deliveryIdentifiers (array): 
+  - name (string): 
+  - recipientField (string): 
+
+### PublicComment
+
+### PublicThreadUpdateRequest
+  - archived (boolean): Whether this thread is archived. Set to false to restore the thread.
+  - status (string): The thread's status: `OPEN` or `CLOSED`.
+
+### BatchResponsePublicActor
+  - completedAt (string): 
+  - errors (array): 
+  - links (object): 
+  - numErrors (integer): 
+  - requestedAt (string): 
+  - results (array): 
+  - startedAt (string): 
+  - status (string): 
+
+### BatchInputString
+  - inputs (array): 
+
+### PublicSocialMediaEgg
+  - socialMetadata (): 
+  - type (string): 
+
+### StandardError
+  - category (string): The main category of the error.
+  - context (object): Context about the error condition
+  - errors (array): The detailed error objects.
+  - id (string): A unique ID for the error instance.
+  - links (object): URLs linking to documentation or resources associated with the error.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - status (string): The HTTP status code associated with the error.
+  - subCategory (object): A specific category that contains more specific detail about the error
+
+### PublicThreadAssociations
+  - associatedTicketId (string): 
+
+### CollectionResponsePublicMessageForwardPaging
+  - paging (): 
+  - results (array): 
+
+### PublicMessageFailureDetails
+  - errorMessage (string): 
+  - errorMessageTokens (object): 
+
+### PublicMessage
+
+### PublicDeliveryIdentifier
+  - type (string): The type of identifier. HS_EMAIL_ADDRESS for email addresses; HS_PHONE_NUMBER for a phone number; CHANNEL_SPECIFIC_OPAQUE_ID for channels that use their own proprietary identifiers, like Facebook Messenger or LiveChat.
+  - value (string): A string representation of the PublicDeliveryIdentifier, either an an E.164 phone number, an email address, or a channel-specific identifier.
+
+### PublicCommentEgg
+
+### CollectionResponseWithTotalPublicChannel
+  - paging (): 
+  - results (array): 
+  - total (integer): 
+
+### ContactPhone
+  - phone (string): 
+  - type (string): 
+
+### PublicSender
+  - actorId (string): 
+  - deliveryIdentifier (): 
+  - name (string): 
+  - senderField (string): 
+
+### PublicClient
+  - clientType (string): The type of the client.
+  - integrationAppId (integer): The ID of the client if the client is an integration.
+
+### PublicMessageStatus
+  - failureDetails (): 
+  - statusType (string): 
+
+### PublicConversationsMessageEgg
+
+### PublicWhatsAppTemplateMetadata
+  - contentId (integer): 
+  - crmObjectIds (object): 
+  - mappedTemplateId (integer): 
+  - parameters (object): 
+  - rootMicId (integer): 
+  - type (string): 
+
+### PublicConversationsMessage
+
+### PublicThread
+  - archived (boolean): Whether this thread is archived.
+  - assignedTo (string): 
+  - associatedContactId (string): The ID of the associated Contact in the CRM. If the Contact for the thread has not yet been added or created, the `associatedContactId` returned will be a visitorID and cannot be used to search for the Contact in the CRM.
+  - closedAt (string): When the thread was closed. Only set if the thread is closed.
+  - createdAt (string): When the thread was created.
+  - id (string): The unique ID of the thread.
+  - inboxId (string): The ID of the conversations inbox containing the thread.
+  - latestMessageReceivedTimestamp (string): The time that the latest message was sent on the thread.
+  - latestMessageSentTimestamp (string): The time that the latest message was sent on the thread.
+  - latestMessageTimestamp (string): The time that the latest message was sent or received on the thread.
+  - originalChannelAccountId (string): 
+  - originalChannelId (string): 
+  - spam (boolean): Whether the thread is marked as spam.
+  - status (string): The thread's status: `OPEN` or `CLOSED`.
+  - threadAssociations (): 
+
+### SystemActor
+
+### IntegratorActor
+
+### ContactProfile
+  - addresses (array): 
+  - emails (array): 
+  - name (): 
+  - org (): 
+  - phones (array): 
+  - urls (array): 
+
+### ContactOrg
+  - company (string): 
+  - department (string): 
+  - title (string): 
+
+### CollectionResponseWithTotalPublicChannelAccount
+  - paging (): 
+  - results (array): 
+  - total (integer): 
+
+### EmailActor
+
+### ContactUrl
+  - type (string): 
+  - url (string): 
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### PublicFile
+  - fileId (string): 
+  - fileUsageType (string): 
+  - name (string): 
+  - type (string): 
+  - url (string): 
+
+### PublicQuickRepliesEgg
+  - quickReplies (array): 
+  - type (string): 
+
+### PublicMessageContent
+  - richText (string): 
+  - text (string): 
+
+### PreviousPage
+  - before (string): A paging cursor token for retrieving previous pages.
+  - link (string): A URL that can be used to retrieve the previous pages' results.
+
+### VisitorActor
+
+### ContactEmail
+  - email (string): 
+  - type (string): 
+
+### ContactName
+  - firstName (string): 
+  - lastName (string): 
+  - middleName (string): 
+  - prefix (string): 
+  - suffix (string): 
+
+### NextPage
+  - after (string): A paging cursor token for retrieving subsequent pages.
+  - link (string): A URL that can be used to retrieve the next page results.

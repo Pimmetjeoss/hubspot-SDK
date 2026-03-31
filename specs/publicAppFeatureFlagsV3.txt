@@ -1,0 +1,146 @@
+# CRM Public App Feature Flags V3
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /feature-flags/2026-03/{appId}/flags/all
+
+Parameters:
+  - appId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### GET /feature-flags/2026-03/{appId}/flags/{flagName}
+Retrieve an app's feature flags
+Parameters:
+  - appId (path, required): 
+  - flagName (path, required): 
+Response 200: successful operation
+Response default: 
+
+### PUT /feature-flags/2026-03/{appId}/flags/{flagName}
+Set an app's feature flag
+Parameters:
+  - appId (path, required): 
+  - flagName (path, required): 
+Request body: FlagPutRequest
+Response 200: successful operation
+Response default: 
+
+### DELETE /feature-flags/2026-03/{appId}/flags/{flagName}
+Delete an app's feature flag
+Parameters:
+  - appId (path, required): 
+  - flagName (path, required): 
+Response 200: successful operation
+Response default: 
+
+### GET /feature-flags/2026-03/{appId}/flags/{flagName}/portals
+Retrieve accounts with a set flag state
+Parameters:
+  - appId (path, required): 
+  - flagName (path, required): 
+  - limit (query, optional): The maximum number of results to display per page.
+  - startPortalId (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### POST /feature-flags/2026-03/{appId}/flags/{flagName}/portals/batch/delete
+Batch delete account flag state
+Parameters:
+  - appId (path, required): 
+  - flagName (path, required): 
+Request body: PortalFlagStateBatchDeleteRequest
+Response 200: successful operation
+Response default: 
+
+### POST /feature-flags/2026-03/{appId}/flags/{flagName}/portals/batch/upsert
+Batch set account flag state
+Parameters:
+  - appId (path, required): 
+  - flagName (path, required): 
+Request body: PortalFlagStateBatchPutRequest
+Response 200: successful operation
+Response default: 
+
+### GET /feature-flags/2026-03/{appId}/flags/{flagName}/portals/{portalId}
+Retrieve account flag state
+Parameters:
+  - appId (path, required): 
+  - flagName (path, required): 
+  - portalId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### PUT /feature-flags/2026-03/{appId}/flags/{flagName}/portals/{portalId}
+Set an account flag state
+Parameters:
+  - appId (path, required): 
+  - flagName (path, required): 
+  - portalId (path, required): 
+Request body: PortalFlagStatePutRequest
+Response 200: successful operation
+Response default: 
+
+### DELETE /feature-flags/2026-03/{appId}/flags/{flagName}/portals/{portalId}
+Delete an account flag state
+Parameters:
+  - appId (path, required): 
+  - flagName (path, required): 
+  - portalId (path, required): 
+Response 200: successful operation
+Response default: 
+
+## Schemas
+
+### ErrorDetail
+  - code (string, optional): The status code associated with the error detail
+  - context (object, optional): Context about the error condition
+  - in (string, optional): The name of the field or parameter in which the error was found.
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### PortalFlagStateBatchResponse
+  - portalFlagStates (array, required): 
+
+### FlagResponse
+  - appId (integer, required): The ID of the app
+  - defaultState (string, required): The flag state for any portal that doesn't have an override value
+  - flagName (string, required): The name of the flag
+  - overrideState (string, optional): An optional flag value that overrides all others for this flag name and app, including portal-level values
+
+### BatchPortalEntry
+  - flagState (string, required): The flag state for this portal (e.g. ON or OFF)
+  - portalId (integer, required): The ID of the portal
+
+### PortalFlagStatePutRequest
+  - flagState (string, required): The state that the given flag should be in for this portal
+
+### PortalFlagStateResponse
+  - appId (integer, required): The ID of the app
+  - flagName (string, required): The name of the flag
+  - flagState (string, required): The state of the flag for this portal
+  - portalId (integer, required): The ID of the portal
+
+### FlagPutRequest
+  - defaultState (string, required): The state that the flag should have if there are no overrides for a particular portal
+  - overrideState (string, optional): A flag value that supercedes all other overrides, including portal-level values. Mostly used for things like emergency overrides
+
+### FlagsForAppResponse
+  - flagsForApp (array, required): 
+
+### Error
+  - category (string, required): The error category
+  - context (object, optional): Context about the error condition
+  - correlationId (string, required): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array, optional): further information about the error
+  - links (object, optional): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### PortalFlagStateBatchPutRequest
+  - portalStates (array, required): 
+
+### PortalFlagStateBatchDeleteRequest
+  - portalIds (array, required): 
+

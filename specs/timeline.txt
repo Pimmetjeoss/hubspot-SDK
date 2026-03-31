@@ -1,0 +1,98 @@
+# Timeline
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### POST /integrators/timeline/2026-03/events
+Send event data (single)
+  Response 200: App Event Occurrence was accepted and persisted successfully. Mirrored to UnifiedEvents async.
+  Response 201: successful operation
+  Response 400: The occurrence has a validation error that prevented us from accepting it for persistence. The response body will contain details about the validation error. Occurrence insert request rejected.
+  Response 409: An occurrence for this event type and occurrence ID already exists. Occurrences are immutable. Occurrence insert request rejected.
+  Response default: 
+
+### POST /integrators/timeline/2026-03/events/batch
+
+  Response 200: successful operation
+  Response 400: One or more occurrences has a validation error that prevented us from accepting them for persistence. The response body will contain details about the validation error. Occurrence batch insert request rejected, none were accepted.
+  Response 409: One or more occurrence in the batch already exist. Occurrences are immutable. Occurrence insert request rejected, none were accepted.
+  Response default: 
+
+### POST /integrators/timeline/2026-03/types/projects
+
+  Response 200: successful operation
+  Response 404: There is no App Event Type for the provided coordinates. Did you provide them correctly?
+  Response default: 
+
+## Schemas
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### TimelineEventIFrame
+  - headerLabel (string): The label of the modal window that displays the iframe contents.
+  - height (integer): The height of the modal window in pixels.
+  - linkLabel (string): The text displaying the link that will display the iframe.
+  - url (string): The URI of the iframe contents.
+  - width (integer): The width of the modal window in pixels.
+
+### StandardError
+  - category (string): The category of the error.
+  - context (object): The context of the error, potentially including occurrence information.
+  - errors (array): The detailed error objects.
+  - id (string): The error ID, if any.
+  - links (object): Links to any helpful documentation.
+  - message (string): The error message, if any.
+  - status (string): The resulting status of the batch operation.
+  - subCategory (object): Sub category of the error, if any.
+
+### AppEventOccurrence
+  - domain (string): 
+  - email (string): 
+  - eventTypeName (string): 
+  - extraData (object): 
+  - id (string): 
+  - objectId (string): 
+  - objectTypeFullyQualifiedName (string): 
+  - properties (object): 
+  - timelineIFrame (): 
+  - timestamp (string): 
+  - utk (string): 
+
+### AppEventResolutionResponse
+  - developerQualifiedSymbol (): 
+  - fullyQualifiedName (string): 
+
+### DeveloperQualifiedSymbol
+  - developerSymbol (string): 
+  - projectName (string): 
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### ExternalAppEventResolutionRequest
+  - developerSymbol (string): 
+  - projectName (string): 
+
+### BatchInputAppEventOccurrence
+  - inputs (array): 
+
+### BatchResponseAppEventOccurrence
+  - completedAt (string): 
+  - errors (array): 
+  - links (object): 
+  - numErrors (integer): 
+  - requestedAt (string): 
+  - results (array): 
+  - startedAt (string): 
+  - status (string): 

@@ -1,0 +1,160 @@
+# Limits Tracking
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /crm/limits/2026-03/associations/labels
+Read association label limits
+  - fromObjectTypeId (query, opt): 
+  - toObjectTypeId (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/limits/2026-03/associations/records/from
+Read record association limits
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/limits/2026-03/associations/records/{fromObjectTypeId}/to
+Read record association limits from an object
+  - fromObjectTypeId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/limits/2026-03/associations/records/{fromObjectTypeId}/{toObjectTypeId}
+Read record association limits between two objects
+  - fromObjectTypeId (path, req): 
+  - toObjectTypeId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/limits/2026-03/calculated-properties
+Read calculation property limits
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/limits/2026-03/custom-object-types
+Read custom object limits
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/limits/2026-03/custom-properties
+Read custom property limits
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/limits/2026-03/pipelines
+Read pipeline limits
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/limits/2026-03/records
+Read record limits
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### ObjectTypeDefinition
+  - objectTypeId (string): The unique identifier for the object type.
+  - pluralLabel (string): The plural form label for the object type.
+  - singularLabel (string): The singular form label for the object type.
+
+### AssociationRecordLimitResponse
+  - atLimitFromRecordSamples (array): 
+  - limit (integer): The maximum number of associations allowed for records.
+  - nearLimitFromRecordSamples (array): 
+  - totalRecordsAtLimit (integer): The total number of records that have reached their association limit.
+  - totalRecordsNearLimit (integer): The total number of records that are approaching their association limit.
+
+### UsageForObjectType
+  - objectTypeId (string): The unique identifier for the object type.
+  - pluralLabel (string): The plural form of the label for the object type.
+  - singularLabel (string): The singular form of the label for the object type.
+  - usage (integer): The number of records used for the object type.
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### AssociationLabelLimitResponse
+  - allLabels (array): A list of all association labels.
+  - fromObjectType (): 
+  - limit (integer): The maximum number of association labels allowed.
+  - percentage (number): The percentage of the association label limit that has been used.
+  - toObjectType (): 
+  - usage (integer): The current number of association labels used.
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### CustomPropertyLimitResponse
+  - byObjectType (array): 
+  - overallLimit (integer): The total limit for custom properties across all objects.
+  - overallPercentage (number): The percentage of the overall custom property limit that has been used.
+  - overallUsage (integer): The total number of custom properties currently in use across all objects.
+
+### CustomObjectRecordLimitResponse
+  - byObjectType (array): 
+  - overallLimit (integer): The maximum number of custom object records allowed.
+  - overallPercentage (number): The percentage of the overall custom object record limit that has been used.
+  - overallUsage (integer): The total number of custom object records currently in use.
+
+### AtLimitRecordSample
+  - label (string): The label associated with a record that is at its limit.
+  - objectId (integer): The objectId of the object that is at its limit.
+
+### RecordLimitResponse
+  - customObjectTypes (): 
+  - hubspotDefinedObjectTypes (array): 
+
+### ObjectTypeNearOrAtAssociationLimit
+  - hasRecordsAtLimit (boolean): Indicates whether there are records that have reached the association limit.
+  - hasRecordsNearLimit (boolean): Indicates whether there are records that are approaching the association limit.
+  - objectTypeId (string): The unique identifier for the object type.
+  - pluralLabel (string): The plural form of the label for the object type.
+  - singularLabel (string): The singular form of the label for the object type.
+
+### CalculatedPropertyLimitResponse
+  - byObjectType (array): 
+  - overallLimit (integer): The maximum number of calculated properties allowed.
+  - overallPercentage (number): The percentage of the overall limit that is currently being used for calculated properties.
+  - overallUsage (integer): The total number of calculated properties currently in use.
+
+### CustomObjectLimitResponse
+  - limit (integer): The maximum number of custom objects allowed.
+  - percentage (number): The percentage of the custom object limit that is currently used.
+  - usage (integer): The current number of custom objects used.
+
+### PipelineLimitResponse
+  - customObjectTypes (): 
+  - hubspotDefinedObjectTypes (array): 
+
+### LimitAndUsageForObjectType
+  - limit (integer): The maximum allowed count for the object type.
+  - objectTypeId (string): The unique identifier for the object type.
+  - percentage (number): The percentage of the limit that has been used.
+  - pluralLabel (string): The plural label for the object type.
+  - singularLabel (string): The singular label for the object type.
+  - usage (integer): The current usage count for the object type.
+
+### NearLimitRecordSample
+  - label (string): The primary identifier of the record.
+  - objectId (integer): The unique identifier for the object.
+  - percentage (number): The percentage of the limit that has been used.
+  - usage (integer): The number of records currently in use.
+
+### CollectionResponseAssociationLabelLimitResponseNoPaging
+  - results (array): 
+
+### CollectionResponseObjectTypeNearOrAtAssociationLimitNoPaging
+  - results (array): 

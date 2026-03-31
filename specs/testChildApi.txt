@@ -1,0 +1,139 @@
+# Account Test Child Api
+Get information about a HubSpot account and its API usage.
+
+## Endpoints
+
+### GET /account-info/v3/activity/login
+Get login activity for a HubSpot account.
+  - after (query, opt): The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+  - limit (query, opt): The maximum number of results to display per page. Max value of limit is 200.
+  - userId (query, opt): Identifier of user to retrieve activities for
+  Response 200: successful operation
+  Response default: 
+
+### GET /account-info/v3/activity/audit-logs
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - limit (query, opt): The maximum number of results to display per page.
+  - actingUserId (query, opt): 
+  - occurredAfter (query, opt): 
+  - occurredBefore (query, opt): 
+  - sort (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /account-info/v3/api-usage/daily
+Get the daily API usage and limits for a HubSpot account.
+  Response 200: successful operation
+  Response default: 
+
+### GET /account-info/v3/details
+Get account details for a HubSpot account.
+  Response 200: successful operation
+  Response default: 
+
+### GET /account-info/v3/activity/security
+Get security activity for a HubSpot account
+  - after (query, opt): The cursor token value to get the next set of results. You can get this from the `paging.next.after` JSON property of a paged response containing more results.
+  - limit (query, opt): The maximum number of results to display per page. Max value of limit is 200.
+  - userId (query, opt): Identifier of user to retrieve activities for
+  - fromTimestamp (query, opt): Limit to activities created after this epoch timestamp.
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### CollectionResponsePublicApiUserActionEventForwardPaging
+  - paging (): 
+  - results (array): 
+
+### PublicLoginAudit
+  - regionCode (string): The approximate region code of the login
+  - countryCode (string): The approximate country code of the login
+  - ipAddress (string): IP address where the activity originated.
+  - location (string): 
+  - userAgent (string): Information about the device used for logging in.
+  - id (string): The login activity's unique ID.
+  - loginAt (string): The time the login took place.
+  - userId (integer): The user's unique ID.
+  - email (string): Email address of the user associated with the login.
+  - loginSucceeded (boolean): Whether the login was successful or not.
+
+### HydratedCriticalAction
+  - createdAt (string): The time the activity took place.
+  - actingUser (string): Email address of the user associated with the activity.
+  - regionCode (string): The approximate region code
+  - infoUrl (string): A link to the URL where the action was taken in the account.
+  - countryCode (string): The approximate country code
+  - ipAddress (string): IP address where the activity originated.
+  - location (string): 
+  - id (string): The activity's unique ID.
+  - type (string): The type of activity.
+  - userId (integer): The user's unique ID.
+  - objectId (string): The ID of the affected object.
+
+### ActingUser
+  - userEmail (string): 
+  - userId (integer): 
+
+### PublicApiUserActionEvent
+  - actingUser (): 
+  - subCategory (string): 
+  - occurredAt (string): 
+  - targetObjectId (string): 
+  - action (string): 
+  - id (string): 
+  - category (string): 
+
+### PortalInformationResponse
+  - additionalCurrencies (array): 
+  - utcOffset (string): 
+  - companyCurrency (string): 
+  - portalId (integer): 
+  - accountType (string): 
+  - uiDomain (string): 
+  - timeZone (string): 
+  - dataHostingLocation (string): 
+  - utcOffsetMilliseconds (integer): 
+
+### Error
+  - subCategory (string): A specific category that contains more specific detail about the error
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - category (string): The error category
+  - errors (array): further information about the error
+
+### CollectionResponseHydratedCriticalActionForwardPaging
+  - paging (): 
+  - results (array): 
+
+### CollectionResponseApiUsageNoPaging
+  - results (array): 
+
+### ErrorDetail
+  - subCategory (string): A specific category that contains more specific detail about the error
+  - code (string): The status code associated with the error detail
+  - in (string): The name of the field or parameter in which the error was found.
+  - context (object): Context about the error condition
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+
+### CollectionResponsePublicLoginAuditForwardPaging
+  - paging (): 
+  - results (array): 
+
+### ApiUsage
+  - collectedAt (string): Indicates when the cache was last updated.
+  - usageLimit (integer): Limits by which a single integration can consume the HubSpot public APIs.
+  - fetchStatus (string): Status of fetching the information, including if the data came from the cache.
+  - name (string): Name of the limit type.
+  - currentUsage (integer): How many API calls an account has made for the current day.
+  - resetsAt (string): Time that the limit will reset.
+
+### ForwardPaging
+  - next (): 
+
+### NextPage
+  - link (string): 
+  - after (string): 

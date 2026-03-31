@@ -1,0 +1,546 @@
+# Posts
+vNext REST API for Public Blog services
+
+## Endpoints
+
+### GET /cms/blogs/2026-03/authors/cursor
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/blogs/2026-03/authors/cursor/query
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/blogs/2026-03/posts
+Get all posts
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/blogs/2026-03/posts
+Create a new post
+  Response 201: successful operation
+  Response default: 
+
+### POST /cms/blogs/2026-03/posts/batch/archive
+Delete a batch of blog posts
+  Response 204: No content
+  Response default: 
+
+### POST /cms/blogs/2026-03/posts/batch/create
+Create a batch of blog posts
+  Response 201: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /cms/blogs/2026-03/posts/batch/read
+Retrieve a batch of Blog Posts
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /cms/blogs/2026-03/posts/batch/update
+Update a batch of Blog Posts
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /cms/blogs/2026-03/posts/clone
+Clone a blog post
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/blogs/2026-03/posts/cursor
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/blogs/2026-03/posts/cursor/query
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/blogs/2026-03/posts/multi-language/attach-to-lang-group
+Attach post to a multi-language group
+  Response default: 
+
+### POST /cms/blogs/2026-03/posts/multi-language/create-language-variation
+Create a language variation
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/blogs/2026-03/posts/multi-language/detach-from-lang-group
+Detach post from a multi-language group
+  Response default: 
+
+### PUT /cms/blogs/2026-03/posts/multi-language/set-new-lang-primary
+Set a new primary language
+  Response 204: No content
+  Response default: 
+
+### POST /cms/blogs/2026-03/posts/multi-language/update-languages
+Update languages of multi-language group
+  Response default: 
+
+### POST /cms/blogs/2026-03/posts/schedule
+Schedule a post to be published
+  Response 204: No content
+  Response default: 
+
+### GET /cms/blogs/2026-03/posts/{objectId}
+Retrieve a blog post
+  - objectId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  - property (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /cms/blogs/2026-03/posts/{objectId}
+Delete a blog post
+  - objectId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 204: No content
+  Response default: 
+
+### PATCH /cms/blogs/2026-03/posts/{objectId}
+Update a post
+  - objectId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/blogs/2026-03/posts/{objectId}/draft
+Retrieve the full draft version of the Blog Post
+  - objectId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### PATCH /cms/blogs/2026-03/posts/{objectId}/draft
+Update the draft of a post
+  - objectId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/blogs/2026-03/posts/{objectId}/draft/push-live
+Publish blog post draft
+  - objectId (path, req): 
+  Response 204: No content
+  Response default: 
+
+### POST /cms/blogs/2026-03/posts/{objectId}/draft/reset
+Reset post draft to the live version
+  - objectId (path, req): 
+  Response 204: No content
+  Response default: 
+
+### GET /cms/blogs/2026-03/posts/{objectId}/revisions
+Retrieves all previous versions of a post
+  - objectId (path, req): 
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - before (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/blogs/2026-03/posts/{objectId}/revisions/{revisionId}
+Retrieve a previous version of a blog post
+  - objectId (path, req): 
+  - revisionId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/blogs/2026-03/posts/{objectId}/revisions/{revisionId}/restore
+Restore a previous version
+  - objectId (path, req): 
+  - revisionId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/blogs/2026-03/posts/{objectId}/revisions/{revisionId}/restore-to-draft
+Restore a draft to a previous version
+  - objectId (path, req): 
+  - revisionId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/blogs/2026-03/tags/cursor
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/blogs/2026-03/tags/cursor/query
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### BatchInputString
+  - inputs (array): Strings to input.
+
+### CursorPagedResultBlogAuthorLong
+
+### StandardError
+  - category (string): Error category.
+  - context (object): Error context.
+  - errors (array): List of error details.
+  - id (string): Error ID.
+  - links (object): Error links.
+  - message (string): Error message.
+  - status (string): Error status.
+  - subCategory (object): Error subcategory.
+
+### BatchInputJsonNode
+  - inputs (array): JSON nodes to input.
+
+### UpdateLanguagesRequestVNext
+  - languages (object): Map of object IDs to associated languages of object in the multi-language group.
+  - primaryId (string): ID of the primary object in the multi-language group.
+
+### SetNewLanguagePrimaryRequestVNext
+  - id (string): ID of object to set as primary in multi-language group.
+
+### RGBAColor
+  - a (number): Alpha.
+  - b (integer): Blue.
+  - g (integer): Green.
+  - r (integer): Red.
+
+### Size
+  - units (string): 
+  - value (number): 
+
+### DetachFromLangGroupRequestVNext
+  - id (string): ID of the object to remove from a multi-language group.
+
+### RowMetaData
+  - cssClass (string): The CSS class applied to the row.
+  - styles (): 
+
+### ContentLanguageVariation
+  - archivedInDashboard (boolean): If True, the variant will not show up in your dashboard, although the post could still be live.
+  - authorName (string): The name of the user who last published the blog post. For posts that haven't been published yet, this property will reflect the user who initially created the draft.
+  - campaign (string): The GUID of the marketing campaign this page is a part of.
+  - campaignName (string): Name of the associated marketing campaign.
+  - created (string): The timestamp (ISO8601 format) when this Blog Post was created.
+  - id (integer): ID of object to set as primary in multi-language group.
+  - name (string): The internal name of the content language variation.
+  - password (string): Set this to create a password protected page. Entering the password will be required to view the page.
+  - publicAccessRules (array): 
+  - publicAccessRulesEnabled (boolean): Boolean to determine whether or not to respect publicAccessRules.
+  - publishDate (string): The date (ISO8601 format) the page is to be published at.
+  - slug (string): The path of the this page. This field is appended to the domain to construct the url of this page.
+  - state (string): An ENUM describing the current state of this page.
+
+Maximum string length: 25
+  - tagIds (array): 
+  - updated (string): The timestamp (ISO8601 format) when this Blog Post was updated.
+
+### AttachToLangPrimaryRequestVNext
+  - id (string): ID of the object to add to a multi-language group.
+  - language (string): Designated language of the object to add to a multi-language group.
+  - primaryId (string): ID of primary language object in multi-language group.
+  - primaryLanguage (string): Primary language of the multi-language group.
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### SideOrCorner
+  - horizontalSide (string): Specifies the horizontal side of an element.
+  - verticalSide (string): Specifies the vertical side of an element.
+
+### BatchInputBlogPost
+  - inputs (array): Blog posts to input.
+
+### ForwardPaging
+  - next (): 
+
+### BreakpointStyles
+  - hidden (boolean): Boolean indicating if the breakpoint is visible.
+  - margin (): 
+  - padding (): 
+
+### BlogPostLanguageCloneRequestVNext
+  - id (string): ID of blog post to clone.
+  - language (string): Target language of new variant.
+
+### BlogPostVersion
+  - id (string): 
+  - object (): 
+  - updatedAt (string): 
+  - user (): 
+
+### Padding
+  - bottom (): 
+  - left (): 
+  - right (): 
+  - top (): 
+
+### VersionUser
+  - email (string): The email address of the user.
+  - fullName (string): The first and last name of the User.
+  - id (string): The unique ID of the User.
+
+### ColorStop
+  - color (): 
+
+### Gradient
+  - angle (): 
+  - colors (array): 
+  - sideOrCorner (): 
+
+### LayoutSection
+  - cells (array): 
+  - cssClass (string): The CSS class applied to the layout section.
+  - cssId (string): The CSS ID applied to the layout section.
+  - cssStyle (string): Custom CSS styles applied to the layout section.
+  - label (string): The label for the layout section.
+  - name (string): The name assigned to the layout section.
+  - params (object): null
+  - rowMetaData (array): 
+  - rows (array): 
+  - styles (): 
+  - type (string): The type of the layout section.
+  - w (integer): The width of the layout section.
+  - x (integer): The x-coordinate position of the layout section.
+
+### CursorPagedResultTagLong
+
+### Paging
+  - next (): 
+  - prev (): 
+
+### BatchResponseBlogPostWithErrors
+  - completedAt (string): Time of batch operation completion.
+  - errors (array): Errors in batch operation.
+  - links (object): Links associated with batch operation.
+  - numErrors (integer): Number of errors.
+  - requestedAt (string): Time of batch operation request.
+  - results (array): Results of batch operation.
+  - startedAt (string): Time of batch operation start.
+  - status (string): Status of batch operation.
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### VersionBlogPost
+  - id (string): The id of the version.
+  - object (): 
+  - updatedAt (string): The timestamp (ISO8601 format) when this version of the Blog Post was updated.
+  - user (): 
+
+### BlogPost
+  - abStatus (string): The status of the AB test associated with this blog post, if applicable
+
+Available options: automated_loser_variant, automated_master, automated_variant, loser_variant, mab_master, mab_variant, master, variant
+  - abTestId (string): The ID of the AB test associated with this page, if applicable
+  - archivedAt (integer): The timestamp (ISO8601 format) when this Blog Post was deleted.
+  - archivedInDashboard (boolean): If True, the post will not show up in your dashboard, although the post could still be live.
+  - attachedStylesheets (array): List of stylesheets to attach to this blog post. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
+  - authorName (string): The name of the user that updated this Blog Post.
+  - blogAuthorId (string): The ID of the Blog Author associated with this Blog Post.
+  - campaign (string): The GUID of the marketing campaign this Blog Post is a part of.
+  - categoryId (integer): ID of the type of object this is. Should always .
+  - contentGroupId (string): The ID of the parent Blog this Blog Post is associated with.
+  - contentTypeCategory (string): An ENUM descibing the type of this object. Should always be BLOG_POST.
+  - created (string): The timestamp (ISO8601 format) when this Blog Post was created.
+  - createdById (string): The ID of the user that created this Blog Post.
+  - currentState (string): A generated ENUM descibing the current state of this Blog Post. Should always match state.
+  - currentlyPublished (boolean): Whether the post is published (true or false)
+  - domain (string): The domain this Blog Post will resolve to. If null, the Blog Post will default to the domain of the ParentBlog.
+  - dynamicPageDataSourceId (string): The identifier for the data source used by the dynamic page.
+  - dynamicPageDataSourceType (integer): The type of data source used by the dynamic page.
+  - dynamicPageHubDbTableId (string): The ID of the HubDB table this Blog Post references, if applicable
+  - enableDomainStylesheets (boolean): Boolean to determine whether or not the styles from the template should be applied.
+  - enableGoogleAmpOutputOverride (boolean): Boolean to allow overriding the AMP settings for the blog.
+  - enableLayoutStylesheets (boolean): Boolean to determine whether or not the styles from the template should be applied.
+  - featuredImage (string): The featuredImage of this Blog Post.
+  - featuredImageAltText (string): Alt Text of the featuredImage.
+  - folderId (string): Unique identifier of associated folder
+  - footerHtml (string): Custom HTML for embed codes, javascript that should be placed before the </body> tag of the page.
+  - headHtml (string): Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
+  - htmlTitle (string): The html title of this Blog Post.
+  - id (string): The unique ID of the Blog Post.
+  - includeDefaultCustomCss (boolean): Boolean to determine whether or not the Primary CSS Files should be applied.
+  - language (string): The explicitly defined ISO 639 language code of the Blog Post. If null, the Blog Post will default to the language of the ParentBlog.
+  - layoutSections (object): A structure detailing the layout sections of the blog post.
+  - linkRelCanonicalUrl (string): Optional override to set the URL to be used in the rel=canonical link tag on the page.
+  - mabExperimentId (string): Unique identifier of the MAB Experiment
+  - metaDescription (string): A description that goes in <meta> tag on the page.
+  - name (string): The internal name of the Blog Post.
+  - pageExpiryDate (integer): The date at which this blog post should expire and begin redirecting to another url or page.
+  - pageExpiryEnabled (boolean): Boolean describing if the page expiration feature is enabled for this blog post.
+  - pageExpiryRedirectId (integer): The ID of another page this blog post's url should redirect to once this blog post expires. Should only set this or pageExpiryRedirectUrl.
+  - pageExpiryRedirectUrl (string): The URL this blog post's url should redirect to once it expires. Should only set this or pageExpiryRedirectId.
+  - password (string): Set this to create a password protected page. Entering the password will be required to view the page.
+  - postBody (string): The HTML of the main post body.
+  - postSummary (string): The summary of the blog post that will appear on the main listing page.
+  - publicAccessRules (array): Rules for require member registration to access private content.
+  - publicAccessRulesEnabled (boolean): Boolean to determine whether or not to respect publicAccessRules.
+  - publishDate (string): The date (ISO8601 format) the blog post is to be published at.
+  - publishImmediately (boolean): Set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting.
+  - rssBody (string): The contents of the RSS body for this Blog Post.
+  - rssSummary (string): The contents of the RSS summary for this Blog Post.
+  - slug (string): The path of the this blog post. This field is appended to the domain to construct the url of this post.
+  - state (string): An ENUM descibing the current state of this Blog Post.
+  - tagIds (array): List of IDs for the tags associated with this Blog Post.
+  - themeSettingsValues (object): A collection of settings specific to the theme applied to the blog post.
+  - translatedFromId (string): ID of the primary blog post this object was translated from.
+  - translations (object): A map of translations for the blog post, each associated with a specific language variation.
+  - updated (string): The timestamp (ISO8601 format) when this Blog Post was updated.
+  - updatedById (string): The ID of the user that updated this Blog Post.
+  - url (string): A generated field representing the URL of this blog post.
+  - useFeaturedImage (boolean): Boolean to determine if this post should use a featuredImage.
+  - widgetContainers (object): A data structure containing the data for all the modules inside the containers for this post. This will only be populated if the page has widget containers.
+  - widgets (object): A data structure containing the data for all the modules for this page.
+
+### CollectionResponseWithTotalBlogPostVersion
+  - paging (): 
+  - results (array): 
+  - total (integer): 
+
+### BatchResponseBlogPost
+  - completedAt (string): Time of batch operation completion.
+  - links (object): Links associated with batch operation.
+  - requestedAt (string): Time of batch operation request.
+  - results (array): Results of batch operation.
+  - startedAt (string): Time of batch operation start.
+  - status (string): Status of batch operation.
+
+### CollectionResponseWithTotalBlogPostForwardPaging
+  - paging (): 
+  - results (array): Collection of blog posts.
+  - total (integer): Total number of blog posts.
+
+### PublicAccessRule
+
+### CursorPagedResultBlogPostLong
+
+### BackgroundImage
+  - backgroundPosition (string): Defines the position of the background image.
+  - backgroundSize (string): Specifies the size of the background image.
+  - imageUrl (string): The URL of the background image.
+
+### Angle
+  - units (string): The unit of measurement for the angle.
+  - value (number): The numerical representation of the angle.
+
+### PreviousPage
+  - before (string): A paging cursor token for retrieving previous pages.
+  - link (string): A URL that can be used to retrieve the previous pages' results.
+
+### ContentScheduleRequestVNext
+  - id (string): The ID of the object to be scheduled.
+  - publishDate (string): The date the object should transition from scheduled to published.
+
+### ContentCloneRequestVNext
+  - cloneName (string): Name of the cloned object.
+  - id (string): ID of the object to be cloned.
+
+### NextPage
+  - after (string): A paging cursor token for retrieving subsequent pages.
+  - link (string): A URL that can be used to retrieve the next page results.
+
+### Margin
+  - bottom (): 
+  - top (): 
+
+### Styles
+  - backgroundColor (): 
+  - backgroundGradient (): 
+  - backgroundImage (): 
+  - breakpointStyles (object): Breakpoint CSS styles for margin, padding, etc...
+  - flexboxPositioning (string): Indicates whether flexbox positioning is enabled for the section.
+  - forceFullWidthSection (boolean): Determines if the section should be forced to full width.
+  - maxWidthSectionCentering (integer): Defines the maximum width for centering the section.
+  - verticalAlignment (string): Specifies the vertical alignment of elements within the section.

@@ -1,0 +1,295 @@
+# Tags
+vNext REST API for Public Blog services
+
+## Endpoints
+
+### GET /cms/blogs/2026-03/authors/cursor
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/blogs/2026-03/authors/cursor/query
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/blogs/2026-03/posts/cursor
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/blogs/2026-03/posts/cursor/query
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/blogs/2026-03/tags
+Get all Blog Tags
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/blogs/2026-03/tags
+Create a new Blog Tag
+  Response 201: successful operation
+  Response default: 
+
+### POST /cms/blogs/2026-03/tags/batch/archive
+Delete a batch of Blog Tags
+  Response 204: No content
+  Response default: 
+
+### POST /cms/blogs/2026-03/tags/batch/create
+Create a batch of Blog Tags
+  Response 201: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /cms/blogs/2026-03/tags/batch/read
+Retrieve a batch of Blog Tags
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /cms/blogs/2026-03/tags/batch/update
+Update a batch of Blog Tags
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### GET /cms/blogs/2026-03/tags/cursor
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/blogs/2026-03/tags/cursor/query
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/blogs/2026-03/tags/multi-language/attach-to-lang-group
+Attach a Blog Tag to a multi-language group
+  Response default: 
+
+### POST /cms/blogs/2026-03/tags/multi-language/create-language-variation
+Create a new language variation
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/blogs/2026-03/tags/multi-language/detach-from-lang-group
+Detach a Blog Tag from a multi-language group
+  Response default: 
+
+### PUT /cms/blogs/2026-03/tags/multi-language/set-new-lang-primary
+Set a new primary language
+  Response 204: No content
+  Response default: 
+
+### POST /cms/blogs/2026-03/tags/multi-language/update-languages
+Update languages of multi-language group
+  Response default: 
+
+### GET /cms/blogs/2026-03/tags/{objectId}
+Retrieve a Blog Tag
+  - objectId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  - property (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /cms/blogs/2026-03/tags/{objectId}
+Delete a Blog Tag
+  - objectId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 204: No content
+  Response default: 
+
+### PATCH /cms/blogs/2026-03/tags/{objectId}
+Update a Blog Tag
+  - objectId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### BatchInputString
+  - inputs (array): Strings to input.
+
+### CursorPagedResultBlogAuthorLong
+
+### StandardError
+  - category (string): Error category.
+  - context (object): Error context.
+  - errors (array): List of error details.
+  - id (string): Error ID.
+  - links (object): Error links.
+  - message (string): Error message.
+  - status (string): Error status.
+  - subCategory (object): Error subcategory.
+
+### BatchResponseTag
+  - completedAt (string): Time of batch operation completion.
+  - links (object): Links associated with batch operation.
+  - requestedAt (string): Time of batch operation request.
+  - results (array): Results of batch operation.
+  - startedAt (string): Time of batch operation start.
+  - status (string): Status of batch operation.
+
+### BatchInputJsonNode
+  - inputs (array): JSON nodes to input.
+
+### UpdateLanguagesRequestVNext
+  - languages (object): Map of object IDs to associated languages of object in the multi-language group.
+  - primaryId (string): ID of the primary object in the multi-language group.
+
+### SetNewLanguagePrimaryRequestVNext
+  - id (string): ID of object to set as primary in multi-language group.
+
+### CursorPagedResultTagLong
+
+### DetachFromLangGroupRequestVNext
+  - id (string): ID of the object to remove from a multi-language group.
+
+### CollectionResponseWithTotalTagForwardPaging
+  - paging (): 
+  - results (array): Collection of blog tags.
+  - total (integer): Total number of blog tags.
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### AttachToLangPrimaryRequestVNext
+  - id (string): ID of the object to add to a multi-language group.
+  - language (string): Designated language of the object to add to a multi-language group.
+  - primaryId (string): ID of primary language object in multi-language group.
+  - primaryLanguage (string): Primary language of the multi-language group.
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### CursorPagedResultBlogPostLong
+
+### ForwardPaging
+  - next (): 
+
+### BatchResponseTagWithErrors
+  - completedAt (string): Time of batch operation completion.
+  - errors (array): Errors in batch operation.
+  - links (object): Links associated with batch operation.
+  - numErrors (integer): Number of errors.
+  - requestedAt (string): Time of batch operation request.
+  - results (array): Results of batch operation.
+  - startedAt (string): Time of batch operation start.
+  - status (string): Status of batch operation.
+
+### TagCloneRequestVNext
+  - id (string): ID of the object to be cloned.
+  - language (string): Target language of new variant.
+  - name (string): Name of newly cloned blog tag.
+  - primaryLanguage (string): Language of primary blog tag to clone.
+
+### Tag
+  - created (string): The timestamp (ISO8601 format) when this Blog Tag was created.
+  - deletedAt (string): The timestamp (ISO8601 format) when this Blog Tag was deleted.
+  - id (string): The unique ID of the Blog Tag.
+  - language (string): The explicitly defined ISO 639 language code of the tag.
+  - name (string): The name of the tag.
+  - slug (string): 
+  - translatedFromId (integer): ID of the primary tag this object was translated from.
+  - updated (string): The timestamp (ISO8601 format) when this Blog Tag was updated.
+
+### NextPage
+  - after (string): A paging cursor token for retrieving subsequent pages.
+  - link (string): A URL that can be used to retrieve the next page results.
+
+### BatchInputTag
+  - inputs (array): Blog tags to input.

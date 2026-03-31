@@ -1,0 +1,56 @@
+# Settings Tax Rates
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /tax-rates/2026-03/tax-rates
+Get all tax rates
+  - active (query, opt): 
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - limit (query, opt): The maximum number of results to display per page.
+  Response 200: successful operation
+  Response default: 
+
+### GET /tax-rates/2026-03/tax-rates/{taxRateGroupId}
+Get a specific tax rate
+  - taxRateGroupId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### ForwardPaging
+  - next (): 
+
+### CollectionResponsePublicTaxRateGroupForwardPaging
+  - paging (): 
+  - results (array): 
+
+### PublicTaxRateGroup
+  - active (boolean): Indicates whether the tax rate group is currently active.
+  - createdAt (string): The date and time when the tax rate was created.
+  - id (string): The unique identifier for the tax rate.
+  - label (string): The display label for the tax rate.
+  - name (string): The name of the tax rate.
+  - percentageRate (number): The percentage rate applied.
+  - updatedAt (string): The date and time when the tax rate was last updated.
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### NextPage
+  - after (string): A paging cursor token for retrieving subsequent pages.
+  - link (string): A URL that can be used to retrieve the next page results.

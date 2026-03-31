@@ -1,0 +1,162 @@
+# Blog Settings
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /cms/blog-settings/2026-03/settings
+Retrieve all blogs
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/blog-settings/2026-03/settings/multi-language/attach-to-lang-group
+Add a blog to a multi-language group
+  Response default: 
+
+### POST /cms/blog-settings/2026-03/settings/multi-language/create-language-variation
+Create a language variation from an existing blog
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/blog-settings/2026-03/settings/multi-language/detach-from-lang-group
+Remove a blog from a multi-language group
+  Response default: 
+
+### PUT /cms/blog-settings/2026-03/settings/multi-language/set-new-lang-primary
+Set primary language to match a specific blog
+  Response 204: No content
+  Response default: 
+
+### POST /cms/blog-settings/2026-03/settings/multi-language/update-languages
+Update blog languages
+  Response default: 
+
+### GET /cms/blog-settings/2026-03/settings/{blogId}
+Retrieve a blog
+  - blogId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/blog-settings/2026-03/settings/{blogId}/revisions
+Get all blog revisions
+  - blogId (path, req): 
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - before (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/blog-settings/2026-03/settings/{blogId}/revisions/{revisionId}
+Get a specific blog revision
+  - blogId (path, req): 
+  - revisionId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### CollectionResponseWithTotalBlogVersion
+  - paging (): 
+  - results (array): 
+  - total (integer): 
+
+### UpdateLanguagesRequestVNext
+  - languages (object): Map of object IDs to associated languages of object in the multi-language group.
+  - primaryId (string): ID of the primary object in the multi-language group.
+
+### SetNewLanguagePrimaryRequestVNext
+  - id (string): ID of object to set as primary in multi-language group.
+
+### DetachFromLangGroupRequestVNext
+  - id (string): ID of the object to remove from a multi-language group.
+
+### Paging
+  - next (): 
+  - prev (): 
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### CollectionResponseWithTotalBlog
+  - paging (): 
+  - results (array): 
+  - total (integer): 
+
+### AttachToLangPrimaryRequestVNext
+  - id (string): ID of the object to add to a multi-language group.
+  - language (string): Designated language of the object to add to a multi-language group.
+  - primaryId (string): ID of primary language object in multi-language group.
+  - primaryLanguage (string): Primary language of the multi-language group.
+
+### VersionBlog
+  - id (string): The id of the version.
+  - object (): 
+  - updatedAt (string): The timestamp (ISO8601 format) when this blog version was updated.
+  - user (): 
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### PublicAccessRule
+
+### BlogVersion
+  - id (string): 
+  - object (): 
+  - updatedAt (string): 
+  - user (): 
+
+### PreviousPage
+  - before (string): A paging cursor token for retrieving previous pages.
+  - link (string): A URL that can be used to retrieve the previous pages' results.
+
+### BlogLanguageCloneRequestVNext
+  - id (string): ID of blog to clone.
+  - language (string): Target language of new variant.
+  - primaryLanguage (string): Language of primary blog to clone.
+  - slug (string): Path to this blog.
+
+### Blog
+  - absoluteUrl (string): Blog's root URL
+  - allowComments (boolean): Boolean determining whether or not this blog allows public comments.
+  - created (string): The timestamp (ISO8601 format) when this blog was created.
+  - deletedAt (string): The timestamp (ISO8601 format) when this Blog was deleted.
+  - description (string): The Description of this Blog.
+  - htmlTitle (string): The html title of this Blog.
+  - id (string): The unique ID of the Blog.
+  - language (string): The explicitly defined language of the Blog. If null, the Blog will default to the language of the Domain.
+  - listingPageId (string): 
+  - name (string): The internal name of the blog.
+  - publicAccessRules (array): Rules for require member registration to access private content.
+  - publicAccessRulesEnabled (boolean): Boolean to determine whether or not to respect publicAccessRules.
+  - publicTitle (string): The public title of this Blog.
+  - slug (string): The path of the this blog. This field is appended to the domain to construct the url of this blog.
+  - translatedFromId (string): ID of the primary Blog this object was translated from.
+  - updated (string): The timestamp (ISO8601 format) when this blog was updated.
+
+### NextPage
+  - after (string): A paging cursor token for retrieving subsequent pages.
+  - link (string): A URL that can be used to retrieve the next page results.
+
+### VersionUser
+  - email (string): The email address of the user.
+  - fullName (string): The first and last name of the User.
+  - id (string): The unique ID of the User.

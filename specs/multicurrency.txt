@@ -1,0 +1,221 @@
+# Settings Multicurrency
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### POST /settings/currencies/2026-03/central-fx-rates/add-currency
+Add a new currency with central exchange rates.
+Request body: CurrencyCreateRequest
+Response 200: successful operation
+Response default: 
+
+### GET /settings/currencies/2026-03/central-fx-rates/information
+Retrieve information about the central exchange rates feature.
+Response 200: successful operation
+Response default: 
+
+### GET /settings/currencies/2026-03/central-fx-rates/unsupported-currencies
+Retrieve currencies not supported by central exchange rates.
+Response 200: successful operation
+Response default: 
+
+### GET /settings/currencies/2026-03/codes
+Get all currency codes
+Response 200: successful operation
+Response default: 
+
+### GET /settings/currencies/2026-03/company-currency
+Get the company currency
+Response 200: successful operation
+Response default: 
+
+### PUT /settings/currencies/2026-03/company-currency
+Set or update the company currency.
+Request body: CompanyCurrencyUpdateRequest
+Response 200: successful operation
+Response default: 
+
+### GET /settings/currencies/2026-03/exchange-rates
+Get exchange rates
+Parameters:
+  - after (query, optional): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - fromCurrencyCode (query, optional): 
+  - limit (query, optional): The maximum number of results to display per page.
+  - toCurrencyCode (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### POST /settings/currencies/2026-03/exchange-rates
+Add a new exchange rate
+Request body: ExchangeRateCreateRequest
+Response 200: successful operation
+Response default: 
+
+### POST /settings/currencies/2026-03/exchange-rates/batch/create
+Create multiple exchange rates
+Request body: BatchInputExchangeRateCreateRequest
+Response 201: successful operation
+Response 207: multiple statuses
+Response default: 
+
+### POST /settings/currencies/2026-03/exchange-rates/batch/read
+Retrieve multiple rates
+Request body: BatchInputPublicObjectId
+Response 200: successful operation
+Response 207: multiple statuses
+Response default: 
+
+### POST /settings/currencies/2026-03/exchange-rates/batch/update
+Update multiple exchange rates
+Request body: BatchInputExchangeRateUpdateRequest
+Response 200: successful operation
+Response 207: multiple statuses
+Response default: 
+
+### GET /settings/currencies/2026-03/exchange-rates/current
+Get all current exchange rates
+Response 200: successful operation
+Response default: 
+
+### POST /settings/currencies/2026-03/exchange-rates/update-visibility
+Change the visibility of a specific currency pairs
+Request body: CurrencyPairUpdate
+Response 204: No content
+Response default: 
+
+### GET /settings/currencies/2026-03/exchange-rates/{exchangeRateId}
+Get the details for a specific exchange rate
+Parameters:
+  - exchangeRateId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### PATCH /settings/currencies/2026-03/exchange-rates/{exchangeRateId}
+Update a conversion rate
+Parameters:
+  - exchangeRateId (path, required): 
+Request body: ExchangeRateMultiplier
+Response 200: successful operation
+Response default: 
+
+## Schemas
+
+### CompanyCurrency
+  - createdAt (string, required): The date the company currency was created.
+  - id (string, required): The currency code for the company currency
+
+### PublicObjectId
+  - id (string, required): A unique identifier for the exchange rate
+
+### CollectionResponseExchangeRateNoPaging
+  - results (array, required): 
+
+### StandardError
+  - category (string, required): The main category of the error.
+  - context (object, required): Additional context-specific information related to the error.
+  - errors (array, required): The detailed error objects.
+  - id (string, optional): A unique ID for the error instance.
+  - links (object, required): URLs linking to documentation or resources associated with the error.
+  - message (string, required): A human-readable string describing the error and possible remediation steps.
+  - status (string, required): The HTTP status code associated with the error.
+  - subCategory (object, optional): A more specific error category within each main category.
+
+### CompanyCurrencyUpdateRequest
+  - currencyCode (string, required): The three-letter code representing a specific currency (ex. USD).
+
+### ExchangeRate
+  - conversionRate (number, required): The conversion rate between the to and from currency code of this exchange rate.
+  - createdAt (string, required): The date the exchange rate was created.
+  - effectiveAt (string, required): The date the exchange rate is in effect.
+  - fromCurrencyCode (string, required): This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting from.
+  - id (string, required): A unique identifier for the exchange rate
+  - toCurrencyCode (string, required): This represents the three-letter currency code (such as USD for US Dollar) of the currency you are converting to.
+  - updatedAt (string, required): The date the exchange rate was last updated.
+  - visibleInUI (boolean, required): This indicates if the exchange rate is shown in the MultiCurrency settings page.
+
+### CollectionResponseCurrencyCodeInfoNoPaging
+  - results (array, required): 
+
+### CurrencyCodeInfo
+  - currencyCode (string, required): The three-letter code representing a specific currency (ex. USD).
+  - currencyName (string, required): The full name of the currency (ex. US Dollar).
+
+### CurrencyCreateRequest
+  - currencyCode (string, required): The currency code being added to the HubSpot portal for use with central exchange rates.
+
+### Error
+  - category (string, required): The error category
+  - context (object, optional): Context about the error condition
+  - correlationId (string, required): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array, optional): further information about the error
+  - links (object, optional): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### BatchResponseExchangeRateWithErrors
+  - completedAt (string, required): The datetime the response was completed
+  - errors (array, optional): 
+  - links (object, optional): The link to the next page with exchange rates.
+  - numErrors (integer, optional): The number of errors associated to the request.
+  - requestedAt (string, optional): The datetime the of the request.
+  - results (array, required): 
+  - startedAt (string, required): The datetime the of the request.
+  - status (string, required): The current status of the response (e.g. COMPLETED)
+
+### CurrencyPairUpdate
+  - fromCurrencyCode (string, required): This represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert from.
+  - toCurrencyCode (string, required): This represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert to.
+  - visibleInUI (boolean, required): This indicates if the currency pair is shown in the MultiCurrency settings page. Setting this to false will remove the currency pair from the settings page.
+
+### ErrorDetail
+  - code (string, optional): The status code associated with the error detail
+  - context (object, optional): Context about the error condition
+  - in (string, optional): The name of the field or parameter in which the error was found.
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### ExchangeRateMultiplier
+  - conversionRate (number, required): The updated conversion rate between the to and from currency code of this exchange rate.
+  - effectiveAt (string, optional): The date the exchange rate is in effect.
+
+### CollectionResponseExchangeRateForwardPaging
+  - paging (ForwardPaging, optional): 
+  - results (array, required): 
+
+### ForwardPaging
+  - next (NextPage, optional): 
+
+### BatchInputPublicObjectId
+  - inputs (array, required): 
+
+### BatchInputExchangeRateUpdateRequest
+  - inputs (array, required): 
+
+### CentralExchangeRatesInformation
+  - centralExchangeRatesEnabled (boolean, required): Indicates if central exchange rates is enabled for the portal or not.
+
+### ExchangeRateUpdateRequest
+  - conversionRate (number, required): The updated conversion rate between the to and from currency code of this exchange rate.
+  - effectiveAt (string, optional): The date the exchange rate will be in effect.
+  - id (string, required): A unique identifier for the exchange rate being updated
+
+### BatchResponseExchangeRate
+  - completedAt (string, required): The datetime the response was completed
+  - links (object, optional): The link to the next page with exchange rates.
+  - requestedAt (string, optional): The datetime the of the request.
+  - results (array, required): 
+  - startedAt (string, required): The datetime the of the request.
+  - status (string, required): The current status of the response (e.g. COMPLETED)
+
+### ExchangeRateCreateRequest
+  - conversionRate (number, required): The conversion rate between the to and from currency code of this exchange rate.
+  - effectiveAt (string, optional): The date the exchange rate is in effect.
+  - fromCurrencyCode (string, required): This represents the three-letter currency code (such as USD for US Dollar) of the currency you want to convert from.
+
+### BatchInputExchangeRateCreateRequest
+  - inputs (array, required): 
+
+### NextPage
+  - after (string, required): A paging cursor token for retrieving subsequent pages.
+  - link (string, optional): A URL that can be used to retrieve the next page results.
+

@@ -1,0 +1,82 @@
+# Domains
+Content Domains Service
+
+## Endpoints
+
+### GET /cms/domains/2026-03
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/domains/2026-03/{domainId}
+Get a single domain
+  - domainId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### PreviousPage
+  - before (string): A paging cursor token for retrieving previous pages.
+  - link (string): A URL that can be used to retrieve the previous pages' results.
+
+### Paging
+  - next (): 
+  - prev (): 
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### Domain
+  - correctCname (string): The expected CNAME record for the domain.
+  - created (string): The date and time when the domain was created.
+  - domain (string): The actual domain or sub-domain. e.g. www.hubspot.com
+  - id (string): The unique ID of this domain.
+  - isResolving (boolean): Whether the DNS for this domain is optimally configured for use with HubSpot.
+  - isSslEnabled (boolean): Indicates whether SSL is enabled for the domain.
+  - isSslOnly (boolean): Indicates whether the domain is accessible only via SSL.
+  - isUsedForBlogPost (boolean): Whether the domain is used for CMS blog posts.
+  - isUsedForEmail (boolean): Whether the domain is used for CMS email web pages.
+  - isUsedForKnowledge (boolean): Whether the domain is used for CMS knowledge pages.
+  - isUsedForLandingPage (boolean): Whether the domain is used for CMS landing pages.
+  - isUsedForSitePage (boolean): Whether the domain is used for CMS site pages.
+  - manuallyMarkedAsResolving (boolean): Indicates whether the domain has been manually marked as resolving.
+  - primaryBlogPost (boolean): Indicates whether the domain is the primary domain for blog posts.
+  - primaryEmail (boolean): Indicates whether the domain is the primary domain for email pages.
+  - primaryKnowledge (boolean): Indicates whether the domain is the primary domain for knowledge pages.
+  - primaryLandingPage (boolean): Indicates whether the domain is the primary domain for landing pages.
+  - primarySitePage (boolean): Indicates whether the domain is the primary domain for site pages.
+  - secondaryToDomain (string): Specifies the domain to which this domain is secondary.
+  - updated (string): The date and time when the domain was last updated.
+
+### NextPage
+  - after (string): The cursor value indicating where to begin fetching the next page of results in a paginated collection
+  - link (string): An optional URL for directly accessing the next page of results.
+
+### CollectionResponseWithTotalDomain
+  - paging (): 
+  - results (array): The results of the query.
+  - total (integer): The number of available results.

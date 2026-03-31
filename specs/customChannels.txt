@@ -1,0 +1,412 @@
+# Conversations Custom Channels
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /conversations/custom-channels/2026-03
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - defaultPageLength (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - sort (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /conversations/custom-channels/2026-03
+
+  Response 201: successful operation
+  Response default: 
+
+### GET /conversations/custom-channels/2026-03/{channelId}
+Get a custom channel
+  - channelId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /conversations/custom-channels/2026-03/{channelId}
+Archive a custom channel
+  - channelId (path, req): 
+  Response 204: No content
+  Response default: 
+
+### PATCH /conversations/custom-channels/2026-03/{channelId}
+Update a custom channel
+  - channelId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### PATCH /conversations/custom-channels/2026-03/{channelId}/channel-account-staging-tokens/{accountToken}
+Update a channel account staging token
+  - accountToken (path, req): 
+  - channelId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /conversations/custom-channels/2026-03/{channelId}/channel-accounts
+Get accounts for a channel
+  - channelId (path, req): 
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - defaultPageLength (query, opt): 
+  - deliveryIdentifierType (query, opt): 
+  - deliveryIdentifierValue (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - sort (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /conversations/custom-channels/2026-03/{channelId}/channel-accounts
+Create a channel account
+  - channelId (path, req): 
+  Response 201: successful operation
+  Response default: 
+
+### GET /conversations/custom-channels/2026-03/{channelId}/channel-accounts/{channelAccountId}
+Get a channel account by id
+  - channelAccountId (path, req): 
+  - channelId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response default: 
+
+### PATCH /conversations/custom-channels/2026-03/{channelId}/channel-accounts/{channelAccountId}
+Update a channel account
+  - channelAccountId (path, req): 
+  - channelId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /conversations/custom-channels/2026-03/{channelId}/messages
+Publish a message
+  - channelId (path, req): 
+  Response 201: successful operation
+  Response default: 
+
+### GET /conversations/custom-channels/2026-03/{channelId}/messages/{messageId}
+Get a message
+  - channelId (path, req): 
+  - messageId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### PATCH /conversations/custom-channels/2026-03/{channelId}/messages/{messageId}
+Update a message 
+  - channelId (path, req): 
+  - messageId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### PreResolvedContacts
+  - contacts (array): 
+
+### PublicRecipient
+  - actorId (string): 
+  - deliveryIdentifier (): 
+  - name (string): 
+  - recipientField (string): 
+
+### PublicChannelAccount
+  - active (boolean): 
+  - archived (boolean): 
+  - archivedAt (string): 
+  - authorized (boolean): 
+  - channelId (string): 
+  - createdAt (string): 
+  - deliveryIdentifier (): 
+  - id (string): 
+  - inboxId (string): 
+  - name (string): 
+
+### PublicMessageHeader
+  - fileId (integer): 
+  - text (string): 
+  - type (string): 
+
+### UnsupportedContentAttachment
+  - type (string): 
+
+### FileAttachment
+  - fileId (string): 
+  - fileUsageType (string): 
+  - type (string): 
+
+### LocationAttachment
+  - address (string): 
+  - latitude (number): 
+  - longitude (number): 
+  - name (string): 
+  - type (string): 
+  - url (string): 
+
+### CollectionResponseWithTotalPublicChannelIntegrationChannel
+  - paging (): 
+  - results (array): 
+  - total (integer): 
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### PublicContact
+  - contactProfile (): 
+  - type (string): 
+
+### PublicChannelIntegrationMessageUpdateRequest
+  - errorMessage (string): 
+  - statusType (string): Valid status are SENT, FAILED, and READ
+
+### ChannelIntegrationMessageEgg
+  - associateWithContactId (integer): 
+  - attachments (array): 
+  - channelAccountId (string): 
+  - inReplyToId (string): 
+  - integrationIdempotencyId (string): 
+  - integrationThreadId (string): 
+  - messageDirection (string): 
+  - preResolvedContacts (): 
+  - recipients (array): 
+  - richText (string): 
+  - senders (array): 
+  - text (string): 
+  - timestamp (string): 
+
+### ContactAddress
+  - city (string): 
+  - country (string): 
+  - countryCode (string): 
+  - state (string): 
+  - street (string): 
+  - type (string): 
+  - zip (string): 
+
+### PublicChannelIntegrationChannel
+  - capabilities (object): 
+  - channelAccountConnectionRedirectUrl (string): 
+  - channelDescription (string): 
+  - channelLogoUrl (string): 
+  - createdAt (string): 
+  - id (string): 
+  - name (string): 
+  - webhookUrl (string): 
+
+### Paging
+  - next (): 
+  - prev (): 
+
+### PreResolvedContact
+  - contactPropertiesLeadingToMatch (array): 
+  - contactVid (integer): 
+
+### PublicChannelAccountStagingTokenUpdateRequest
+  - accountName (string): 
+  - deliveryIdentifier (): 
+
+### PublicUnsupportedContent
+  - type (string): 
+
+### QuickRepliesAttachment
+  - quickReplies (array): 
+  - type (string): 
+
+### PublicQuickReplies
+  - allowMultiSelect (boolean): 
+  - allowUserInput (boolean): 
+  - quickReplies (array): 
+  - type (string): 
+
+### QuickReply
+  - label (string): 
+  - value (string): 
+  - valueType (string): 
+
+### PublicSocialMetadataAttachment
+  - socialMetadata (): 
+  - type (string): 
+
+### SocialMetadata
+  - description (string): 
+  - id (string): 
+  - mediaTitle (string): 
+  - mediaType (string): 
+  - mediaUrl (string): 
+  - mediaUrlString (string): 
+  - thumbnailUrl (string): 
+
+### PublicLocation
+  - address (string): 
+  - latitude (number): 
+  - longitude (number): 
+  - name (string): 
+  - type (string): 
+  - url (string): 
+
+### SocialMetadataIntegrationAttachment
+  - socialMetadata (): 
+  - type (string): 
+
+### PublicChannelIntegrationChannelPatch
+  - capabilities (object): 
+  - channelAccountConnectionRedirectUrl (object): 
+  - channelDescription (object): 
+  - channelLogoUrl (object): 
+  - name (object): 
+  - webhookUrl (object): 
+
+### PublicChannelIntegrationChannelCreate
+  - capabilities (object): 
+  - channelAccountConnectionRedirectUrl (string): 
+  - channelDescription (string): 
+  - channelLogoUrl (string): 
+  - name (string): 
+  - webhookUrl (string): 
+
+### PublicChannelAccountEgg
+  - authorized (boolean): 
+  - deliveryIdentifier (): 
+  - inboxId (string): 
+  - name (string): 
+
+### PublicMessageFailureDetails
+  - errorMessage (string): 
+  - errorMessageTokens (object): 
+
+### PublicDeliveryIdentifier
+  - type (string): 
+  - value (string): 
+
+### ContactPhone
+  - phone (string): 
+  - type (string): 
+
+### PublicSender
+  - actorId (string): 
+  - deliveryIdentifier (): 
+  - name (string): 
+  - senderField (string): 
+
+### PublicClient
+  - clientType (string): 
+  - integrationAppId (integer): 
+
+### PublicMessageStatus
+  - failureDetails (): 
+  - statusType (string): 
+
+### PublicWhatsAppTemplateMetadata
+  - contentId (integer): 
+  - crmObjectIds (object): 
+  - mappedTemplateId (integer): 
+  - parameters (object): 
+  - rootMicId (integer): 
+  - type (string): 
+
+### PublicConversationsMessage
+  - archived (boolean): 
+  - attachments (array): 
+  - channelAccountId (string): 
+  - channelId (string): 
+  - client (): 
+  - conversationsThreadId (string): 
+  - createdAt (string): 
+  - createdBy (string): 
+  - direction (string): 
+  - id (string): 
+  - inReplyToId (string): 
+  - recipients (array): 
+  - richText (string): 
+  - senders (array): 
+  - status (): 
+  - subject (string): 
+  - text (string): 
+  - truncationStatus (string): 
+  - type (string): 
+  - updatedAt (string): 
+
+### ContactProfile
+  - addresses (array): 
+  - emails (array): 
+  - name (): 
+  - org (): 
+  - phones (array): 
+  - urls (array): 
+
+### ContactOrg
+  - company (string): 
+  - department (string): 
+  - title (string): 
+
+### CollectionResponseWithTotalPublicChannelAccount
+  - paging (): 
+  - results (array): 
+  - total (integer): 
+
+### ContactUrl
+  - type (string): 
+  - url (string): 
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### PublicFile
+  - fileId (string): 
+  - fileUsageType (string): 
+  - name (string): 
+  - type (string): 
+  - url (string): 
+
+### PublicChannelAccountUpdateRequest
+  - authorized (boolean): 
+  - name (string): 
+
+### ChannelIntegrationParticipant
+  - deliveryIdentifier (): 
+  - name (string): 
+  - senderActorId (string): 
+
+### PublicChannelAccountStagingToken
+  - accountName (string): 
+  - accountToken (string): 
+  - createdAt (string): 
+  - deliveryIdentifier (): 
+  - genericChannelId (integer): 
+  - inboxId (integer): 
+  - userId (integer): 
+
+### MessageHeaderAttachment
+  - fileId (integer): 
+  - text (string): 
+  - type (string): 
+
+### PreviousPage
+  - before (string): A paging cursor token for retrieving previous pages.
+  - link (string): A URL that can be used to retrieve the previous pages' results.
+
+### ContactEmail
+  - email (string): 
+  - type (string): 
+
+### ContactName
+  - firstName (string): 
+  - lastName (string): 
+  - middleName (string): 
+  - prefix (string): 
+  - suffix (string): 
+
+### NextPage
+  - after (string): A paging cursor token for retrieving subsequent pages.
+  - link (string): A URL that can be used to retrieve the next page results.
+
+### ContactAttachment
+  - contactProfile (): 
+  - type (string): 

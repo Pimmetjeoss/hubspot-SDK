@@ -1,0 +1,88 @@
+# CRM Forecasts
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### PUT /crm/objects/2026-03/{fromObjectType}/{fromObjectId}/associations/default/{toObjectType}/{toObjectId}
+
+  - fromObjectId (path, req): 
+  - fromObjectType (path, req): 
+  - toObjectId (path, req): 
+  - toObjectType (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### PUT /crm/objects/2026-03/{objectType}/{objectId}/associations/{toObjectType}/{toObjectId}
+
+  - objectId (path, req): 
+  - objectType (path, req): 
+  - toObjectId (path, req): 
+  - toObjectType (path, req): 
+  Response 201: successful operation
+  Response default: 
+
+### DELETE /crm/objects/2026-03/{objectType}/{objectId}/associations/{toObjectType}/{toObjectId}
+
+  - objectId (path, req): 
+  - objectType (path, req): 
+  - toObjectId (path, req): 
+  - toObjectType (path, req): 
+  Response 204: No content
+  Response default: 
+
+## Schemas
+
+### BatchResponsePublicDefaultAssociation
+  - completedAt (string): The timestamp when the batch process was completed, in ISO 8601 format.
+  - errors (array): 
+  - links (object): An object containing relevant links related to the batch request.
+  - numErrors (integer): The total number of errors that occurred during the operation.
+  - requestedAt (string): The timestamp when the batch process was initiated, in ISO 8601 format.
+  - results (array): 
+  - startedAt (string): The timestamp when the batch process began execution, in ISO 8601 format.
+  - status (string): The status of the batch processing request. Can be: "PENDING", "PROCESSING", "CANCELED", or "COMPLETE".
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### PublicObjectId
+  - id (string): The unique ID of the object.
+
+### StandardError
+  - category (string): The main category of the error.
+  - context (object): Additional context-specific information related to the error.
+  - errors (array): The detailed error objects.
+  - id (string): A unique ID for the error instance.
+  - links (object): URLs linking to documentation or resources associated with the error.
+  - message (string): A human-readable string describing the error and possible remediation steps.
+  - status (string): The HTTP status code associated with the error.
+  - subCategory (object): A more specific error category within each main category.
+
+### AssociationSpec
+  - associationCategory (string): The category of the association, such as "HUBSPOT_DEFINED".
+  - associationTypeId (integer): The ID representing the specific type of association.
+
+### LabelsBetweenObjectPair
+  - fromObjectId (string): Source unique ID of the object.
+  - fromObjectTypeId (string): Source object type.
+  - labels (array): 
+  - toObjectId (string): Target unique ID of the object.
+  - toObjectTypeId (string): Target object type.
+
+### PublicDefaultAssociation
+  - associationSpec (): 
+  - from (): 
+  - to (): 
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error

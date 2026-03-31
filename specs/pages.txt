@@ -1,0 +1,864 @@
+# Pages
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /cms/pages/2026-03/landing-pages
+Get all landing pages
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages
+Create a landing page
+  Response 201: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/ab-test/create-variation
+Create a new A/B test variation
+  Response 201: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/ab-test/end
+End an active A/B test
+  Response 204: No content
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/ab-test/rerun
+Rerun a previous A/B test
+  Response 204: No content
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/batch/archive
+Delete landing pages
+  Response 204: No content
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/batch/create
+Create landing pages
+  Response 201: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/batch/read
+Retrieve landing pages
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/batch/update
+Update landing pages
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/clone
+Clone a landing page
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/pages/2026-03/landing-pages/cursor
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/pages/2026-03/landing-pages/cursor/query
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/pages/2026-03/landing-pages/folders
+Get all landing page folders
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/folders
+Create a landing page folder
+  Response 201: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/folders/batch/archive
+Delete folders
+  Response 204: No content
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/folders/batch/create
+Create folders
+  Response 201: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/folders/batch/read
+Retrieve folders
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/folders/batch/update
+Update folders
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### GET /cms/pages/2026-03/landing-pages/folders/cursor
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/pages/2026-03/landing-pages/folders/cursor/query
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/pages/2026-03/landing-pages/folders/{objectId}
+Retrieve a landing page folder
+  - objectId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  - property (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /cms/pages/2026-03/landing-pages/folders/{objectId}
+Delete a landing page folder
+  - objectId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 204: No content
+  Response default: 
+
+### PATCH /cms/pages/2026-03/landing-pages/folders/{objectId}
+Update a landing page folder
+  - objectId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/pages/2026-03/landing-pages/folders/{objectId}/revisions
+Retrieves previous versions of a folder
+  - objectId (path, req): 
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - before (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/pages/2026-03/landing-pages/folders/{objectId}/revisions/{revisionId}
+Retrieve a previous version of a folder
+  - objectId (path, req): 
+  - revisionId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/folders/{objectId}/revisions/{revisionId}/restore
+Restore a previous version of a folder
+  - objectId (path, req): 
+  - revisionId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/multi-language/attach-to-lang-group
+Add a landing page to a multi-language group
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/multi-language/create-language-variation
+Create a new language variation
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/multi-language/detach-from-lang-group
+Remove a landing page from a multi-language group
+  Response default: 
+
+### PUT /cms/pages/2026-03/landing-pages/multi-language/set-new-lang-primary
+Set a new primary language
+  Response 204: No content
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/multi-language/update-languages
+Update languages of multi-language group
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/schedule
+Schedule landing page publishing
+  Response 204: No content
+  Response default: 
+
+### GET /cms/pages/2026-03/landing-pages/{objectId}
+Retrieve a landing page
+  - objectId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  - property (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /cms/pages/2026-03/landing-pages/{objectId}
+Delete a landing page
+  - objectId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 204: No content
+  Response default: 
+
+### PATCH /cms/pages/2026-03/landing-pages/{objectId}
+Update a landing page
+  - objectId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/pages/2026-03/landing-pages/{objectId}/draft
+Retrieve a landing page draft
+  - objectId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### PATCH /cms/pages/2026-03/landing-pages/{objectId}/draft
+Update the draft of a landing page
+  - objectId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/{objectId}/draft/push-live
+Push Landing Page draft edits live
+  - objectId (path, req): 
+  Response 204: No content
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/{objectId}/draft/reset
+Reset a landing page draft
+  - objectId (path, req): 
+  Response 204: No content
+  Response default: 
+
+### GET /cms/pages/2026-03/landing-pages/{objectId}/revisions
+Retrieve all previous versions of a landing page
+  - objectId (path, req): 
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - before (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/pages/2026-03/landing-pages/{objectId}/revisions/{revisionId}
+Retrieve a previous version of a landing page
+  - objectId (path, req): 
+  - revisionId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/{objectId}/revisions/{revisionId}/restore
+Restore a previous version of a landing page
+  - objectId (path, req): 
+  - revisionId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/landing-pages/{objectId}/revisions/{revisionId}/restore-to-draft
+Restore a previous version of a landing page
+  - objectId (path, req): 
+  - revisionId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/pages/2026-03/site-pages
+Retrieve all website pages
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages
+Create a website page
+  Response 201: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages/ab-test/create-variation
+Create a new A/B test variation
+  Response 201: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages/ab-test/end
+End an active A/B test
+  Response 204: No content
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages/ab-test/rerun
+Rerun a previous A/B test
+  Response 204: No content
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages/batch/archive
+Delete website pages
+  Response 204: No content
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages/batch/create
+Create website pages
+  Response 201: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages/batch/read
+Retrieve website pages
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages/batch/update
+Update website pages
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages/clone
+Clone a website page
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/pages/2026-03/site-pages/cursor
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/pages/2026-03/site-pages/cursor/query
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - property (query, opt): 
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages/multi-language/attach-to-lang-group
+Add a website page to a multi-language group
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages/multi-language/create-language-variation
+Create a new language variation
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages/multi-language/detach-from-lang-group
+Remove a website page from a multi-language group
+  Response default: 
+
+### PUT /cms/pages/2026-03/site-pages/multi-language/set-new-lang-primary
+Set a new primary language
+  Response 204: No content
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages/multi-language/update-languages
+Update languages of multi-language group
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages/schedule
+Schedule a website page to be published
+  Response 204: No content
+  Response default: 
+
+### GET /cms/pages/2026-03/site-pages/{objectId}
+Retrieve a website page
+  - objectId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  - property (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /cms/pages/2026-03/site-pages/{objectId}
+Delete a website page
+  - objectId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 204: No content
+  Response default: 
+
+### PATCH /cms/pages/2026-03/site-pages/{objectId}
+Update a website page
+  - objectId (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/pages/2026-03/site-pages/{objectId}/draft
+Retrieve a website page draft
+  - objectId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### PATCH /cms/pages/2026-03/site-pages/{objectId}/draft
+Update a website page draft
+  - objectId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages/{objectId}/draft/push-live
+Publish website page draft
+  - objectId (path, req): 
+  Response 204: No content
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages/{objectId}/draft/reset
+Reset the draft of a website page
+  - objectId (path, req): 
+  Response 204: No content
+  Response default: 
+
+### GET /cms/pages/2026-03/site-pages/{objectId}/revisions
+Retrieve all previous versions of a website page
+  - objectId (path, req): 
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - before (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/pages/2026-03/site-pages/{objectId}/revisions/{revisionId}
+Retrieve a previous version of a website page
+  - objectId (path, req): 
+  - revisionId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages/{objectId}/revisions/{revisionId}/restore
+Restore a previous version of a website page
+  - objectId (path, req): 
+  - revisionId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/pages/2026-03/site-pages/{objectId}/revisions/{revisionId}/restore-to-draft
+Restore a previous draft of a website page
+  - objectId (path, req): 
+  - revisionId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### ContentFolderVersion
+  - id (string): 
+  - object (): 
+  - updatedAt (string): 
+  - user (): 
+
+### CollectionResponseWithTotalPageVersion
+  - paging (): 
+  - results (array): 
+  - total (integer): 
+
+### CursorPagedResultPageLong
+
+### BatchInputJsonNode
+  - inputs (array): JSON nodes to input.
+
+### BatchResponsePageWithErrors
+  - completedAt (string): Time of batch operation completion.
+  - errors (array): Errors in batch operation.
+  - links (object): Links associated with batch operation.
+  - numErrors (integer): Number of errors.
+  - requestedAt (string): Time of batch operation request.
+  - results (array): Results of batch operation.
+  - startedAt (string): Time of batch operation start.
+  - status (string): Status of batch operation.
+
+### SetNewLanguagePrimaryRequestVNext
+  - id (string): ID of object to set as primary in multi-language group.
+
+### RGBAColor
+  - a (number): Alpha.
+  - b (integer): Blue.
+  - g (integer): Green.
+  - r (integer): Red.
+
+### Size
+  - units (string): 
+  - value (number): 
+
+### AbTestCreateRequestVNext
+  - contentId (string): ID of the object to test.
+  - variationName (string): Name of A/B test variation.
+
+### Page
+  - abStatus (string): The status of the AB test associated with this page, if applicable
+  - abTestId (string): The ID of the AB test associated with this page, if applicable
+  - archivedAt (string): The timestamp (ISO8601 format) when this page was deleted.
+  - archivedInDashboard (boolean): If True, the page will not show up in your dashboard, although the page could still be live.
+  - attachedStylesheets (array): List of stylesheets to attach to this page. These stylesheets are attached to just this page. Order of precedence is bottom to top, just like in the HTML.
+  - authorName (string): The name of the user that updated this page.
+  - campaign (string): The GUID of the marketing campaign this page is a part of.
+  - categoryId (integer): ID of the type of object this is. Should always .
+  - contentGroupId (string): The unique identifier for the content group associated with the page.
+  - contentTypeCategory (string): An ENUM descibing the type of this object. Should be either LANDING_PAGE or SITE_PAGE.
+  - created (string): The timestamp indicating when the page was created.
+  - createdById (string): The ID of the user that created this page.
+  - currentState (string): A generated ENUM descibing the current state of this page.
+  - currentlyPublished (boolean): Indicates whether the page is currently published.
+  - domain (string): The domain this page will resolve to. If null, the page will default to the primary domain for this content type.
+  - dynamicPageDataSourceId (string): The identifier for the data source used by the dynamic page.
+  - dynamicPageDataSourceType (integer): The type of data source used by the dynamic page.
+  - dynamicPageHubDbTableId (string): The ID of the HubDB table this page references, if applicable
+  - enableDomainStylesheets (boolean): Boolean to determine whether or not the styles from the template should be applied.
+  - enableLayoutStylesheets (boolean): Boolean to determine whether or not the styles from the template should be applied.
+  - featuredImage (string): The featuredImage of this page.
+  - featuredImageAltText (string): Alt Text of the featuredImage.
+  - folderId (string): The ID of the associated folder this landing page is organized under in the app dashboard.
+  - footerHtml (string): Custom HTML for embed codes, javascript that should be placed before the </body> tag of the page.
+  - headHtml (string): Custom HTML for embed codes, javascript, etc. that goes in the <head> tag of the page.
+  - htmlTitle (string): The html title of this page.
+  - id (string): The unique ID of the page.
+  - includeDefaultCustomCss (boolean): Boolean to determine whether or not the Primary CSS Files should be applied.
+  - language (string): The explicitly defined ISO 639 language code of the page. If null, the page will default to the language of the Domain.
+  - layoutSections (object): A structure detailing the layout sections of the page.
+  - linkRelCanonicalUrl (string): Optional override to set the URL to be used in the rel=canonical link tag on the page.
+  - mabExperimentId (string): The ID of the MAB test (or dynamic test) associated with this page, if applicable
+  - metaDescription (string): A description that goes in <meta> tag on the page.
+  - name (string): The internal name of the page.
+  - pageExpiryDate (integer): The date at which this page should expire and begin redirecting to another url or page.
+  - pageExpiryEnabled (boolean): Boolean describing if the page expiration feature is enabled for this page
+  - pageExpiryRedirectId (integer): The ID of another page this page's url should redirect to once this page expires. Should only set this or pageExpiryRedirectUrl.
+  - pageExpiryRedirectUrl (string): The URL this page's url should redirect to once this page expires. Should only set this or pageExpiryRedirectId.
+  - pageRedirected (boolean): A generated Boolean describing whether or not this page is currently expired and being redirected.
+  - password (string): Set this to create a password protected page. Entering the password will be required to view the page.
+  - publicAccessRules (array): Rules for require member registration to access private content.
+  - publicAccessRulesEnabled (boolean): Boolean to determine whether or not to respect publicAccessRules.
+  - publishDate (string): The date (ISO8601 format) the page is to be published at.
+  - publishImmediately (boolean): Set this to true if you want to be published immediately when the schedule publish endpoint is called, and to ignore the publish_date setting.
+  - slug (string): The path of the this page. This field is appended to the domain to construct the url of this page.
+  - state (string): An ENUM descibing the current state of this page.
+  - subcategory (string): Details the type of page this is. Should always be landing_page or site_page
+  - templatePath (string): String detailing the path of the template used for this page.
+  - themeSettingsValues (object): A collection of settings specific to the theme applied to the page.
+  - translatedFromId (string): ID of the primary page this object was translated from.
+  - translations (object): A map of translations for the page, each associated with a specific language variation.
+  - updated (string): The timestamp indicating when the page was last updated.
+  - updatedById (string): The ID of the user that updated this page.
+  - url (string): A generated field representing the URL of this page.
+  - useFeaturedImage (boolean): Boolean to determine if this page should use a featuredImage.
+  - widgetContainers (object): A data structure containing the data for all the modules inside the containers for this page. This will only be populated if the page has widget containers.
+  - widgets (object): A data structure containing the data for all the modules for this page.
+
+### ContentLanguageVariation
+  - archivedInDashboard (boolean): Indicates if the page is hidden from the dashboard, though it may still be live.
+  - authorName (string): The name of the user that updated this page.
+  - campaign (string): The GUID of the marketing campaign this page is a part of.
+  - campaignName (string): 
+  - created (string): The date and time when the content language variation was created.
+  - id (integer): ID of object to set as primary in multi-language group.
+  - name (string): The internal name of the page.
+  - password (string): A password required to view the page, if set.
+  - publicAccessRules (array): 
+  - publicAccessRulesEnabled (boolean): Determines if public access rules should be respected.
+  - publishDate (string): The date and time when the page is scheduled to be published.
+  - slug (string): The path of this page, appended to the domain to construct the URL.
+  - state (string): An ENUM descibing the current state of this page.
+  - tagIds (array): 
+  - updated (string): The date and time when the content language variation was last updated.
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### SideOrCorner
+  - horizontalSide (string): Specifies the horizontal side of an element.
+  - verticalSide (string): Specifies the vertical side of an element.
+
+### ForwardPaging
+  - next (): 
+
+### ContentFolder
+  - category (integer): The type of object this folder applies to. Should always be LANDING_PAGE.
+  - created (string): The timestamp indicating when the content folder was created.
+  - deletedAt (string): The timestamp (ISO8601 format) when this content folder was deleted.
+  - id (string): The unique ID of the content folder.
+  - name (string): The name of the folder which will show up in the app dashboard
+  - parentFolderId (integer): The ID of the content folder this folder is nested under
+  - updated (string): The timestamp indicating when the content folder was last updated.
+
+### CursorPagedResultContentFolderLong
+
+### CollectionResponseWithTotalContentFolderVersion
+  - paging (): 
+  - results (array): 
+  - total (integer): 
+
+### BatchInputContentFolder
+  - inputs (array): Content folders to input.
+
+### BatchResponsePage
+  - completedAt (string): Time of batch operation completion.
+  - links (object): Links associated with batch operation.
+  - requestedAt (string): Time of batch operation request.
+  - results (array): Results of batch operation.
+  - startedAt (string): Time of batch operation start.
+  - status (string): Status of batch operation.
+
+### LayoutSection
+  - cells (array): 
+  - cssClass (string): The CSS class applied to the layout section.
+  - cssId (string): The CSS ID applied to the layout section.
+  - cssStyle (string): Custom CSS styles applied to the layout section.
+  - label (string): The label for the layout section.
+  - name (string): The internal name of the page.
+  - params (object): Parameters associated with the layout section.
+  - rowMetaData (array): 
+  - rows (array): 
+  - styles (): 
+  - type (string): The type of the layout section.
+  - w (integer): The width of the layout section.
+  - x (integer): The x-coordinate position of the layout section.
+
+### Paging
+  - next (): 
+  - prev (): 
+
+### AbTestRerunRequestVNext
+  - abTestId (string): ID of the test to rerun.
+  - variationId (string): ID of the object to reactivate as a test variation.
+
+### BackgroundImage
+  - backgroundPosition (string): Defines the position of the background image.
+  - backgroundSize (string): Specifies the size of the background image.
+  - imageUrl (string): The URL of the background image.
+
+### BatchInputPage
+  - inputs (array): Pages to input.
+
+### ContentScheduleRequestVNext
+  - id (string): The ID of the object to be scheduled.
+  - publishDate (string): The date the object should transition from scheduled to published.
+
+### ContentCloneRequestVNext
+  - cloneName (string): Name of the cloned object.
+  - id (string): ID of the object to be cloned.
+
+### Margin
+  - bottom (): 
+  - top (): 
+
+### Styles
+  - backgroundColor (): 
+  - backgroundGradient (): 
+  - backgroundImage (): 
+  - breakpointStyles (object): 
+  - flexboxPositioning (string): Indicates whether flexbox positioning is enabled for the section.
+  - forceFullWidthSection (boolean): Determines if the section should be forced to full width.
+  - maxWidthSectionCentering (integer): Defines the maximum width for centering the section.
+  - verticalAlignment (string): Specifies the vertical alignment of elements within the section.
+
+### BatchInputString
+  - inputs (array): Strings to input.
+
+### ContentLanguageCloneRequestVNext
+  - id (string): ID of content to clone.
+  - language (string): Target language of new variant.
+  - primaryLanguage (string): Language of primary content to clone.
+
+### StandardError
+  - category (string): Error category.
+  - context (object): Error context.
+  - errors (array): List of error details.
+  - id (string): Error ID.
+  - links (object): Error links.
+  - message (string): Error message.
+  - status (string): Error status.
+  - subCategory (object): Error subcategory.
+
+### UpdateLanguagesRequestVNext
+  - languages (object): Map of object IDs to associated languages of object in the multi-language group.
+  - primaryId (string): ID of the primary object in the multi-language group.
+
+### CollectionResponseWithTotalContentFolderForwardPaging
+  - paging (): 
+  - results (array): Collection of content folders.
+  - total (integer): Total number of content folders.
+
+### DetachFromLangGroupRequestVNext
+  - id (string): ID of the object to remove from a multi-language group.
+
+### RowMetaData
+  - cssClass (string): The CSS class applied to the row metadata.
+  - styles (): 
+
+### AttachToLangPrimaryRequestVNext
+  - id (string): ID of the object to add to a multi-language group.
+  - language (string): Designated language of the object to add to a multi-language group.
+  - primaryId (string): ID of primary language object in multi-language group.
+  - primaryLanguage (string): Primary language of the multi-language group.
+
+### BreakpointStyles
+  - hidden (boolean): 
+  - margin (): 
+  - padding (): 
+
+### BatchResponseContentFolder
+  - completedAt (string): Time of batch operation completion.
+  - links (object): Links associated with batch operation.
+  - requestedAt (string): Time of batch operation request.
+  - results (array): Results of batch operation.
+  - startedAt (string): Time of batch operation start.
+  - status (string): Status of batch operation.
+
+### CollectionResponseWithTotalPageForwardPaging
+  - paging (): 
+  - results (array): Collection of pages.
+  - total (integer): Total number of pages.
+
+### Padding
+  - bottom (): 
+  - left (): 
+  - right (): 
+  - top (): 
+
+### BatchResponseContentFolderWithErrors
+  - completedAt (string): Time of batch operation completion.
+  - errors (array): Errors in batch operation.
+  - links (object): Links associated with batch operation.
+  - numErrors (integer): Number of errors.
+  - requestedAt (string): Time of batch operation request.
+  - results (array): Results of batch operation.
+  - startedAt (string): Time of batch operation start.
+  - status (string): Status of batch operation.
+
+### VersionUser
+  - email (string): Email address of the user.
+  - fullName (string): First and last name of the user.
+  - id (string): ID of the user.
+
+### ColorStop
+  - color (): 
+
+### Gradient
+  - angle (): 
+  - colors (array): 
+  - sideOrCorner (): 
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### PageVersion
+  - id (string): 
+  - object (): 
+  - updatedAt (string): 
+  - user (): 
+
+### PublicAccessRule
+
+### AbTestEndRequestVNext
+  - abTestId (string): ID of the test to end.
+  - winnerId (string): ID of the object to designate as the test winner.
+
+### Angle
+  - units (string): The unit of measurement for the angle.
+  - value (number): The numerical representation of the angle.
+
+### PreviousPage
+  - before (string): A paging cursor token for retrieving previous pages.
+  - link (string): A URL that can be used to retrieve the previous pages' results.
+
+### NextPage
+  - after (string): A paging cursor token for retrieving subsequent pages.
+  - link (string): A URL that can be used to retrieve the next page results.

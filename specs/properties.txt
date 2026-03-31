@@ -1,0 +1,271 @@
+# Properties
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /crm/properties/2026-03/{objectType}
+Read all properties
+Parameters:
+  - objectType (path, required): 
+  - archived (query, optional): Whether to return only results that have been archived.
+  - dataSensitivity (query, optional): 
+  - locale (query, optional): 
+  - properties (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### POST /crm/properties/2026-03/{objectType}
+Create a property
+Parameters:
+  - objectType (path, required): 
+Request body: PropertyCreate
+Response 201: successful operation
+Response default: 
+
+### POST /crm/properties/2026-03/{objectType}/batch/archive
+Archive a batch of properties
+Parameters:
+  - objectType (path, required): 
+Request body: BatchInputPropertyName
+Response 204: No content
+Response default: 
+
+### POST /crm/properties/2026-03/{objectType}/batch/create
+Create a batch of properties
+Parameters:
+  - objectType (path, required): 
+Request body: BatchInputPropertyCreate
+Response 200: successful operation
+Response default: 
+
+### POST /crm/properties/2026-03/{objectType}/batch/read
+Read a batch of properties
+Parameters:
+  - objectType (path, required): 
+  - locale (query, optional): 
+Request body: BatchReadInputPropertyName
+Response 200: successful operation
+Response default: 
+
+### GET /crm/properties/2026-03/{objectType}/groups
+Read all property groups
+Parameters:
+  - objectType (path, required): 
+  - locale (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### POST /crm/properties/2026-03/{objectType}/groups
+Create a property group
+Parameters:
+  - objectType (path, required): 
+Request body: PropertyGroupCreate
+Response 201: successful operation
+Response default: 
+
+### GET /crm/properties/2026-03/{objectType}/groups/{groupName}
+Read a property group
+Parameters:
+  - groupName (path, required): 
+  - objectType (path, required): 
+  - locale (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### DELETE /crm/properties/2026-03/{objectType}/groups/{groupName}
+Archive a property group
+Parameters:
+  - groupName (path, required): 
+  - objectType (path, required): 
+Response 204: No content
+Response default: 
+
+### PATCH /crm/properties/2026-03/{objectType}/groups/{groupName}
+Update a property group
+Parameters:
+  - groupName (path, required): 
+  - objectType (path, required): 
+Request body: PropertyGroupUpdate
+Response 200: successful operation
+Response default: 
+
+### GET /crm/properties/2026-03/{objectType}/{propertyName}
+Read a property
+Parameters:
+  - objectType (path, required): 
+  - propertyName (path, required): 
+  - archived (query, optional): Whether to return only results that have been archived.
+  - dataSensitivity (query, optional): 
+  - locale (query, optional): 
+  - properties (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### DELETE /crm/properties/2026-03/{objectType}/{propertyName}
+Archive a property
+Parameters:
+  - objectType (path, required): 
+  - propertyName (path, required): 
+Response 204: No content
+Response default: 
+
+### PATCH /crm/properties/2026-03/{objectType}/{propertyName}
+Update a property
+Parameters:
+  - objectType (path, required): 
+  - propertyName (path, required): 
+Request body: PropertyUpdate
+Response 200: successful operation
+Response default: 
+
+## Schemas
+
+### PropertyName
+  - name (string, required): The name of the property to read or modify.
+
+### StandardError
+  - category (string, required): The main category of the error.
+  - context (object, required): Additional context-specific information related to the error.
+  - errors (array, required): The detailed error objects.
+  - id (string, optional): A unique ID for the error instance.
+  - links (object, required): URLs linking to documentation or resources associated with the error.
+  - message (string, required): A human-readable string describing the error and possible remediation steps.
+  - status (string, required): The HTTP status code associated with the error.
+  - subCategory (object, optional): A more specific error category within each main category.
+
+### BatchResponseProperty
+  - completedAt (string, required): The timestamp indicating when the batch operation was completed.
+  - errors (array, optional): 
+  - links (object, optional): A collection of URLs linking to documentation or resources related to the batch operation.
+  - numErrors (integer, optional): The total number of errors encountered during the batch operation.
+  - requestedAt (string, optional): The timestamp indicating when the batch operation was requested.
+  - results (array, required): 
+  - startedAt (string, required): The timestamp indicating when the batch operation began processing.
+  - status (string, required): The current status of the batch operation, with possible values being CANCELED, COMPLETE, PENDING, or PROCESSING.
+
+### PropertyGroup
+  - archived (boolean, required): Indicates whether the property group is archived.
+  - displayOrder (integer, optional): Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
+  - label (string, required): A human-readable label that will be shown in HubSpot.
+  - name (string, required): The internal property group name, which must be used when referencing the property group via the API.
+
+### CollectionResponsePropertyGroupNoPaging
+  - results (array, required): 
+
+### PropertyCreate
+  - calculationFormula (string, optional): Represents a formula that is used to compute a calculated property.
+  - dataSensitivity (string, optional): Indicates the sensitivity level of the property, with options: highly_sensitive, non_sensitive, or sensitive.
+  - description (string, optional): A description of the property that will be shown as help text in HubSpot.
+  - displayOrder (integer, optional): Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property to be displayed after any positive values.
+  - externalOptions (boolean, optional): Applicable only for 'enumeration' type properties.  Should be set to true in conjunction with a 'referencedObjectType' of 'OWNER'.  Otherwise false.
+  - fieldType (string, required): Controls how the property appears in HubSpot.
+  - formField (boolean, optional): Whether or not the property can be used in a HubSpot form.
+  - groupName (string, required): The name of the property group the property belongs to.
+  - hasUniqueValue (boolean, optional): Whether or not the property's value must be unique. Once set, this can't be changed.
+  - hidden (boolean, optional): If true, the property won't be visible and can't be used in HubSpot.
+  - label (string, required): A human-readable property label that will be shown in HubSpot.
+  - name (string, required): The internal property name, which must be used when referencing the property via the API.
+  - options (array, optional): A list of valid options for the property. This field is required for enumerated properties.
+  - referencedObjectType (string, optional): Should be set to 'OWNER' when 'externalOptions' is true, which causes the property to dynamically pull option values from the current HubSpot users.
+  - type (string, required): The data type of the property.
+
+### OptionInput
+  - description (string, optional): A description of the option.
+  - displayOrder (integer, required): Options are shown in order starting with the lowest positive integer value. Values of -1 will cause the option to be displayed after any positive values.
+  - hidden (boolean, required): Hidden options won't be shown in HubSpot.
+  - label (string, required): A human-readable option label that will be shown in HubSpot.
+  - value (string, required): The internal value of the option, which must be used when setting the property value through the API.
+
+### Error
+  - category (string, required): The error category
+  - context (object, optional): Context about the error condition
+  - correlationId (string, required): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array, optional): further information about the error
+  - links (object, optional): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### BatchInputPropertyCreate
+  - inputs (array, required): 
+
+### CollectionResponsePropertyNoPaging
+  - results (array, required): 
+
+### ErrorDetail
+  - code (string, optional): The status code associated with the error detail
+  - context (object, optional): Context about the error condition
+  - in (string, optional): The name of the field or parameter in which the error was found.
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### PropertyUpdate
+  - calculationFormula (string, optional): Represents a formula that is used to compute a calculated property.
+  - description (string, optional): A description of the property that will be shown as help text in HubSpot.
+  - displayOrder (integer, optional): Properties are displayed in order starting with the lowest positive integer value. Values of -1 will cause the Property to be displayed after any positive values.
+  - fieldType (string, optional): Controls how the property appears in HubSpot.
+  - formField (boolean, optional): Whether or not the property can be used in a HubSpot form.
+  - groupName (string, optional): The name of the property group the property belongs to.
+  - hidden (boolean, optional): If true, the property won't be visible and can't be used in HubSpot.
+  - label (string, optional): A human-readable property label that will be shown in HubSpot.
+  - options (array, optional): A list of valid options for the property.
+  - type (string, optional): The data type of the property.
+
+### BatchReadInputPropertyName
+  - archived (boolean, required): Specifies whether the property is archived.
+  - dataSensitivity (string, required): Indicates the sensitivity level of the data, such as 'non_sensitive', 'sensitive', or 'highly_sensitive'.
+  - inputs (array, required): 
+
+### PropertyGroupCreate
+  - displayOrder (integer, optional): Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
+  - label (string, required): A human-readable label that will be shown in HubSpot.
+  - name (string, required): The internal property group name, which must be used when referencing the property group via the API.
+
+### PropertyModificationMetadata
+  - archivable (boolean, required): Specifies whether the property can be archived.
+  - readOnlyDefinition (boolean, required): Indicates whether the property's definition is read-only and cannot be modified.
+  - readOnlyOptions (boolean, optional): Indicates whether the property's options are read-only and cannot be modified.
+  - readOnlyValue (boolean, required): Indicates whether the property's value is read-only and cannot be modified.
+
+### BatchInputPropertyName
+  - inputs (array, required): 
+
+### Option
+  - description (string, optional): A description of the option.
+  - displayOrder (integer, optional): Options are displayed in order starting with the lowest positive integer value. Values of -1 will cause the option to be displayed after any positive values.
+  - hidden (boolean, required): Hidden options will not be displayed in HubSpot.
+  - label (string, required): A human-readable option label that will be shown in HubSpot.
+  - value (string, required): The internal value of the option, which must be used when setting the property value through the API.
+
+### PropertyGroupUpdate
+  - displayOrder (integer, optional): Property groups are displayed in order starting with the lowest positive integer value. Values of -1 will cause the property group to be displayed after any positive values.
+  - label (string, optional): A human-readable label that will be shown in HubSpot.
+
+### Property
+  - archived (boolean, optional): Whether or not the property is archived.
+  - archivedAt (string, optional): When the property was archived.
+  - calculated (boolean, optional): For default properties, true indicates that the property is calculated by a HubSpot process. It has no effect for custom properties.
+  - calculationFormula (string, optional): Represents a formula that is used to compute a calculated property.
+  - createdAt (string, optional): The timestamp when the property was created, in ISO 8601 format.
+  - createdUserId (string, optional): The internal user ID of the user who created the property in HubSpot. This field may not exist if the property was created outside of HubSpot.
+  - dataSensitivity (string, optional): Indicates the sensitivity level of the property, such as "non_sensitive", "sensitive", or "highly_sensitive".
+  - dateDisplayHint (string, optional): Indicates how date values should be displayed, with options such as 'absolute', 'absolute_with_relative', 'time_since', or 'time_until'.
+  - description (string, required): A description of the property that will be shown as help text in HubSpot.
+  - displayOrder (integer, optional): Properties are shown in order, starting with the lowest positive integer value.
+  - externalOptions (boolean, optional): For default properties, true indicates that the options are stored externally to the property settings.
+  - fieldType (string, required): Controls how the property appears in HubSpot.
+  - formField (boolean, optional): Whether or not the property can be used in a HubSpot form.
+  - groupName (string, required): The name of the property group the property belongs to.
+  - hasUniqueValue (boolean, optional): Whether or not the property's value must be unique. Once set, this can't be changed.
+  - hidden (boolean, optional): Whether or not the property will be hidden from the HubSpot UI. It's recommended this be set to false for custom properties.
+  - hubspotDefined (boolean, optional): This will be true for default object properties built into HubSpot.
+  - label (string, required): A human-readable property label that will be shown in HubSpot.
+  - modificationMetadata (PropertyModificationMetadata, optional): 
+  - name (string, required): The internal property name, which must be used when referencing the property via the API.
+  - options (array, required): A list of valid options for the property. This field is required for enumerated properties, but will be empty for other property types.
+  - referencedObjectType (string, optional): If this property is related to other object(s), they'll be listed here.
+  - sensitiveDataCategories (array, optional): When sensitiveData is true, lists the type of sensitive data contained in the property (e.g., "HIPAA").
+  - showCurrencySymbol (boolean, optional): Whether or not the property will display the currency symbol set in the account settings.
+  - type (string, required): The property data type.
+  - updatedAt (string, optional): The timestamp when the property was last updated, in ISO 8601 format.
+  - updatedUserId (string, optional): The internal user ID of the user who updated the property in HubSpot. This field may not exist if the property was updated outside of HubSpot.
+

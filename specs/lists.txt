@@ -1,0 +1,956 @@
+# CRM Lists
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /crm/lists/2026-03
+
+Parameters:
+  - includeFilters (query, optional): 
+  - listIds (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### POST /crm/lists/2026-03
+
+Request body: ListCreateRequest
+Response 200: successful operation
+Response default: 
+
+### GET /crm/lists/2026-03/folders
+
+Parameters:
+  - folderId (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### POST /crm/lists/2026-03/folders
+
+Request body: ListFolderCreateRequest
+Response 200: successful operation
+Response default: 
+
+### PUT /crm/lists/2026-03/folders/move-list
+
+Request body: ListMoveRequest
+Response 204: No content
+Response default: 
+
+### DELETE /crm/lists/2026-03/folders/{folderId}
+
+Parameters:
+  - folderId (path, required): 
+Response 204: No content
+Response default: 
+
+### PUT /crm/lists/2026-03/folders/{folderId}/move/{newParentFolderId}
+
+Parameters:
+  - folderId (path, required): 
+  - newParentFolderId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### PUT /crm/lists/2026-03/folders/{folderId}/rename
+
+Parameters:
+  - folderId (path, required): 
+  - newFolderName (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### GET /crm/lists/2026-03/idmapping
+
+Parameters:
+  - legacyListId (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### POST /crm/lists/2026-03/idmapping
+
+Response 200: successful operation
+Response default: 
+
+### GET /crm/lists/2026-03/object-type-id/{objectTypeId}/name/{listName}
+
+Parameters:
+  - listName (path, required): 
+  - objectTypeId (path, required): 
+  - includeFilters (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### POST /crm/lists/2026-03/records/memberships/batch/read
+
+Request body: BatchInputRecordIdInput
+Response 200: successful operation
+Response 207: multiple statuses
+Response default: 
+
+### GET /crm/lists/2026-03/records/{objectTypeId}/{recordId}/memberships
+
+Parameters:
+  - objectTypeId (path, required): 
+  - recordId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### POST /crm/lists/2026-03/search
+
+Request body: ListSearchRequest
+Response 200: successful operation
+Response default: 
+
+### GET /crm/lists/2026-03/{listId}
+
+Parameters:
+  - listId (path, required): 
+  - includeFilters (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### DELETE /crm/lists/2026-03/{listId}
+
+Parameters:
+  - listId (path, required): 
+Response 204: No content
+Response default: 
+
+### GET /crm/lists/2026-03/{listId}/memberships
+
+Parameters:
+  - listId (path, required): 
+  - after (query, optional): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - before (query, optional): 
+  - limit (query, optional): The maximum number of results to display per page.
+Response 200: successful operation
+Response default: 
+
+### DELETE /crm/lists/2026-03/{listId}/memberships
+
+Parameters:
+  - listId (path, required): 
+Response 204: No content
+Response default: 
+
+### PUT /crm/lists/2026-03/{listId}/memberships/add
+
+Parameters:
+  - listId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### PUT /crm/lists/2026-03/{listId}/memberships/add-and-remove
+
+Parameters:
+  - listId (path, required): 
+Request body: MembershipChangeRequest
+Response 200: successful operation
+Response default: 
+
+### PUT /crm/lists/2026-03/{listId}/memberships/add-from/{sourceListId}
+
+Parameters:
+  - listId (path, required): 
+  - sourceListId (path, required): 
+Response 204: No content
+Response default: 
+
+### GET /crm/lists/2026-03/{listId}/memberships/join-order
+
+Parameters:
+  - listId (path, required): 
+  - after (query, optional): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - before (query, optional): 
+  - limit (query, optional): The maximum number of results to display per page.
+Response 200: successful operation
+Response default: 
+
+### PUT /crm/lists/2026-03/{listId}/memberships/remove
+
+Parameters:
+  - listId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### PUT /crm/lists/2026-03/{listId}/restore
+
+Parameters:
+  - listId (path, required): 
+Response 204: No content
+Response default: 
+
+### GET /crm/lists/2026-03/{listId}/schedule-conversion
+
+Parameters:
+  - listId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### PUT /crm/lists/2026-03/{listId}/schedule-conversion
+
+Parameters:
+  - listId (path, required): 
+Request body: PublicListConversionTime
+Response 200: successful operation
+Response default: 
+
+### DELETE /crm/lists/2026-03/{listId}/schedule-conversion
+
+Parameters:
+  - listId (path, required): 
+Response 204: No content
+Response default: 
+
+### GET /crm/lists/2026-03/{listId}/size-and-edits-history/between
+
+Parameters:
+  - listId (path, required): 
+  - endDate (query, optional): 
+  - startDate (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### PUT /crm/lists/2026-03/{listId}/update-list-filters
+
+Parameters:
+  - listId (path, required): 
+  - enrollObjectsInWorkflows (query, optional): 
+Request body: ListFilterUpdateRequest
+Response 200: successful operation
+Response default: 
+
+### PUT /crm/lists/2026-03/{listId}/update-list-name
+
+Parameters:
+  - listId (path, required): 
+  - includeFilters (query, optional): 
+  - listName (query, optional): 
+Response 200: successful operation
+Response default: 
+
+## Schemas
+
+### PublicPropertyAssociationFilterBranch
+  - filterBranchOperator (string, required): The logical operator used to combine filters within the branch.
+  - filterBranchType (string, required): The type of the filter branch (PROPERTY_ASSOCIATION).
+  - filterBranches (array, required): 
+  - filters (array, required): 
+  - objectTypeId (string, required): The ID representing the type of object associated with the filter branch.
+  - operator (string, required): Defines the operation to be applied within the filter branch (IN_LIST, NOT_IN_LIST).
+  - propertyWithObjectId (string, required): The property that is associated with the object ID in the filter branch.
+
+### PublicNumberPropertyOperation
+  - includeObjectsWithNoValueSet (boolean, required): Indicates whether objects with no value set for the property should be included in the operation.
+  - operationType (string, required): Specifies the type of operation (NUMBER).
+  - operator (string, required): Defines the operation to be applied in the number property operation (IS_EQUAL_TO, IS_NOT_EQUAL_TO, IS_GREATER_THAN, IS_GREATER_THAN_OR_EQUAL_TO, IS_LESS_THAN, IS_LESS_THAN_OR_EQUAL_TO, HAS_EVER_BEEN_EQUAL_TO, HAS_NEVER_BEEN_EQUAL_TO).
+  - value (number, required): The numeric value to be used in the operation.
+
+### PublicYearReference
+  - day (integer, required): The day component of the year reference.
+  - hour (integer, optional): The hour component of the year reference.
+  - millisecond (integer, optional): The millisecond component of the year reference.
+  - minute (integer, optional): The minute component of the year reference.
+  - month (integer, required): The month component of the year reference.
+  - referenceType (string, required): Indicates the type of reference (YEAR).
+  - second (integer, optional): The second component of the year reference.
+
+### PublicInListFilterMetadata
+  - id (string, required): The identifier for the filter metadata.
+  - inListType (string, required): Specifies the type of list for the filter (WORKFLOWS_ENROLLMENT, WORKFLOWS_ACTIVE, WORKFLOWS_GOAL, WORKFLOWS_COMPLETED, IMPORT, DATASET, DATASETS).
+
+### ListFolderFetchResponse
+  - folder (PublicListFolder, required): 
+
+### PublicRangedDatePropertyOperation
+  - includeObjectsWithNoValueSet (boolean, required): Specifies whether objects without a set value should be included in the operation.
+  - lowerBound (integer, required): The lower limit of the date range for the operation.
+  - operationType (string, required): Specifies the type of operation (RANGED_DATE).
+  - operator (string, required): Defines the operation to be applied in the ranged date property operation (IS_BETWEEN, IS_NOT_BETWEEN).
+  - requiresTimeZoneConversion (boolean, required): Indicates whether the operation requires conversion to a different time zone.
+  - upperBound (integer, required): The upper limit of the date range for the operation.
+
+### ListSearchRequest
+  - additionalProperties (array, required): The property names of any additional list properties to include in the response. Properties that do not exist or that are empty for a particular list are not included in the response.
+
+By default, all requests will fetch the following properties for each list: `hs_list_size`, `hs_last_record_added_at`, `hs_last_record_removed_at`, `hs_folder_name`, and `hs_list_reference_count`.
+  - count (integer, optional): The number of lists to include in the response. Defaults to `20` if no value is provided. The max `count` is `500`.
+  - listIds (array, required): ILS list ids to be included in search results. If not specified, all lists matching other criteria will be included
+  - objectTypeId (string, optional): 
+  - offset (integer, required): Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
+  - processingTypes (array, required): List processing types to be included in search results. If not specified, all lists with all processing types will be included.
+  - query (string, optional): The `query` that will be used to search for lists by list name. If no `query` is provided, then the results will include all lists.
+  - sort (string, optional): Sort field and order
+
+### ListSearchResponse
+  - hasMore (boolean, required): Whether or not there are more results to page through.
+  - lists (array, required): The lists that matched the search criteria.
+  - offset (integer, required): Value to be passed in a future request to paginate through list search results.
+  - total (integer, required): The total number of lists that match the search criteria.
+
+### PublicInListFilter
+  - filterType (string, required): Indicates the type of filter being applied (IN_LIST).
+  - listId (string, required): The ID of the list used in the association filter.
+  - metadata (PublicInListFilterMetadata, optional): 
+  - operator (string, required): Specifies the operation to be performed by the filter (IN_LIST, NOT_IN_LIST).
+
+### BatchResponseRecordIdWithMembershipsWithErrors
+  - completedAt (string, required): 
+  - errors (array, optional): 
+  - links (object, optional): 
+  - numErrors (integer, optional): 
+  - requestedAt (string, optional): 
+  - results (array, required): 
+  - startedAt (string, required): 
+  - status (string, required): 
+
+### PublicSurveyMonkeyValueFilter
+  - filterType (string, required): Defines the type of filter (SURVEY_MONKEY_VALUE).
+  - operator (string, required): Defines the operation to be applied within the filter (HAS_ANSWERED_SURVEY_QUESTION_WITH_VALUE).
+  - surveyAnswerColId (string, optional): The column ID of the survey answer used in the filter.
+  - surveyAnswerRowId (string, optional): The row ID of the survey answer used in the filter.
+  - surveyId (string, required): The ID of the survey used in the filter.
+  - surveyQuestion (string, required): The question from the survey used in the filter.
+  - valueComparison (, required): Specifies the operation used to compare the survey answer value.
+
+### PublicRelativeComparativeTimestampRefineBy
+  - comparison (string, required): Defines the comparison operation to be used in the refinement (BEFORE, AFTER).
+  - timeOffset (PublicTimeOffset, required): 
+  - type (string, required): Specifies the type of refinement, (RELATIVE_COMPARATIVE).
+
+### ListsByIdResponse
+  - lists (array, required): The object list definitions.
+
+### PublicCommunicationSubscriptionFilter
+  - acceptedOptStates (array, required): 
+  - businessUnitId (string, optional): The ID of the business unit associated with the subscription filter.
+  - channel (string, required): Specifies the communication channel associated with the subscription filter (EMAIL, WHATSAPP, SMS).
+  - filterType (string, required): Indicates the type of filter, which is (COMMUNICATION_SUBSCRIPTION)
+  - subscriptionIds (array, required): 
+  - subscriptionType (string, required): Defines the type of subscription related to the filter (PORTAL_WIDE, BUSINESS_UNIT_WIDE, INDIVIDUAL_SUBSCRIPTION)
+
+### PublicObjectListSearchResult
+  - additionalProperties (object, required): The name and value of any additional properties that exist for this list and that were included in the search request.
+  - createdAt (string, optional): The time when the list was created.
+  - createdById (string, optional): The ID of the user that created the list.
+  - deletedAt (string, optional): The time when the list was deleted.
+  - filtersUpdatedAt (string, optional): The time when the filters for this list were last updated.
+  - listId (string, required): The **ILS ID** of the list.
+  - listVersion (integer, required): The version of the list.
+  - name (string, required): The name of the list.
+  - objectTypeId (string, required): The object type of the list.
+  - processingStatus (string, required): The processing status of the list.
+  - processingType (string, required): The processing type of the list.
+  - updatedAt (string, optional): The time the list was last updated.
+  - updatedById (string, optional): The ID of the user that last updated the list.
+
+### PublicRelativeRangedTimestampRefineBy
+  - lowerBoundOffset (PublicTimeOffset, required): 
+  - rangeType (string, required): Specifies the type of range for the refinement criteria (BETWEEN, NOT_BETWEEN).
+  - type (string, required): Indicates the type of refinement (RELATIVE_RANGED).
+  - upperBoundOffset (PublicTimeOffset, required): 
+
+### PublicIndexOffset
+  - days (integer, optional): The number of days to offset.
+  - hours (integer, optional): The number of hours to offset.
+  - milliseconds (integer, optional): The number of milliseconds to offset.
+  - minutes (integer, optional): The number of minutes to offset.
+  - months (integer, optional): The number of months to offset.
+  - quarters (integer, optional): The number of quarters to offset.
+  - seconds (integer, optional): The number of seconds to offset.
+  - weeks (integer, optional): The number of weeks to offset.
+  - years (integer, optional): The number of years to offset.
+
+### PublicNotAllFilterBranch
+  - filterBranchOperator (string, required): The operator used to combine filters within the branch (NOT_ALL).
+  - filterBranchType (string, required): The type of the filter branch (NOT_ALL).
+  - filterBranches (array, required): 
+  - filters (array, required): 
+
+### PublicBatchMigrationMapping
+  - legacyListIdsToIdsMapping (array, required): 
+  - missingLegacyListIds (array, required): A list of legacy list ids that were passed in but not found. It will be empty if no id's are missing
+
+### PublicFormSubmissionFilter
+  - coalescingRefineBy (, optional): Specifies the criteria for refining the filter by coalescing.
+  - filterType (string, required): Indicates the type of filter (FORM_SUBMISSION).
+  - formId (string, optional): The ID of the form used in the filter.
+  - operator (string, required): Specifies the operation to be performed (FILLED_OUT, NOT_FILLED_OUT).
+  - pruningRefineBy (, optional): Specifies the criteria for refining the filter by pruning.
+
+### PublicListConversionInactivity
+  - conversionType (string, required): Specifies the type of conversion (INACTIVITY).
+  - offset (integer, required): Value used to paginate through lists. The `offset` provided in the response can be used in the next request to fetch the next page of results. Defaults to `0` if no offset is provided.
+  - timeUnit (string, required): The unit of time for the inactivity period, such as (DAY, MONTH, WEEK).
+
+### PublicRollingDateRangePropertyOperation
+  - includeObjectsWithNoValueSet (boolean, required): Indicates whether objects with no value set for the property should be included in the operation.
+  - numberOfDays (integer, required): The number of days to be considered in the rolling date range operation.
+  - operationType (string, required): Specifies the type of operation (ROLLING_DATE_RANGE).
+  - operator (string, required): Defines the operation to be applied within the rolling date range property operation (IS_LESS_THAN_X_DAYS_AGO, IS_MORE_THAN_X_DAYS_AGO, IS_LESS_THAN_X_DAYS_FROM_NOW, IS_MORE_THAN_X_DAYS_FROM_NOW).
+  - requiresTimeZoneConversion (boolean, required): Specifies whether the operation requires conversion to a different time zone.
+
+### ApiCollectionResponseJoinTimeAndRecordId
+  - paging (Paging, optional): 
+  - results (array, required): 
+  - total (integer, optional): The total number of records that match the query.
+
+### PublicListPermissions
+  - teamsWithEditAccess (array, required): 
+  - usersWithEditAccess (array, required): 
+
+### PublicAssociationFilterBranch
+  - associationCategory (string, required): Specifies the category of the association for the filter branch (HUBSPOT_DEFINED, USER_DEFINED, INTEGRATOR_DEFINED, WORK).
+  - associationTypeId (integer, required): Type id of the association
+  - filterBranchOperator (string, required): Filter branch operator (AND)
+  - filterBranchType (string, required): Type of the filter branch (ASSOCIATION)
+  - filterBranches (array, required): 
+  - filters (array, required): 
+  - objectTypeId (string, required): The ID representing the type of object associated with the filter branch.
+  - operator (string, required): Defines the operation to be applied within the filter branch (IN_LIST, NOT_IN_LIST).
+
+### PublicQuarterReference
+  - day (integer, required): The day component of the quarter reference.
+  - hour (integer, optional): The hour component of the quarter reference.
+  - millisecond (integer, optional): The millisecond component of the quarter reference.
+  - minute (integer, optional): The minute component of the quarter reference.
+  - month (integer, required): The month component of the quarter reference.
+  - referenceType (string, required): Indicates the type of reference (QUARTER).
+  - second (integer, optional): The second component of the quarter reference.
+
+### PublicEmailSubscriptionFilter
+  - acceptedStatuses (array, required): 
+  - filterType (string, required): Indicates the type of filter (EMAIL_SUBSCRIPTION).
+  - subscriptionIds (array, required): 
+  - subscriptionType (string, optional): The type of subscription related to the filter (PORTAL, BRAND, SUBSCRIPTION, HARDBOUNCE, SPAMREPORT).
+
+### PublicEnumerationPropertyOperation
+  - includeObjectsWithNoValueSet (boolean, required): Indicates whether objects with no value set for the property should be included in the operation.
+  - operationType (string, required): Specifies the type of operation (ENUMERATION).
+  - operator (string, required): Defines the operation to be applied in the enumeration property operation (IS_ANY_OF, IS_NONE_OF, IS_EXACTLY, IS_NOT_EXACTLY, CONTAINS_ALL, DOES_NOT_CONTAIN_ALL, HAS_EVER_BEEN_ANY_OF, HAS_NEVER_BEEN_ANY_OF, HAS_EVER_BEEN_EXACTLY, HAS_NEVER_BEEN_EXACTLY, HAS_EVER_CONTAINED_ALL, HAS_NEVER_CONTAINED_ALL).
+  - values (array, required): 
+
+### ListFolderCreateResponse
+  - folder (PublicListFolder, required): 
+
+### PublicTimePointOperation
+  - endpointBehavior (string, optional): Describes the behavior at the endpoint of the time point operation.
+  - includeObjectsWithNoValueSet (boolean, required): Indicates whether objects with no value set for the property should be included in the operation.
+  - operationType (string, required): Specifies the type of operation (TIME_POINT).
+  - operator (string, required): Specifies the operation to be applied within the time point operation (IS_BEFORE, IS_AFTER).
+  - propertyParser (string, optional): Specifies the parser used for interpreting the property in the operation.
+  - timePoint (, required): Defines the specific point in time for the operation, which can be a date, indexed time, or property-referenced time.
+  - type (string, required): Defines the type of operation being performed.
+
+### ListUpdateResponse
+  - updatedList (PublicObjectList, optional): 
+
+### PublicAllHistoryRefineBy
+  - type (string, required): Type of refine by (ALL_HISTORY)
+
+### StandardError
+  - category (string, required): The main category of the error.
+  - context (object, required): Additional context-specific information related to the error.
+  - errors (array, required): The detailed error objects.
+  - id (string, optional): A unique ID for the error instance.
+  - links (object, required): URLs linking to documentation or resources associated with the error.
+  - message (string, required): A human-readable string describing the error and possible remediation steps.
+  - status (string, required): The HTTP status code associated with the error.
+  - subCategory (object, optional): A more specific error category within each main category.
+
+### PublicNotAnyFilterBranch
+  - filterBranchOperator (string, required): Specifies the logical operator used to combine filters within the branch (NOT_ANY).
+  - filterBranchType (string, required): Indicates the type of filter branch (NOT_ANY).
+  - filterBranches (array, required): 
+  - filters (array, required): 
+
+### PublicIndexedTimePoint
+  - indexReference (, required): Specifies the reference point in time for the indexed time point.
+  - offset (PublicIndexOffset, optional): 
+  - timeType (string, required): Defines the type of time (INDEXED).
+  - timezoneSource (string, optional): Specifies the source of the time zone information for the indexed time point (CUSTOM, USER, PORTAL).
+  - zoneId (string, required): Indicates the identifier for the time zone associated with the indexed time point.
+
+### PublicRangedTimeOperation
+  - includeObjectsWithNoValueSet (boolean, required): Indicates whether objects with no value set for the property should be included in the operation.
+  - lowerBoundEndpointBehavior (string, optional): Describes the behavior at the lower bound endpoint of the time range.
+  - lowerBoundTimePoint (, required): Defines the lower bound time point for the operation.
+  - operationType (string, required): Specifies the type of operation (TIME_RANGED).
+  - operator (string, required): Defines the operation to be applied within the time range (IS_BETWEEN, IS_NOT_BETWEEN).
+  - propertyParser (string, optional): Specifies the parser used for the property in the operation.
+  - type (string, required): Specifies the type of operation (TIME_RANGED).
+  - upperBoundEndpointBehavior (string, optional): Describes the behavior at the upper bound endpoint of the time range.
+  - upperBoundTimePoint (, required): Defines the upper bound time point for the operation.
+
+### PublicWebinarFilter
+  - filterType (string, required): Indicates the type of filter, (WEBINAR).
+  - operator (string, required): Specifies the operation to be performed by the filter (HAS_WEBINAR_REGISTRATION, NOT_HAS_WEBINAR_REGISTRATION, HAS_WEBINAR_ATTENDANCE, NOT_HAS_WEBINAR_ATTENDANCE).
+  - webinarId (string, optional): The ID of the webinar associated with the filter.
+
+### ListCreateResponse
+  - list (PublicObjectList, required): 
+
+### ListSizeAndEditHistoryResponse
+  - editHistory (array, required): 
+  - sizeHistory (array, required): 
+
+### MembershipsUpdateResponse
+  - recordIdsMissing (array, required): The IDs of the records that were `missing` (e.g. did not exist in the portal) and so were not `added` or `removed`.
+  - recordIdsRemoved (array, required): The IDs of the records that were `removed` from the list.
+  - recordsIdsAdded (array, required): 
+
+### PublicUnifiedEventsFilterBranch
+  - coalescingRefineBy (, optional): Specifies the criteria for refining the filter by coalescing.
+  - eventTypeId (string, required): The identifier for the type of event associated with the filter branch.
+  - filterBranchOperator (string, required): The logical operator used to combine filters within the branch (AND).
+  - filterBranchType (string, required): The type of the filter branch (UNIFIED_EVENTS).
+  - filterBranches (array, required): 
+  - filters (array, required): 
+  - operator (string, required): Defines the operation to be applied within the filter branch (HAS_COMPLETED, HAS_NOT_COMPLETED).
+  - pruningRefineBy (, optional): 
+
+### PublicNumOccurrencesRefineBy
+  - maxOccurrences (integer, optional): The maximum number of occurrences allowed.
+  - minOccurrences (integer, optional): The minimum number of occurrences required.
+  - type (string, required): The type of refinement (NUM_OCCURRENCES).
+
+### PublicObjectList
+  - createdAt (string, optional): The time when the list was created.
+  - createdById (string, optional): The ID of the user that created the list.
+  - deletedAt (string, optional): The time when the list was deleted.
+  - filterBranch (, optional): Defines the filter criteria for the list, allowing for complex logical operations and nested filter branches to determine list membership.
+  - filtersUpdatedAt (string, optional): The time when the filters for this list were last updated.
+  - listId (string, required): The **ILS ID** of the list.
+  - listPermissions (PublicListPermissions, optional): 
+  - listVersion (integer, required): The version of the list.
+  - membershipSettings (PublicMembershipSettings, optional): 
+  - name (string, required): The name of the list.
+  - objectTypeId (string, required): The object type of the list.
+  - processingStatus (string, required): The processing status of the list.
+  - processingType (string, required): The processing type of the list.
+  - size (integer, optional): Size of the list
+  - updatedAt (string, optional): The time the list was last updated.
+  - updatedById (string, optional): The ID of the user that last updated the list.
+
+### RecordListMembership
+  - firstAddedTimestamp (string, required): The timestamp when the record was first added to the list.
+  - isPublicList (boolean, optional): Indicates whether the list is public.
+  - lastAddedTimestamp (string, required): The timestamp when the record was last added to the list.
+  - listId (string, required): The unique identifier of the list.
+  - listVersion (integer, required): The version number of the list.
+
+### PublicCtaAnalyticsFilter
+  - coalescingRefineBy (, optional): Specifies the criteria for refining the filter by coalescing.
+  - ctaName (string, required): The name of the Call-to-Action (CTA) to be used in the filter.
+  - filterType (string, required): Indicates the type of filter being applied, which is (CTA).
+  - operator (string, required): Defines the operation to be applied within the filter (HAS_CLICKED_CTA, HAS_NOT_CLICKED_CTA, HAS_OPENED_CTA, HAS_NOT_OPENED_CTA, HAS_CLICKED_CTA_PLACEMENT, HAS_NOT_CLICKED_CTA_PLACEMENT, HAS_OPENED_CTA_PLACEMENT, HAS_NOT_OPENED_CTA_PLACEMENT).
+  - pruningRefineBy (, optional): Specifies the criteria for refining the filter by pruning.
+
+### ListFetchResponse
+  - list (PublicObjectList, required): 
+
+### PublicConstantFilter
+  - filterType (string, required): Specifies the type of filter, which is (CONSTANT).
+  - shouldAccept (boolean, required): Indicates whether the filter should accept the condition.
+  - source (string, optional): Defines the source of the constant filter.
+
+### PublicSetOccurrencesRefineBy
+  - setType (string, required): Indicates the specific set type used in the refinement (ALL, ALL_INCLUDE_EMPTY, ANY, NONE, NONE_EXCLUDE_EMPTY, ANY_INCLUDE_EMPTY).
+  - type (string, required): Specifies the type of refinement (SET_OCCURRENCES).
+
+### PublicListFolder
+  - childLists (array, required): An array of list Id's contained in this folder.
+  - childNodes (array, required): 
+  - createdAt (string, optional): The time the folder was created at.
+  - id (string, required): The Id of the folder.
+  - name (string, optional): The name of the folder.
+  - parentFolderId (string, required): The Id of the folder this folder is in, the root folder is represented as 0.
+  - updatedAt (string, optional): The time the folder was last updated at.
+  - updatedContentsAt (string, optional): The time that the contents of the folder was last updated at.
+  - userId (integer, optional): The user Id of the owner of the folder.
+
+### PublicComparativeDatePropertyOperation
+  - comparisonPropertyName (string, required): The name of the property to compare against in the operation.
+  - defaultComparisonValue (string, optional): The default value used for comparison if the actual comparison property value is not set.
+  - includeObjectsWithNoValueSet (boolean, required): Indicates whether objects with no value set for the property should be included in the operation.
+  - operationType (string, required): The type of operation (COMPARATIVE_DATE).
+  - operator (string, required): Defines the operation to be applied in the comparative date property operation (IS_BEFORE, IS_AFTER).
+
+### PublicRangedNumberPropertyOperation
+  - includeObjectsWithNoValueSet (boolean, required): Indicates whether objects with no value set for the property should be included in the operation.
+  - lowerBound (integer, required): The lower limit of the number range for the operation.
+  - operationType (string, required): Specifies the type of operation (NUMBER_RANGED).
+  - operator (string, required): Defines the operation to be applied in the ranged number property operation (IS_BETWEEN, IS_NOT_BETWEEN).
+  - upperBound (integer, required): The upper limit of the number range for the operation.
+
+### PublicPageViewAnalyticsFilter
+  - coalescingRefineBy (, optional): Specifies the criteria for refining the filter by coalescing.
+  - enableTracking (boolean, optional): Indicates whether tracking is enabled for the page view.
+  - filterType (string, required): Indicates the type of filter being applied (PAGE_VIEW).
+  - operator (string, required): Defines the operation to be applied within the filter (HAS_PAGEVIEW_EQ, HAS_PAGEVIEW_CONTAINS, HAS_PAGEVIEW_MATCHES_REGEX, NOT_HAS_PAGEVIEW_EQ, NOT_HAS_PAGEVIEW_CONTAINS).
+  - pageUrl (string, required): The URL of the page to be used in the filter.
+  - pruningRefineBy (, optional): Specifies the criteria for refining the filter by pruning.
+
+### ListSizeDataPoint
+  - size (integer, required): 
+  - timestamp (string, required): 
+
+### MembershipChangeRequest
+  - recordIdsToAdd (array, required): 
+  - recordIdsToRemove (array, required): 
+
+### PublicComparativePropertyUpdatedOperation
+  - comparisonPropertyName (string, required): The name of the property to compare against in the operation.
+  - defaultComparisonValue (string, optional): The default value used for comparison if the actual comparison property value is not set.
+  - includeObjectsWithNoValueSet (boolean, required): Indicates whether objects with no value set for the property should be included in the operation.
+  - operationType (string, required): Specifies the type of operation (COMPARATIVE_PROPERTY_UPDATED).
+  - operator (string, required): Defines the operation to be applied, such as comparison operators (IS_BEFORE, IS_AFTER).
+
+### PreviousPage
+  - before (string, required): The offset of the previous page of records.
+  - link (string, optional): A direct link to the request for the previous page of records.
+
+### PublicAndFilterBranch
+  - filterBranchOperator (string, required): Filter branch operator (AND)
+  - filterBranchType (string, required): Type of filter branch (AND)
+  - filterBranches (array, required): 
+  - filters (array, required): 
+
+### PublicIntegrationEventFilter
+  - eventTypeId (integer, required): The ID representing the type of event for the integration event filter.
+  - filterLines (array, required): 
+  - filterType (string, required): Indicates the type of filter (INTEGRATION_EVENT).
+
+### PublicAbsoluteComparativeTimestampRefineBy
+  - comparison (string, required): Timestamp comparison options (BEFORE, AFTER)
+  - timestamp (integer, required): Timestamp to be used in refine by criteria
+  - type (string, required): type of refine by criteria (ABSOLUTE_COMPARATIVE)
+
+### PublicSurveyMonkeyFilter
+  - filterType (string, required): Indicates the type of filter being applied (SURVEY_MONKEY).
+  - operator (string, required): Specifies the operation to be performed by the filter (HAS_RESPONDED_TO_SURVEY, HAS_NOT_RESPONDED_TO_SURVEY).
+  - surveyId (string, required): The ID of the survey associated with the filter.
+
+### PublicAbsoluteRangedTimestampRefineBy
+  - lowerTimestamp (integer, required): Lower range timestamp of refinement criteria
+  - rangeType (string, required): Type of range of refinement critaria (BETWEEN, NOT_BETWEEN)
+  - type (string, required): type of refine by criteria (ABSOLUTE_RANGED)
+  - upperTimestamp (integer, required): Upper range timestamp of refinement criteria
+
+### PublicDatePropertyOperation
+  - day (integer, required): The day of the month for the date operation.
+  - includeObjectsWithNoValueSet (boolean, required): Indicates whether objects with no value set for the property should be included.
+  - month (string, required): The month for the date operation.
+  - operationType (string, required): Specifies the type of operation (DATE).
+  - operator (string, required): Defines the operation to be applied in the date property operation (IS_LESS_THAN_X_DAYS_AGO, IS_MORE_THAN_X_DAYS_AGO, IS_LESS_THAN_X_DAYS_FROM_NOW, IS_MORE_THAN_X_DAYS_FROM_NOW).
+  - year (integer, required): The year for the date operation.
+
+### PublicEventAnalyticsFilter
+  - coalescingRefineBy (, optional): Specifies the criteria for refining the event filter by coalescing.
+  - eventId (string, required): The ID of the event to be used in the filter.
+  - filterType (string, required): Indicates the type of filter being applied (EVENT).
+  - operator (string, required): Defines the operation to be applied within the event filter (HAS_EVENT, NOT_HAS_EVENT).
+  - pruningRefineBy (, optional): Specifies the criteria for refining the event filter by pruning.
+
+### PublicUnifiedEventsFilter
+  - coalescingRefineBy (, optional): Specifies the criteria for refining the filter by coalescing.
+  - eventTypeId (string, optional): The identifier for the type of event in the unified events filter.
+  - filterLines (array, required): 
+  - filterType (string, required): Indicates the type of filter being applied (UNIFIED_EVENTS).
+  - pruningRefineBy (, optional): Specifies the criteria for refining the filter by pruning.
+
+### PublicFiscalYearReference
+  - day (integer, required): The day component of the fiscal year reference.
+  - hour (integer, optional): The hour component of the fiscal year reference.
+  - millisecond (integer, optional): The millisecond component of the fiscal year reference.
+  - minute (integer, optional): The minute component of the fiscal year reference.
+  - month (integer, required): The month component of the fiscal year reference.
+  - referenceType (string, required): Indicates the type of reference (FISCAL_YEAR).
+  - second (integer, optional): The second component of the fiscal year reference.
+
+### PublicCalendarDatePropertyOperation
+  - fiscalYearStart (string, optional): The month in which the fiscal year starts.
+  - includeObjectsWithNoValueSet (boolean, required): Indicates whether objects with no value set for the property should be included.
+  - operationType (string, required): The type of operation, which is (CALENDAR_DATE).
+  - operator (string, required): Defines the operation to be applied to the calendar date property (IN_THIS_TIME_UNIT, IN_THIS_TIME_UNIT_SO_FAR, IN_NEXT_TIME_UNIT, IN_LAST_TIME_UNIT).
+  - timeUnit (string, required): The unit of time to be used in the operation (DAY, WEEK, MONTH, QUARTER, YEAR).
+  - timeUnitCount (integer, optional): The count of time units to be applied in the operation (1).
+  - useFiscalYear (boolean, optional): Specifies whether the fiscal year should be used in the operation.
+
+### PublicPropertyFilter
+  - filterType (string, required): Indicates that the filter (PROPERTY).
+  - operation (, required): Defines the operation to be performed on the property, such as comparison or value matching.
+  - property (string, required): Specifies the name of the property that the filter is applied to.
+
+### ErrorDetail
+  - code (string, optional): The status code associated with the error detail
+  - context (object, optional): Context about the error condition
+  - in (string, optional): The name of the field or parameter in which the error was found.
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### PublicNumAssociationsFilter
+  - associationCategory (string, required): Defines the category of the association (HUBSPOT_DEFINED, USER_DEFINED, INTEGRATOR_DEFINED, WORK).
+  - associationTypeId (integer, required): The ID representing the type of association being filtered.
+  - coalescingRefineBy (, required): Specifies the criteria for refining the association filter.
+  - filterType (string, required): Indicates the type of filter being applied (NUM_ASSOCIATIONS).
+
+### PublicAssociationInListFilter
+  - associationCategory (string, required): Defines the category of the association, such as (HUBSPOT_DEFINED, USER_DEFINED, INTEGRATOR_DEFINED, WORK).
+  - associationTypeId (integer, required): The ID representing the type of association being filtered.
+  - coalescingRefineBy (, required): Specifies the criteria for refining the association filter.
+  - filterType (string, required): Indicates the type of filter being applied, which is 'ASSOCIATION' by default.
+  - listId (string, required): The ID of the list used in the association filter.
+  - operator (string, required): Specifies the operation to be performed by the filter, such as 'IN_LIST' or 'NOT_IN_LIST'.
+  - toObjectType (string, optional): The type of object that the association filter is targeting.
+  - toObjectTypeId (string, optional): The ID representing the type of object that the association filter is targeting.
+
+### PublicEmailEventFilter
+  - appId (string, required): The ID of the application associated with the email event filter.
+  - clickUrl (string, optional): The URL that was clicked in the email event.
+  - emailId (string, required): The ID of the email associated with the event filter.
+  - filterType (string, required): Indicates the type of filter (EMAIL_EVENT).
+  - level (string, required): Specifies the level of the email event, such as EMAIL_API_CAMPAIGN_GROUP.
+  - operator (string, required): Defines the operation to be applied within the filter (BOUNCED, LINK_CLICKED, MARKED_SPAM, OPENED, OPENED_BUT_LINK_NOT_CLICKED, OPENED_BUT_NOT_REPLIED, RECEIVED, RECEIVED_BUT_NOT_OPENED, REPLIED, SENT, SENT_BUT_LINK_NOT_CLICKED, SENT_BUT_NOT_RECEIVED, UNSUBSCRIBED).
+  - pruningRefineBy (, optional): Specifies the criteria for refining the filter by pruning.
+
+### PublicListConversionResponse
+  - convertedAt (string, optional): The date and time when the list was converted.
+  - listId (string, required): The unique identifier of the list for which the conversion details are provided.
+  - requestedConversionTime (, optional): The scheduled time for the list conversion, which can be based on a specific date or inactivity period.
+
+### PublicOrFilterBranch
+  - filterBranchOperator (string, required): The logical operator used to combine the filters within the branch (OR).
+  - filterBranchType (string, required): The type of the filter branch (OR).
+  - filterBranches (array, required): 
+  - filters (array, required): 
+
+### PublicAdsTimeFilter
+  - filterType (string, required): Filter type (ADS_TIME)
+  - pruningRefineBy (, required): Refinement criteria
+
+### PublicFormSubmissionOnPageFilter
+  - coalescingRefineBy (, optional): Defines the criteria for refining the filter by coalescing.
+  - filterType (string, required): Indicates the type of filter (FORM_SUBMISSION_ON_PAGE).
+  - formId (string, optional): The ID of the form associated with the submission filter.
+  - operator (string, required): Specifies the operation to be applied (FILLED_OUT, NOT_FILLED_OUT).
+  - pageId (string, required): The ID of the page where the form submission occurred.
+  - pruningRefineBy (, optional): Specifies the criteria for refining the filter by pruning.
+
+### PublicMembershipSettings
+  - includeUnassigned (boolean, optional): Indicates whether unassigned memberships should be included.
+  - membershipTeamId (integer, optional): The ID of the team associated with the membership.
+
+### PublicPropertyAssociationInListFilter
+  - coalescingRefineBy (, required): Specifies the criteria for refining the filter by coalescing.
+  - filterType (string, required): Indicates the type of filter being applied (PROPERTY_ASSOCIATION).
+  - listId (string, required): The ID of the list used in the property association filter.
+  - operator (string, required): Defines the operation to be applied by the filter (IN_LIST, NOT_IN_LIST).
+  - propertyWithObjectId (string, required): The property associated with the object ID in the filter.
+  - toObjectTypeId (string, optional): The ID representing the type of object that the property association filter is targeting.
+
+### PublicStringPropertyOperation
+  - includeObjectsWithNoValueSet (boolean, required): Indicates whether objects with no value set for the property should be included in the operation.
+  - operationType (string, required): Specifies the type of operation (STRING).
+  - operator (string, required): Defines the operation to be applied in the string property operation ()IS_EQUAL_TO, IS_NOT_EQUAL_TO, CONTAINS, DOES_NOT_CONTAIN, STARTS_WITH, ENDS_WITH, HAS_EVER_BEEN_EQUAL_TO, HAS_NEVER_BEEN_EQUAL_TO, HAS_EVER_CONTAINED, HAS_NEVER_CONTAINED).
+  - value (string, required): The string value to be used in the operation.
+
+### PublicPropertyReferencedTime
+  - property (string, required): Specifies the name of the property that the time reference is applied to.
+  - referenceType (string, required): Specifies the type of reference for the property (VALUE, UPDATED_AT, ANNIVERSARY, VALUE_WITH_ZONE_SAME_LOCAL_CONVERSION, ANNIVERSARY_WITH_ZONE_SAME_LOCAL_CONVERSION).
+  - timeType (string, required): Defines the type of time (PROPERTY_REFERENCED).
+  - timezoneSource (string, optional): Specifies the source of the time zone information for the property (CUSTOM, USER, PORTAL).
+  - zoneId (string, required): Indicates the identifier for the time zone associated with the property.
+
+### Paging
+  - next (NextPage, optional): 
+  - prev (PreviousPage, optional): 
+
+### PublicPrivacyAnalyticsFilter
+  - filterType (string, required): Specifies the type of filter (PRIVACY).
+  - operator (string, required): Defines the operation to be applied within the filter (PRIVACY_CONSENT_GRANTED, PRIVACY_CONSENT_NOT_GRANTED).
+  - privacyName (string, required): The name of the privacy setting used in the filter.
+
+### ListFilterUpdateRequest
+  - filterBranch (, required): Updated filtering criteria for the list
+
+### PublicMultiStringPropertyOperation
+  - includeObjectsWithNoValueSet (boolean, required): Indicates whether objects with no value set for the property should be included in the operation.
+  - operationType (string, required): Specifies the type of operation (MULTISTRING).
+  - operator (string, required): Defines the operation to be applied in the multi-string property operation (IS_EQUAL_TO, IS_NOT_EQUAL_TO, CONTAINS, CONTAINS_EXACTLY, DOES_NOT_CONTAIN, DOES_NOT_CONTAIN_EXACTLY, STARTS_WITH, ENDS_WITH).
+  - values (array, required): 
+
+### PublicWeekReference
+  - dayOfWeek (string, required): The day of the week (SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY).
+  - hour (integer, optional): The hour component of the week reference.
+  - millisecond (integer, optional): The millisecond component of the week reference.
+  - minute (integer, optional): The minute component of the week reference.
+  - referenceType (string, required): Indicates the type of reference (WEEK).
+  - second (integer, optional): The second component of the week reference.
+
+### PublicAdsSearchFilter
+  - adNetwork (string, required): Ad network  (ADWORDS, FACEBOOK, LINKEDIN, ALL)
+  - entityType (string, required): Type of ad entity (KEYWORD, ADGROUP, AD, CAMPAIGN)
+  - filterType (string, required): Type of the filter (ADS_SEARCH)
+  - operator (string, required): Operator to be applied (CONTAINS, IS_EQUAL_TO, ENDS_WITH, STARTS_WITH, IS_KNOWN)
+  - searchTermType (string, required): Search term to match an ad
+  - searchTerms (array, required): 
+
+### PublicTodayReference
+  - hour (integer, optional): The hour component of the current day reference.
+  - millisecond (integer, optional): The millisecond component of the current day reference.
+  - minute (integer, optional): The minute component of the current day reference.
+  - referenceType (string, required): Indicates the type of reference (TODAY).
+  - second (integer, optional): The second component of the current day reference.
+
+### PublicNowReference
+  - hour (integer, optional): The hour component of the current time reference.
+  - millisecond (integer, optional): The millisecond component of the current time reference.
+  - minute (integer, optional): The minute component of the current time reference.
+  - referenceType (string, required): Indicates the type of reference (NOW).
+  - second (integer, optional): The second component of the current time reference.
+
+### ListFolderCreateRequest
+  - name (string, required): The name of the folder to be created.
+  - parentFolderId (string, optional): The folder this should be created in, if not specified will be created in the root folder 0.
+
+### PublicListConversionDate
+  - conversionType (string, required): Specifies the type of conversion (CONVERSION_DATE).
+  - day (integer, required): The day component of the conversion date.
+  - month (integer, required): The month component of the conversion date.
+  - year (integer, required): The year component of the conversion date.
+
+### JoinTimeAndRecordId
+  - membershipTimestamp (string, required): The date and time when the record was added to the list.
+  - recordId (string, required): The unique identifier of the record.
+
+### PublicRestrictedFilterBranch
+  - filterBranchOperator (string, required): The logical operator used to combine filters within the restricted filter branch.
+  - filterBranchType (string, required): Specifies the type of the filter branch (RESTRICTED).
+  - filterBranches (array, required): 
+  - filters (array, required): 
+
+### PublicMonthReference
+  - day (integer, required): The day component of the month reference.
+  - hour (integer, optional): The hour component of the month reference.
+  - millisecond (integer, optional): The millisecond component of the month reference.
+  - minute (integer, optional): The minute component of the month reference.
+  - referenceType (string, required): Indicates the type of reference, (MONTH).
+  - second (integer, optional): The second component of the month reference.
+
+### BatchResponseRecordIdWithMemberships
+  - completedAt (string, required): 
+  - links (object, optional): 
+  - requestedAt (string, optional): 
+  - results (array, required): 
+  - startedAt (string, required): 
+  - status (string, required): 
+
+### PublicDateTimePropertyOperation
+  - includeObjectsWithNoValueSet (boolean, required): Specifies whether objects without a set value should be included in the operation.
+  - operationType (string, required): The type of operation (DATETIME).
+  - operator (string, required): Defines the operation to be applied, such as comparison operators (IS_BEFORE, IS_AFTER).
+  - requiresTimeZoneConversion (boolean, required): Indicates whether the timestamp requires conversion to a different time zone.
+  - timestamp (integer, required): The specific point in time used in the operation.
+
+### PublicCampaignInfluencedFilter
+  - campaignId (string, required): The ID of the campaign that influences the filter.
+  - filterType (string, required): Indicates the type of filter (CAMPAIGN_INFLUENCED).
+
+### ListMoveRequest
+  - listId (string, required): The Id of the list to move.
+  - newFolderId (string, required): The Id of folder to move the list to, the root folder is Id 0.
+
+### PublicFiscalQuarterReference
+  - day (integer, required): The day component of the fiscal quarter reference.
+  - hour (integer, optional): The hour component of the fiscal quarter reference.
+  - millisecond (integer, optional): The millisecond component of the fiscal quarter reference.
+  - minute (integer, optional): The minute component of the fiscal quarter reference.
+  - month (integer, required): The month component of the fiscal quarter reference.
+  - referenceType (string, required): Indicates the type of reference (FISCAL_QUARTER).
+  - second (integer, optional): The second component of the fiscal quarter reference.
+
+### RecordIdWithMemberships
+  - objectTypeId (string, required): 
+  - recordId (string, required): 
+  - recordListMemberships (array, required): 
+
+### BatchInputRecordIdInput
+  - inputs (array, required): 
+
+### Error
+  - category (string, required): The error category
+  - context (object, optional): Context about the error condition
+  - correlationId (string, required): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array, optional): further information about the error
+  - links (object, optional): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### PublicMigrationMapping
+  - legacyListId (string, required): The legacy list id for the list
+  - listId (string, required): The V3 list id for the list
+
+### ListCreateRequest
+  - customProperties (object, optional): The list of custom properties to tie to the list. Custom property name is the key, the value is the value.
+  - filterBranch (, optional): Filter branch object containing filtering criteria for the list
+  - listFolderId (integer, optional): The ID of the folder that the list should be created in. If left blank, then the list will be created in the root of the list folder structure.
+  - listPermissions (PublicListPermissions, optional): 
+  - membershipSettings (PublicMembershipSettings, optional): 
+  - name (string, required): The name of the list, which must be globally unique across all public lists in the portal.
+  - objectTypeId (string, required): The object type ID of the type of objects that the list will store.
+  - processingType (string, required): The processing type of the list. One of: `SNAPSHOT`, `MANUAL`, or `DYNAMIC`.
+
+### PublicBoolPropertyOperation
+  - includeObjectsWithNoValueSet (boolean, required): Indicates whether objects with no value set for the property should be included in the operation.
+  - operationType (string, required): Specifies the type of operation (BOOL).
+  - operator (string, required): Defines the operation to be applied in the boolean property operation (IS_EQUAL_TO, IS_NOT_EQUAL_TO, HAS_EVER_BEEN_EQUAL_TO, HAS_NEVER_BEEN_EQUAL_TO).
+  - value (boolean, required): The boolean value to be used in the operation.
+
+### RecordIdInput
+  - objectTypeId (string, required): 
+  - recordId (string, required): 
+
+### PublicAllPropertyTypesOperation
+  - includeObjectsWithNoValueSet (boolean, required): Indication of whether objects with no value should be included
+  - operationType (string, required): Type of operation (ALL_PROPERTY)
+  - operator (string, required): Operator to be applied (IS_KNOWN, IS_UNKNOWN)
+
+### PublicEventFilterMetadata
+  - operation (, required): Defines the operation to be performed on the property
+  - property (string, required): Specifies the property on which the operation is to be applied.
+
+### PublicDatePoint
+  - day (integer, required): The day component of the date.
+  - hour (integer, optional): The hour component of the time.
+  - millisecond (integer, optional): The millisecond component of the time.
+  - minute (integer, optional): The minute component of the time.
+  - month (integer, required): The month component of the date.
+  - second (integer, optional): The second component of the time.
+  - timeType (string, required): Specifies the type of time (DATE).
+  - timezoneSource (string, optional): The source of the time zone information.
+  - year (integer, required): The year component of the date.
+  - zoneId (string, required): The identifier for the time zone.
+
+### ApiCollectionResponseRecordListMembership
+  - paging (Paging, optional): 
+  - results (array, required): 
+  - total (integer, optional): 
+
+### PublicListConversionTime
+
+### PublicTimeOffset
+  - amount (integer, required): The numerical value representing the quantity of the time offset.
+  - offsetDirection (string, required): Indicates the direction of the time offset, such as forward or backward.
+  - timeUnit (string, required): Specifies the unit of time for the offset, such as days, hours, or minutes.
+
+### NextPage
+  - after (string, required): The offset for the next page of records.
+  - link (string, optional): A direct link to the request for the next page of records.
+
+### PublicRollingPropertyUpdatedOperation
+  - includeObjectsWithNoValueSet (boolean, required): Indicates whether objects with no value set for the property should be included in the operation.
+  - numberOfDays (integer, required): The number of days to be considered in the rolling property updated operation.
+  - operationType (string, required): Specifies the type of operation (ROLLING_PROPERTY_UPDATED).
+  - operator (string, required): Defines the operation to be applied within the rolling property updated operation (UPDATED_IN_LAST_X_DAYS, NOT_UPDATED_IN_LAST_X_DAYS).
+

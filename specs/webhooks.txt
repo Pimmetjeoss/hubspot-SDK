@@ -1,0 +1,444 @@
+# Webhooks Webhooks
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /webhooks-journal/journal-local/2026-03/batch/earliest/{count}
+
+Parameters:
+  - count (path, required): 
+  - installPortalId (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### GET /webhooks-journal/journal-local/2026-03/batch/latest/{count}
+
+Parameters:
+  - count (path, required): 
+  - installPortalId (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### POST /webhooks-journal/journal-local/2026-03/batch/read
+
+Parameters:
+  - installPortalId (query, optional): 
+Request body: BatchInputString
+Response 200: successful operation
+Response 207: multiple statuses
+Response default: 
+
+### GET /webhooks-journal/journal-local/2026-03/batch/{offset}/next/{count}
+
+Parameters:
+  - count (path, required): 
+  - offset (path, required): 
+  - installPortalId (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### GET /webhooks-journal/journal-local/2026-03/earliest
+
+Parameters:
+  - installPortalId (query, optional): 
+Response default: 
+
+### GET /webhooks-journal/journal-local/2026-03/latest
+
+Parameters:
+  - installPortalId (query, optional): 
+Response default: 
+
+### GET /webhooks-journal/journal-local/2026-03/offset/{offset}/next
+
+Parameters:
+  - offset (path, required): 
+  - installPortalId (query, optional): 
+Response default: 
+
+### GET /webhooks-journal/journal-local/2026-03/status/{statusId}
+
+Parameters:
+  - statusId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### GET /webhooks-journal/journal/2026-03/batch/earliest/{count}
+
+Parameters:
+  - count (path, required): 
+  - installPortalId (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### GET /webhooks-journal/journal/2026-03/batch/latest/{count}
+
+Parameters:
+  - count (path, required): 
+  - installPortalId (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### POST /webhooks-journal/journal/2026-03/batch/read
+
+Parameters:
+  - installPortalId (query, optional): 
+Request body: BatchInputString
+Response 200: successful operation
+Response 207: multiple statuses
+Response default: 
+
+### GET /webhooks-journal/journal/2026-03/batch/{offset}/next/{count}
+
+Parameters:
+  - count (path, required): 
+  - offset (path, required): 
+  - installPortalId (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### GET /webhooks-journal/journal/2026-03/earliest
+
+Parameters:
+  - installPortalId (query, optional): 
+Response default: 
+
+### GET /webhooks-journal/journal/2026-03/latest
+
+Parameters:
+  - installPortalId (query, optional): 
+Response default: 
+
+### GET /webhooks-journal/journal/2026-03/offset/{offset}/next
+
+Parameters:
+  - offset (path, required): 
+  - installPortalId (query, optional): 
+Response default: 
+
+### GET /webhooks-journal/journal/2026-03/status/{statusId}
+
+Parameters:
+  - statusId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### POST /webhooks-journal/snapshots/2026-03/crm
+
+Request body: CrmObjectSnapshotBatchRequest
+Response 200: successful operation
+Response default: 
+
+### GET /webhooks-journal/subscriptions/2026-03
+
+Response 200: successful operation
+Response default: 
+
+### POST /webhooks-journal/subscriptions/2026-03
+
+Request body: SubscriptionUpsertRequest
+Response 200: successful operation
+Response default: 
+
+### POST /webhooks-journal/subscriptions/2026-03/filters
+
+Request body: FilterCreateRequest
+Response 200: successful operation
+Response default: 
+
+### GET /webhooks-journal/subscriptions/2026-03/filters/subscription/{subscriptionId}
+
+Parameters:
+  - subscriptionId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### GET /webhooks-journal/subscriptions/2026-03/filters/{filterId}
+
+Parameters:
+  - filterId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### DELETE /webhooks-journal/subscriptions/2026-03/filters/{filterId}
+
+Parameters:
+  - filterId (path, required): 
+Response 204: No content
+Response default: 
+
+### DELETE /webhooks-journal/subscriptions/2026-03/portals/{portalId}
+
+Parameters:
+  - portalId (path, required): 
+Response 204: No content
+Response default: 
+
+### DELETE /webhooks-journal/subscriptions/2026-03/{subscriptionId}
+
+Parameters:
+  - subscriptionId (path, required): 
+Response 204: No content
+Response default: 
+
+### GET /webhooks/2026-03/{appId}/settings
+Read webhook settings
+Parameters:
+  - appId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### PUT /webhooks/2026-03/{appId}/settings
+Update webhook settings
+Parameters:
+  - appId (path, required): 
+Request body: SettingsChangeRequest
+Response 200: successful operation
+Response default: 
+
+### DELETE /webhooks/2026-03/{appId}/settings
+Delete webhook settings
+Parameters:
+  - appId (path, required): 
+Response 204: No content
+Response default: 
+
+### GET /webhooks/2026-03/{appId}/subscriptions
+Read event subscriptions
+Parameters:
+  - appId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### POST /webhooks/2026-03/{appId}/subscriptions
+Create an event subscription
+Parameters:
+  - appId (path, required): 
+Request body: SubscriptionCreateRequest
+Response 201: successful operation
+Response default: 
+
+### POST /webhooks/2026-03/{appId}/subscriptions/batch/update
+Batch create event subscriptions
+Parameters:
+  - appId (path, required): 
+Request body: BatchInputSubscriptionBatchUpdateRequest
+Response 200: successful operation
+Response default: 
+
+### GET /webhooks/2026-03/{appId}/subscriptions/{subscriptionId}
+Read an event subscription
+Parameters:
+  - appId (path, required): 
+  - subscriptionId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### DELETE /webhooks/2026-03/{appId}/subscriptions/{subscriptionId}
+Delete event subscription
+Parameters:
+  - appId (path, required): 
+  - subscriptionId (path, required): 
+Response 204: No content
+Response default: 
+
+### PATCH /webhooks/2026-03/{appId}/subscriptions/{subscriptionId}
+Update an event subscription
+Parameters:
+  - appId (path, required): 
+  - subscriptionId (path, required): 
+Request body: SubscriptionPatchRequest
+Response 200: successful operation
+Response default: 
+
+## Schemas
+
+### BatchInputString
+  - inputs (array, required): 
+
+### ThrottlingSettings
+  - maxConcurrentRequests (integer, required): The maximum number of HTTP requests HubSpot will attempt to make to your app in a given time frame determined by `period`.
+
+### StandardError
+  - category (string, required): The main category of the error.
+  - context (object, required): Additional context-specific information related to the error.
+  - errors (array, required): The detailed error objects.
+  - id (string, optional): A unique ID for the error instance.
+  - links (object, required): URLs linking to documentation or resources associated with the error.
+  - message (string, required): A human-readable string describing the error and possible remediation steps.
+  - status (string, required): The HTTP status code associated with the error.
+  - subCategory (object, optional): A more specific error category within each main category.
+
+### BatchResponseJournalFetchResponseWithErrors
+  - completedAt (string, required): 
+  - errors (array, optional): 
+  - links (object, optional): 
+  - numErrors (integer, optional): 
+  - requestedAt (string, optional): 
+  - results (array, required): 
+  - startedAt (string, required): 
+  - status (string, required): 
+
+### FilterResponse
+  - createdAt (integer, required): 
+  - filter (Filter, required): 
+  - id (integer, required): 
+
+### ObjectSubscriptionUpsertRequest
+
+### SubscriptionListResponse
+  - results (array, required): An array containing all active and paused event subscriptions configured for the app.
+
+### CrmObjectSnapshotBatchResponse
+  - snapshotResponses (array, required): 
+
+### ErrorDetail
+  - code (string, optional): The status code associated with the error detail
+  - context (object, optional): Context about the error condition
+  - in (string, optional): The name of the field or parameter in which the error was found.
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### SubscriptionResponse_1
+  - actionOverrides (object, optional): 
+  - actions (array, required): 
+  - appId (integer, required): 
+  - associatedObjectTypeIds (array, optional): 
+  - createdAt (string, required): The timestamp when the webhook subscription was created, in ISO 8601 format (e.g., 2020-02-29T12:30:00Z).
+  - createdBy (integer, optional): 
+  - deletedAt (string, optional): 
+  - id (integer, required): The unique ID of the webhook subscription.
+  - listIds (array, optional): 
+  - objectIds (array, optional): 
+  - objectTypeId (string, required): The ID of the object type for the subscription. This can be a standard CRM object (e.g., 'contact', 'company', 'deal') or a custom object ID for custom object subscriptions.
+  - portalId (integer, optional): 
+  - properties (array, optional): 
+  - subscriptionType (string, required): 
+  - updatedAt (string, required): The timestamp when the webhook subscription was last updated, in ISO 8601 format (e.g., 2020-02-29T12:30:00Z).
+
+### SettingsResponse
+  - createdAt (string, required): When this subscription was created. Formatted as milliseconds from the [Unix epoch](#).
+  - targetUrl (string, required): A publicly available URL for Hubspot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads.
+  - throttling (ThrottlingSettings, required): 
+  - updatedAt (string, optional): When this subscription was last updated. Formatted as milliseconds from the [Unix epoch](#).
+
+### BatchInputSubscriptionBatchUpdateRequest
+  - inputs (array, required): 
+
+### AppLifecycleEventSubscriptionUpsertRequest
+
+### CrmObjectSnapshotResponse
+  - objectId (integer, required): 
+  - objectTypeId (string, required): 
+  - portalId (integer, required): 
+  - snapshotStatusId (string, required): 
+
+### SnapshotStatusResponse
+  - completedAt (integer, optional): 
+  - errorCode (string, optional): 
+  - id (string, required): 
+  - initiatedAt (integer, required): 
+  - message (string, optional): 
+  - status (string, required): 
+
+### CrmObjectSnapshotRequest
+  - objectId (integer, required): 
+  - objectTypeId (string, required): 
+  - portalId (integer, required): 
+  - properties (array, required): 
+
+### SubscriptionBatchUpdateRequest
+  - active (boolean, required): Whether to activate or pause the webhook subscription. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
+  - id (integer, required): The ID of the webhook subscription to update.
+
+### SubscriptionResponse
+  - active (boolean, required): Whether the subscription is active or paused. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
+  - createdAt (string, required): The timestamp when the webhook subscription was created, in ISO 8601 format (e.g., 2020-02-29T12:30:00Z).
+  - eventType (string, required): The type of event to listen for. Accepted values include contact.creation, contact.deletion, contact.propertyChange, and similar event types for other CRM objects and custom objects.
+  - eventTypeName (string, optional): The name of the event to listen for. This is used with custom objects to specify custom event types beyond the standard eventType enum values.
+  - id (string, required): The unique ID of the webhook subscription.
+  - objectTypeId (string, optional): The ID of the object type for the subscription. This can be a standard CRM object (e.g., 'contact', 'company', 'deal') or a custom object ID for custom object subscriptions.
+  - propertyName (string, optional): The internal name of the property to monitor for changes. Only applies when eventType is propertyChange.
+  - updatedAt (string, optional): The timestamp when the webhook subscription was last updated, in ISO 8601 format (e.g., 2020-02-29T12:30:00Z).
+
+### SubscriptionCreateRequest
+  - active (boolean, required): Determines if the subscription is active or paused. Defaults to false.
+  - eventType (string, required): Type of event to listen for. Can be one of `create`, `delete`, `deletedForPrivacy`, or `propertyChange`.
+  - eventTypeName (string, optional): The name of the event to listen for. This is used with custom objects to specify custom event types beyond the standard eventType enum values.
+  - objectTypeId (string, optional): The ID of the object type for the subscription. This can be a standard CRM object (e.g., 'contact', 'company', 'deal') or a custom object ID for custom object subscriptions.
+  - propertyName (string, optional): The internal name of the property to monitor for changes. Only applies when `eventType` is `propertyChange`.
+
+### BatchResponseJournalFetchResponse
+  - completedAt (string, required): 
+  - links (object, optional): 
+  - requestedAt (string, optional): 
+  - results (array, required): 
+  - startedAt (string, required): 
+  - status (string, required): 
+
+### ListMembershipSubscriptionUpsertRequest
+
+### Condition
+  - filterType (string, required): 
+  - operator (string, required): 
+  - property (string, required): 
+  - value (string, optional): 
+  - values (array, optional): 
+
+### BatchResponseSubscriptionResponse
+  - completedAt (string, required): The date and time when the batch operation was completed.
+  - errors (array, optional): 
+  - links (object, optional): A collection of related links associated with the batch operation.
+  - numErrors (integer, optional): 
+  - requestedAt (string, optional): The date and time when the batch operation was requested.
+  - results (array, required): The list of results from the batch operation.
+  - startedAt (string, required): The date and time when the batch operation started.
+  - status (string, required): The current status of the batch operation, which can be PENDING, PROCESSING, CANCELED, or COMPLETE.
+
+### FilterCreateRequest
+  - filter (Filter, required): 
+  - subscriptionId (integer, required): 
+
+### Error
+  - category (string, required): The error category
+  - context (object, optional): Context about the error condition
+  - correlationId (string, required): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array, optional): further information about the error
+  - links (object, optional): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### SettingsChangeRequest
+  - targetUrl (string, required): A publicly available URL for Hubspot to call where event payloads will be delivered. See [link-so-some-doc](#) for details about the format of these event payloads.
+  - throttling (ThrottlingSettings, required): 
+
+### CrmObjectSnapshotBatchRequest
+  - snapshotRequests (array, required): 
+
+### SubscriptionPatchRequest
+  - active (boolean, optional): Whether to activate or pause the webhook subscription. If true, the subscription will send webhook notifications. If false, the subscription is paused and will not send notifications.
+
+### JournalFetchResponse
+  - currentOffset (string, required): 
+  - expiresAt (string, required): 
+  - url (string, required): 
+
+### AssociationSubscriptionUpsertRequest
+
+### SubscriptionUpsertRequest
+
+### ActionOverrideRequest
+  - associatedObjectTypeIds (array, optional): 
+  - listIds (array, optional): 
+  - objectIds (array, optional): 
+  - properties (array, optional): 
+
+### Filter
+  - conditions (array, required): 
+
+### FilterCreateResponse
+  - filterId (integer, required): 
+
+### CollectionResponseSubscriptionResponseNoPaging
+  - results (array, required): 
+

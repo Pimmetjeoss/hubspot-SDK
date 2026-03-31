@@ -1,0 +1,71 @@
+# Crm Owners
+Owners - Parent pom
+
+## Endpoints
+
+### GET /crm/owners/2026-03
+
+Parameters:
+  - after (query, optional): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, optional): Whether to return only results that have been archived.
+  - email (query, optional): Filter by email address (optional)
+  - limit (query, optional): The maximum number of results to display per page.
+Response 200: successful operation
+Response default: 
+
+### GET /crm/owners/2026-03/{ownerId}
+Retrieve a specific owner by ID
+Parameters:
+  - ownerId (path, required): 
+  - archived (query, optional): Whether to return only results that have been archived.
+  - idProperty (query, optional): 
+Response 200: successful operation
+Response default: 
+
+## Schemas
+
+### ErrorDetail
+  - code (string, optional): The status code associated with the error detail
+  - context (object, optional): Context about the error condition
+  - in (string, optional): The name of the field or parameter in which the error was found.
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### ForwardPaging
+  - next (NextPage, optional): 
+
+### PublicOwner
+  - archived (boolean, required): Indicates whether the owner is archived.
+  - createdAt (string, required): The date and time when the owner was created.
+  - email (string, optional): The email address of the owner.
+  - firstName (string, optional): The first name of the owner.
+  - id (string, required): The unique identifier of the owner.
+  - lastName (string, optional): The last name of the owner.
+  - teams (array, optional): 
+  - type (string, required): The type of the owner, which can be either PERSON or QUEUE.
+  - updatedAt (string, required): The date and time when the owner was last updated.
+  - userId (integer, optional): The user ID of the owner.
+  - userIdIncludingInactive (integer, optional): The user ID of the owner, including inactive users.
+
+### PublicTeam
+  - id (string, required): 
+  - name (string, required): 
+  - primary (boolean, required): 
+
+### Error
+  - category (string, required): The error category
+  - context (object, optional): Context about the error condition
+  - correlationId (string, required): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array, optional): further information about the error
+  - links (object, optional): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### CollectionResponsePublicOwnerForwardPaging
+  - paging (ForwardPaging, optional): 
+  - results (array, required): 
+
+### NextPage
+  - after (string, required): A paging cursor token for retrieving subsequent pages.
+  - link (string, optional): A URL that can be used to retrieve the next page results.
+

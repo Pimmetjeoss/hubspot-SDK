@@ -1,0 +1,74 @@
+# Events Events
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /events/event-occurrences/2026-03
+Retrieve event occurrences
+Parameters:
+  - after (query, optional): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - before (query, optional): 
+  - eventType (query, optional): 
+  - id (query, optional): 
+  - limit (query, optional): The maximum number of results to display per page.
+  - objectId (query, optional): 
+  - objectProperty.{propname} (query, optional): 
+  - objectType (query, optional): 
+  - occurredAfter (query, optional): 
+  - occurredBefore (query, optional): 
+  - properties (query, optional): 
+  - property.{propname} (query, optional): 
+  - sort (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### GET /events/event-occurrences/2026-03/event-types
+Retrieve event types
+Response 200: successful operation
+Response default: 
+
+## Schemas
+
+### ErrorDetail
+  - code (string, optional): The status code associated with the error detail
+  - context (object, optional): Context about the error condition
+  - in (string, optional): The name of the field or parameter in which the error was found.
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### CollectionResponseExternalUnifiedEvent
+  - paging (Paging, optional): 
+  - results (array, required): An array of ExternalUnifiedEvent objects, each representing an individual event with its associated details.
+
+### ExternalUnifiedEvent
+  - eventType (string, required): The format of the `eventType` string is `ae{appId}_{eventTypeLabel}`, `pe{portalId}_{eventTypeLabel}`, or just `e_{eventTypeLabel}` for HubSpot events.
+  - id (string, required): A unique identifier for the event.
+  - objectId (string, required): The objectId of the object which did the event.
+  - objectType (string, required): The objectType for the object which did the event.
+  - occurredAt (string, required): An ISO 8601 timestamp when the event occurred.
+  - properties (object, required): A key-value map of event-specific properties. The available properties depend on the event type definition.
+
+### PreviousPage
+  - before (string, required): The cursor token to pass as the before query parameter to retrieve the previous page of results.
+  - link (string, optional): The full URL of the previous page of results, with the before cursor token included as a query parameter.
+
+### Paging
+  - next (NextPage, optional): 
+  - prev (PreviousPage, optional): 
+
+### Error
+  - category (string, required): The error category
+  - context (object, optional): Context about the error condition
+  - correlationId (string, required): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array, optional): further information about the error
+  - links (object, optional): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### VisibleExternalEventTypeNames
+  - eventTypes (array, required): List of event type names.
+
+### NextPage
+  - after (string, required): The cursor token to pass as the after query parameter to retrieve the next page of results.
+  - link (string, optional): The full URL of the next page of results, with the after cursor token included as a query parameter.
+

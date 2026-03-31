@@ -1,0 +1,113 @@
+# Audit Logs
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /account-info/2026-03/activity/audit-logs
+Retrieve audit logs
+Parameters:
+  - actingUserId (query, optional): 
+  - after (query, optional): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - fillFinalTimestamp (query, optional): 
+  - limit (query, optional): The maximum number of results to display per page.
+  - occurredAfter (query, optional): 
+  - occurredBefore (query, optional): 
+  - sort (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### GET /account-info/2026-03/activity/login
+Retrieve login activity
+Parameters:
+  - after (query, optional): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - limit (query, optional): The maximum number of results to display per page.
+  - userId (query, optional): 
+Response 200: successful operation
+Response default: 
+
+### GET /account-info/2026-03/activity/security
+Retrieve security history
+Parameters:
+  - after (query, optional): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - fromTimestamp (query, optional): 
+  - limit (query, optional): The maximum number of results to display per page.
+  - toTimestamp (query, optional): 
+  - userId (query, optional): 
+Response 200: successful operation
+Response default: 
+
+## Schemas
+
+### CollectionResponsePublicLoginAuditForwardPaging
+  - paging (ForwardPaging, optional): 
+  - results (array, required): 
+
+### ErrorDetail
+  - code (string, optional): The status code associated with the error detail
+  - context (object, optional): Context about the error condition
+  - in (string, optional): The name of the field or parameter in which the error was found.
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### CollectionResponsePublicApiUserActionEventForwardPaging
+  - paging (ForwardPaging, optional): 
+  - results (array, required): 
+
+### ForwardPaging
+  - next (NextPage, optional): 
+
+### PublicLoginAudit
+  - countryCode (string, optional): The approximate country code of the login
+  - email (string, optional): Email address of the user associated with the login.
+  - id (string, required): The login activity's unique ID.
+  - ipAddress (string, optional): IP address where the activity originated.
+  - location (string, optional): The approximate location where the login activity originated.
+  - loginAt (string, required): The time the login took place.
+  - loginSucceeded (boolean, required): Whether the login was successful or not.
+  - regionCode (string, optional): The approximate region code of the login
+  - userAgent (string, optional): Information about the device used for logging in.
+  - userId (integer, optional): The user's unique ID.
+
+### ActingUser
+  - userEmail (string, optional): The email address of the user who performed the action.
+  - userId (integer, required): The user's unique ID.
+
+### HydratedCriticalAction
+  - actingUser (string, optional): Email address of the user associated with the activity.
+  - countryCode (string, optional): The approximate country code
+  - createdAt (string, required): The time the activity took place.
+  - id (string, required): The activity's unique ID.
+  - infoUrl (string, optional): A link to the URL where the action was taken in the account.
+  - ipAddress (string, optional): IP address where the activity originated.
+  - location (string, optional): The approximate location where the activity took place.
+  - objectId (string, optional): The ID of the affected object.
+  - regionCode (string, optional): The approximate region code
+  - type (string, required): The type of activity.
+  - userId (integer, required): The user's unique ID.
+
+### PublicApiUserActionEvent
+  - actingUser (ActingUser, required): 
+  - action (string, required): The type of action taken.
+  - category (string, required): The category of the activity.
+  - id (string, required): The login activity's unique ID.
+  - occurredAt (string, required): The time that the action occurred at.
+  - subCategory (string, optional): The subcategory of the activity.
+  - targetObjectId (string, optional): The ID of the impacted object.
+
+### Error
+  - category (string, required): The error category
+  - context (object, optional): Context about the error condition
+  - correlationId (string, required): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array, optional): further information about the error
+  - links (object, optional): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### CollectionResponseHydratedCriticalActionForwardPaging
+  - paging (ForwardPaging, optional): 
+  - results (array, required): 
+
+### NextPage
+  - after (string, required): A paging cursor token for retrieving subsequent pages.
+  - link (string, optional): A URL that can be used to retrieve the next page results.
+

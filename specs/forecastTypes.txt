@@ -1,0 +1,67 @@
+# CRM Forecast Types
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /forecast-settings/v3/forecast-types
+
+  Response 200: successful operation
+  Response 401: Unauthorized - missing or invalid authentication
+  Response 403: Forbidden - insufficient permissions
+  Response default: 
+
+### GET /forecast-settings/v3/forecast-types/{forecastTypeId}
+
+  - forecastTypeId (path, req): The ID of the forecast type to retrieve
+  Response 200: successful operation
+  Response 401: Unauthorized - missing or invalid authentication
+  Response 403: Forbidden - insufficient permissions
+  Response 404: Forecast type not found
+  Response default: 
+
+## Schemas
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### ForecastTypeSettingPublicResponse
+  - amountInHomeCurrencyProperty (string): 
+  - amountOrDatePropertyRestrictedForUser (boolean): 
+  - amountProperty (string): 
+  - createdAt (string): 
+  - createdAtTimestamp (integer): 
+  - createdBy (integer): 
+  - dateProperty (string): 
+  - dealSplitProperties (): 
+  - defaultType (boolean): 
+  - forecastName (string): 
+  - forecastTypeId (integer): 
+  - id (string): 
+  - objectTypeId (string): 
+  - updatedAt (string): 
+  - updatedBy (integer): 
+  - updatedTimestamp (integer): 
+  - weightedAmountInHomeCurrencyProperty (string): 
+  - weightedAmountProperty (string): 
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### ForecastTypeDealSplitProperties
+  - dealCustomAmountProperty (string): 
+  - dealCustomAmountPropertyInHomeCurrency (string): 
+  - dealCustomDateProperty (string): 
+  - dealSplitCustomAmountProperty (string): 
+  - dealSplitCustomAmountPropertyInHomeCurrency (string): 
+  - dealSplitWeightedCustomAmountProperty (string): 
+  - dealSplitWeightedCustomAmountPropertyInHomeCurrency (string): 

@@ -1,0 +1,187 @@
+# CRM Associations Schema
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /crm/associations/2026-03/definitions/configurations/all
+Retrieve all association limits
+  Response 200: successful operation
+  Response default: 
+
+### GET /crm/associations/2026-03/definitions/configurations/{fromObjectType}/{toObjectType}
+Retrieve association limits
+  - fromObjectType (path, req): 
+  - toObjectType (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /crm/associations/2026-03/definitions/configurations/{fromObjectType}/{toObjectType}/batch/create
+Configure association limits
+  - fromObjectType (path, req): 
+  - toObjectType (path, req): 
+  Response 201: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### POST /crm/associations/2026-03/definitions/configurations/{fromObjectType}/{toObjectType}/batch/purge
+Remove association limits
+  - fromObjectType (path, req): 
+  - toObjectType (path, req): 
+  Response 204: No content
+  Response default: 
+
+### POST /crm/associations/2026-03/definitions/configurations/{fromObjectType}/{toObjectType}/batch/update
+Update association limits
+  - fromObjectType (path, req): 
+  - toObjectType (path, req): 
+  Response 200: successful operation
+  Response 207: multiple statuses
+  Response default: 
+
+### GET /crm/associations/2026-03/{fromObjectType}/{toObjectType}/labels
+Retrieve association labels
+  - fromObjectType (path, req): 
+  - toObjectType (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### PUT /crm/associations/2026-03/{fromObjectType}/{toObjectType}/labels
+Update association label
+  - fromObjectType (path, req): 
+  - toObjectType (path, req): 
+  Response 204: No content
+  Response default: 
+
+### POST /crm/associations/2026-03/{fromObjectType}/{toObjectType}/labels
+Create association label
+  - fromObjectType (path, req): 
+  - toObjectType (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /crm/associations/2026-03/{fromObjectType}/{toObjectType}/labels/{associationTypeId}
+Delete association label
+  - associationTypeId (path, req): 
+  - fromObjectType (path, req): 
+  - toObjectType (path, req): 
+  Response 204: No content
+  Response default: 
+
+## Schemas
+
+### BatchResponsePublicAssociationDefinitionUserConfigurationWithErrors
+  - completedAt (string): 
+  - errors (array): 
+  - links (object): 
+  - numErrors (integer): 
+  - requestedAt (string): 
+  - results (array): 
+  - startedAt (string): 
+  - status (string): 
+
+### PublicAssociationDefinitionCreateRequest
+  - inverseLabel (string): An optional descriptor that clarifies the reverse relationship in the association.
+  - label (string): A descriptor that provides context about the relationship between two associated CRM objects.
+  - name (string): The unique identifier for the association definition.
+
+### StandardError
+  - category (string): The main category of the error.
+  - context (object): Additional context-specific information related to the error.
+  - errors (array): The detailed error objects.
+  - id (string): A unique ID for the error instance.
+  - links (object): URLs linking to documentation or resources associated with the error.
+  - message (string): A human-readable string describing the error and possible remediation steps.
+  - status (string): The HTTP status code associated with the error.
+  - subCategory (object): A more specific error category within each main category.
+
+### BatchInputPublicAssociationSpec
+  - inputs (array): 
+
+### BatchResponsePublicAssociationDefinitionConfigurationUpdateResult
+  - completedAt (string): The date and time when the batch update operation was completed.
+  - links (object): URLs linking to documentation or resources associated with the batch update operation.
+  - requestedAt (string): The date and time when the batch update operation was requested.
+  - results (array): 
+  - startedAt (string): The date and time when the batch update operation started.
+  - status (string): The current status of the batch update operation, which can be CANCELED, COMPLETE, PENDING, or PROCESSING.
+
+### CollectionResponsePublicAssociationDefinitionUserConfigurationNoPaging
+  - results (array): 
+
+### PublicAssociationDefinitionConfigurationUpdateResult
+  - category (string): The category of the association, which can be HUBSPOT_DEFINED, INTEGRATOR_DEFINED, or USER_DEFINED.
+  - typeId (integer): An integer value used to uniquely identify a specific association type within its Association Category.
+  - userEnforcedMaxToObjectIds (integer): The maximum number of object IDs that a user can enforce for associations.
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### PublicAssociationDefinitionConfigurationUpdateRequest
+  - category (string): Specifies the category of the association, which can be HUBSPOT_DEFINED, INTEGRATOR_DEFINED, or USER_DEFINED.
+  - maxToObjectIds (integer): Defines the maximum number of target object IDs that can be associated.
+  - typeId (integer): A unique identifier for the association type.
+
+### PublicAssociationDefinitionConfigurationCreateRequest
+  - category (string): Specifies the category of the association, which can be HUBSPOT_DEFINED, INTEGRATOR_DEFINED, or USER_DEFINED.
+  - maxToObjectIds (integer): The maximum number of target object IDs that can be associated with a single source object.
+  - typeId (integer): An integer used to uniquely identify a specific association type within its category.
+
+### PublicAssociationDefinitionUpdateRequest
+  - associationTypeId (integer): The unique identifier for the association type.
+  - inverseLabel (string): An optional descriptor for the inverse relationship between associated records.
+  - label (string): A descriptor that provides context about the relationship between associated records.
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### AssociationSpecWithLabel
+  - category (string): Association category. Can be HUBSPOT_DEFINED, USER_DEFINED, INTEGRATOR_DEFINED or WORK
+  - label (string): An optional descriptor that provides additional context about the relationship between associated records, such as "Mentor" and "Mentee".
+  - typeId (integer): An integer value used to uniquely identify a specific association type within its Association Category.
+
+### CollectionResponseAssociationSpecWithLabelNoPaging
+  - results (array): 
+
+### PublicAssociationDefinitionUserConfiguration
+  - category (string): The category of the association, which can be HUBSPOT_DEFINED, INTEGRATOR_DEFINED, or USER_DEFINED.
+  - label (string): A descriptor providing context about the relationship between associated records.
+  - typeId (integer): A unique integer identifier for the association type within its category.
+  - userEnforcedMaxToObjectIds (integer): The maximum number of target object IDs that a user can enforce in an association.
+
+### BatchResponsePublicAssociationDefinitionUserConfiguration
+  - completedAt (string): The date and time when the batch operation was completed.
+  - links (object): A collection of URLs linking to related documentation or resources associated with the batch operation.
+  - requestedAt (string): The date and time when the batch operation was requested.
+  - results (array): 
+  - startedAt (string): The date and time when the batch operation started.
+  - status (string): The current status of the batch operation, which can be CANCELED, COMPLETE, PENDING, or PROCESSING.
+
+### BatchInputPublicAssociationDefinitionConfigurationUpdateRequest
+  - inputs (array): 
+
+### BatchResponsePublicAssociationDefinitionConfigurationUpdateResultWithErrors
+  - completedAt (string): 
+  - errors (array): 
+  - links (object): 
+  - numErrors (integer): 
+  - requestedAt (string): 
+  - results (array): 
+  - startedAt (string): 
+  - status (string): 
+
+### BatchInputPublicAssociationDefinitionConfigurationCreateRequest
+  - inputs (array): 
+
+### PublicAssociationSpec
+  - category (string): Specifies the category of the association, which can be HUBSPOT_DEFINED, INTEGRATOR_DEFINED, or USER_DEFINED.
+  - typeId (integer): A unique integer identifier for the specific association type within its category.

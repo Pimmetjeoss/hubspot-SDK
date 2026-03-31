@@ -1,0 +1,345 @@
+# Scheduler Meetings
+Meetings Service For HubSpot Sales
+
+## Endpoints
+
+### POST /scheduler/2026-03/meetings/calendar
+Create a new calendar meeting event.
+  - organizerUserId (query, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /scheduler/2026-03/meetings/meeting-links
+Get meeting scheduling pages
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - limit (query, opt): The maximum number of results to display per page.
+  - name (query, opt): 
+  - organizerUserId (query, opt): 
+  - type (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /scheduler/2026-03/meetings/meeting-links/book
+Book a meeting
+
+  Response 200: successful operation
+  Response default: 
+
+### GET /scheduler/2026-03/meetings/meeting-links/book/availability-page/{slug}
+Get the availability for a meeting
+  - slug (path, req): 
+  - timezone (query, req): 
+  - monthOffset (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /scheduler/2026-03/meetings/meeting-links/book/{slug}
+List booking information
+  - slug (path, req): 
+  - timezone (query, req): 
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### ExternalCalendarMeetingEventCreateProperties
+  - hs_activity_type (string): The activity type of the meeting. Acceptable values are based on portal defined call and meeting types.
+  - hs_attachment_ids (array): 
+  - hs_attendee_owner_ids (array): 
+  - hs_internal_meeting_notes (string): Internal notes related to the meeting.
+  - hs_meeting_body (string): The description of the meeting and calendar event.
+  - hs_meeting_end_time (string): The time that the meeting should end in ISO 8601 format.
+  - hs_meeting_location (string): The physical address, virtual location, or phone number where the meeting will take place.
+  - hs_meeting_location_type (string): The type of location for the meeting. Acceptable values are: ADDRESS, CUSTOM, PHONE.
+  - hs_meeting_outcome (string): The outcome of the meeting. Acceptable default values are: SCHEDULED, COMPLETED, RESCHEDULED, NO_SHOW, CANCELED. This property can be changed to include additional custom values.
+  - hs_meeting_start_time (string): The time that the meeting should start in ISO 8601 format.
+  - hs_meeting_title (string): The title of the meeting and calendar event.
+  - hs_timestamp (string): The time that the meeting should start in ISO 8601 format. This value should be the same as `hs_meeting_start_time`.
+  - hubspot_owner_id (string): The ownerId of the HubSpot user who will host the meeting.
+
+### ExternalMeetingBooking
+  - duration (integer): The duration of the meeting in milliseconds.
+  - email (string): The email address of the person booking the meeting.
+  - firstName (string): The first name of the person booking the meeting.
+  - formFields (array): 
+  - lastName (string): The last name of the person booking the meeting.
+  - legalConsentResponses (array): 
+  - likelyAvailableUserIds (array): 
+  - locale (string): The locale used for formatting dates and times in the meeting booking.
+  - slug (string): The unique path identifier for the meeting page.
+  - startTime (string): The date and time when the meeting is scheduled to start, in ISO 8601 format.
+  - timezone (string): The timezone in which the meeting is scheduled.
+
+### ExternalMeetingAvailability
+  - endMillisUtc (integer): The end time of the meeting availability, represented as Unix time in milliseconds.
+  - startMillisUtc (integer): The start time of the meeting availability, represented as Unix time in milliseconds.
+
+### ExternalMeetingsLinkSettings
+  - availability (object): An array containing the closed range availability for a meeting link. Closed range times are provided as minute offsets from midnight (e.g., 540 corresponds to 9am).
+  - customAvailabilityEndDate (integer): The end date for a meeting link's custom availability window, represented as Unix time in milliseconds.
+  - customAvailabilityStartDate (integer): The start date for a meeting link's custom availability window, represented as Unix time in milliseconds.
+  - displayInfo (): 
+  - durations (array): 
+  - formFields (array): 
+  - guestSettings (): 
+  - language (string): The language setting used for the meeting link.
+  - legalConsentEnabled (boolean): Whether the legal consent checkbox is displayed during meeting booking.
+  - legalConsentOptions (): 
+  - locale (string): The locale setting used for formatting dates and times in the meeting link.
+  - location (string): The physical or virtual location where the meeting will take place.
+  - meetingBufferTime (integer): The minimum buffer time in milliseconds between consecutive meetings.
+  - ownerPrioritized (boolean): Indicates whether the meeting owner is prioritized during booking. Only applies to link types of ROUND_ROBIN.
+  - redirectUrl (string): The URL to redirect to after a meeting is booked.
+  - startTimeIncrementMinutes (string): The increment for available start times of meetings, spelt out as a word (e.g. 15 minute increment corresponds to `FIFTEEN`). `MEETING_DURATION` is also a valid value.
+  - weeksToAdvertise (integer): Legacy property that indicates the number of weeks in advance that availability is advertised. May be outdated or superseded by other properties.
+  - welcomeScreenInfo (): 
+
+### ExternalClosedRange
+  - end (integer): The end value of the closed range, represented as an integer.
+  - start (integer): The start value of the closed range, represented as an integer.
+
+### ExternalBookingInfo
+  - allUsersBusyTimes (array): 
+  - brandingMetadata (): 
+  - customParams (): 
+  - isOffline (boolean): Whether the meeting was booked offline, meaning no associated calendar event was created.
+  - linkAvailability (): 
+  - linkId (string): The unique identifier for the meeting link.
+  - linkType (string): The type of the meeting link. Accepted values are: GROUP_CALENDAR, PERSONAL_LINK, ROUND_ROBIN_CALENDAR.
+
+### ExternalLinkAvailability
+  - hasMore (boolean): Whether there are more available meeting times beyond the returned set.
+  - linkAvailabilityByDuration (object): Available booking slots for the meeting, grouped by the duration.
+
+### ExternalTimeRange
+  - end (integer): The end time of the time range, represented as Unix time in milliseconds.
+  - start (integer): The start time of the time range, represented as Unix time in milliseconds.
+
+### ExternalGuestSettings
+  - canAddGuests (boolean): Indicates whether guests can be added to the meeting.
+  - maxGuestCount (integer): The maximum number of guests that can be added to the meeting.
+
+### ExternalValidatedFormField
+  - fieldType (string): The specific input type of the form field. Corresponds to property types (e.g., `select`, `radio`, `date`, etc).
+  - isCustom (boolean): Whether the form field is a custom field.
+  - label (string): The text label associated with the form field.
+  - name (string): The name identifier for the form field, includes underscores in place of spaces (e.g., the label `my form` is converted to `my_form`).
+  - translatedLabel (string): The translated text label for the form field.
+  - value (string): The value associated with the form field.
+  - valueLabel (string): The text label associated to a form field selection or option.
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### ExternalBookingFormField
+  - name (string): The name of the form field.
+  - value (string): The value associated with the form field.
+
+### ExternalMeetingsWelcomeScreenInfo
+  - description (string): A brief description displayed the welcome screen below the title.
+  - logoUrl (string): The URL of the logo image to be displayed on the welcome screen, only used if `useCompanyLogo` is false.
+  - showWelcomeScreen (boolean): Deprecated property. Value can be ignored but will always be false.
+  - title (string): The main heading displayed on the welcome screen.
+  - useCompanyLogo (boolean): Whether the company's logo should be displayed on the welcome screen.
+
+### ExternalCalendarMeetingEventCreateRequest
+  - associations (array): 
+  - emailReminderSchedule (): 
+  - properties (): 
+  - timezone (string): The timezone property that will be set on the meeting event.
+
+### ExternalAssociationCreateRequest
+  - to (): 
+  - types (array): 
+
+### ExternalLinkFormField
+  - fieldType (string): The specific field type of the form field. Corresponds to property types (e.g., `select`, `radio`, `date`, etc)
+  - isCustom (boolean): Whether the form field is a custom field.
+  - isRequired (boolean): Whether the form field is mandatory.
+  - label (string): The text label for the form field.
+  - name (string): The name identifier for the form field.
+  - options (array): 
+  - type (string): The data type of the form field accepts (e.g. `date`, `enumeration`,  etc)
+
+### ExternalUserProfile
+  - email (string): The email address of the user.
+  - firstName (string): The first name of the user.
+  - fullName (string): The full name of the user.
+  - lastName (string): The last name of the user.
+
+### ExternalCalenderMeetingEventResponse
+  - createdAt (string): The date and time when the meeting event was initially created, in ISO 8601 format.
+  - id (string): The unique identifier for the meeting event.
+  - lastUpdatedAt (string): The date and time when the meeting event was last updated, in ISO 8601 format.
+  - properties (): 
+
+### CollectionResponseWithTotalExternalLinkMetadata
+  - paging (): 
+  - results (array): 
+  - total (integer): 
+
+### ExternalMeetingsUser
+  - calendarProvider (string): The calendar provider associated with the user. Accepted values are: GOOGLE, OFFICE365, EXCHANGE, UNKNOWN.
+  - id (string): The ID for the meetings user. This value is different than the userId.
+  - isSalesStarter (boolean): Whether the user has a sales starter seat.
+  - userId (string): The ID of the user.
+  - userProfile (): 
+
+### ExternalBrandingMetadata
+  - accent2Color (string): The secondary accent color used in branding.
+  - accentColor (string): The primary accent color used in branding.
+  - companyAddressLine1 (string): The first line of the company's address.
+  - companyAddressLine2 (string): The second line of the company's address.
+  - companyAvatar (string): The URL of the company's avatar image.
+  - companyCity (string): The city where the company is located.
+  - companyCountry (string): The country where the company is located.
+  - companyDomain (string): The domain of the company's website.
+  - companyName (string): The name of the company.
+  - companyState (string): The state where the company is located.
+  - companyZip (string): The ZIP code of the company's location.
+  - logoAltText (string): The alternative text for the current logo.
+  - logoHeight (integer): The height of the logo in pixels.
+  - logoUrl (string): The URL of a custom logo image.
+  - logoWidth (integer): The width of the logo in pixels.
+  - primaryColor (string): The primary color used in branding.
+  - secondaryColor (string): The secondary color used in branding.
+  - showMarketingAd (boolean): Whether Hubspot Marketing ads are shown.
+  - showSalesAd (boolean): Whether Hubspot Sales ads are shown.
+
+### ExternalEmailReminderSchedule
+  - reminders (array): 
+  - shouldIncludeInviteDescription (boolean): Whether the invite description should be included in the reminder.
+
+### PublicObjectId
+  - id (string): The unique identifier for an object.
+
+### ExternalReminder
+  - numberOfTimeUnits (integer): The number of timeUnits prior to the meeting start when the reminder will be sent.
+  - timeUnit (string): Accepted values are: WEEKS, DAYS, HOURS, MINUTES.
+
+### Paging
+  - next (): 
+  - prev (): 
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### ExternalCalendarMeetingEventResponseProperties
+  - hs_activity_type (string): The activity type of the meeting. Acceptable values are based on portal defined call and meeting types.
+  - hs_attachment_ids (array): 
+  - hs_attendee_owner_ids (array): 
+  - hs_engagement_source (string): The source of the engagement, will always be `MEETINGS`.
+  - hs_engagement_source_id (string): The ID associated with the process created the engagement. Should always be empty when creating meeting events through this API.
+  - hs_include_description_in_reminder (string): Whether to include the meeting description in the reminder.
+  - hs_internal_meeting_notes (string): Internal notes related to the meeting.
+  - hs_meeting_body (string): The description of the meeting and calendar event.
+  - hs_meeting_end_time (string): The end time of the meeting in ISO 8601 format.
+  - hs_meeting_external_url (string): The calendar event URL for the meeting.
+  - hs_meeting_location (string): The physical address, virtual location, or phone number where the meeting will take place.
+  - hs_meeting_location_type (string): The type of location for the meeting. Acceptable values are: ADDRESS, CUSTOM, PHONE.
+  - hs_meeting_outcome (string): The outcome of the meeting. Acceptable default values are: SCHEDULED, COMPLETED, RESCHEDULED, NO_SHOW, CANCELED. This property can be changed to include additional custom values.
+  - hs_meeting_start_time (string): The start time of the meeting in ISO 8601 format.
+  - hs_meeting_title (string): The title of the meeting and calendar event.
+  - hs_timestamp (string): The time that the meeting should start in ISO 8601 format. This value should be the same as `hs_meeting_start_time`.
+  - hs_unique_id (string): The unique ID of the created calendar event.
+  - hubspot_owner_id (string): The owner ID of the HubSpot user hosting the meeting.
+
+### ExternalOption
+  - description (string): A brief description of the option.
+  - displayOrder (integer): The order in which the option should be displayed.
+  - doubleData (number): Deprecated property. Will always be 0.
+  - hidden (boolean): Whether the option should be hidden from the user.
+  - label (string): The text label for the option.
+  - readOnly (boolean): Whether the option is read-only.
+  - value (string): The value associated with the option.
+
+### ExternalMeetingBookingResponse
+  - bookingTimezone (string): The timezone the meeting was booked from.
+  - calendarEventId (string): The unique identifier for the meeting's calendar event.
+  - contactId (string): The ID of the contact associated to the meeting.
+  - duration (integer): The duration of the meeting in milliseconds.
+  - end (string): The date and time when the meeting is scheduled to end, in ISO 8601 format.
+  - formFields (array): 
+  - guestEmails (array): 
+  - isOffline (boolean): Whether the meeting was booked offline and no associated calendar event was created.
+  - legalConsentResponses (array): 
+  - locale (string): The locale the meeting was booked with, used to determine date formatting in calendar event description.
+  - location (string): The physical or virtual location where the meeting will take place.
+  - start (string): The date and time when the meeting is scheduled to start, in ISO 8601 format.
+  - subject (string): The title of the meeting and calendar event.
+  - webConferenceMeetingId (string): The unique identifier for the web conference meeting.
+  - webConferenceUrl (string): The URL for accessing the meeting's web conference.
+
+### ExternalLinkAvailabilityAndBusyTimes
+  - allUsersBusyTimes (array): 
+  - linkAvailability (): 
+
+### ExternalLinkAvailabilityForDuration
+  - availabilities (array): 
+  - meetingDurationMillis (integer): The duration of the meeting in milliseconds.
+
+### ExternalLinkDisplayInfo
+  - avatar (string): The URL of the user's custom uploaded avatar image.
+  - companyAvatar (string): The URL of the company's avatar image.
+  - headline (string): Deprecated field with no impact of link display info.
+  - publicDisplayAvatarOption (string): Option for determining which avatar to display on scheduling page. Accepted values are: PROFILE_IMAGE, COMPANY_LOGO, CUSTOM_AVATAR,
+
+### AssociationSpec
+  - associationCategory (string): The category of the association, such as "HUBSPOT_DEFINED".
+  - associationTypeId (integer): The ID representing the specific type of association.
+
+### ExternalLegalConsentResponse
+  - communicationTypeId (string): The ID of communication consent form being recorded.
+  - consented (boolean): Whether the user has given consent for the specified communication type.
+
+### ExternalUserBusyTimes
+  - busyTimes (array): 
+  - isOffline (boolean): Whether the user is offline.
+  - meetingsUser (): 
+
+### ExternalLegalConsentOptions
+  - communicationConsentCheckboxes (array): 
+  - communicationConsentText (string): The text that describes the consent for communication preferences.
+  - isLegitimateInterest (boolean): Whether the legal basis for processing is legitimate interest.
+  - legitimateInterestLegalBasis (string): The legal basis for processing under legitimate interest. Accepted values are: LEGITIMATE_INTEREST_PQL, LEGITIMATE_INTEREST_CLIENT, PERFORMANCE_OF_CONTRACT, CONSENT_WITH_NOTICE, NON_GDPR, PROCESS_AND_STORE, LEGITIMATE_INTEREST_OTHER.
+  - legitimateInterestSubscriptionTypes (array): 
+  - privacyPolicyText (string): The text that describes the data processing privacy policy.
+  - processingConsentCheckboxLabel (string): The label for the checkbox used to obtain consent for data processing.
+  - processingConsentFooterText (string): The footer text accompanying the consent for data processing. This field is not used by the meeting platform and will always be empty.
+  - processingConsentText (string): The text that describes the consent for processing personal data.
+  - processingConsentType (string): The type of consent required for processing. Accepted values are: IMPLICIT, REQUIRED_CHECKBOX.
+
+### PreviousPage
+  - before (string): A paging cursor token for retrieving previous pages.
+  - link (string): A URL that can be used to retrieve the previous pages' results.
+
+### ExternalLinkMetadata
+  - createdAt (string): The Unix time in milliseconds when the meeting link was created.
+  - defaultLink (boolean): Whether the meeting link is the user's default link.
+  - id (string): The unique identifier for the meeting link.
+  - link (string): The URL of the meeting link.
+  - name (string): The name of the meeting link.
+  - organizerUserId (string): The user ID of the meeting link's organizer.
+  - slug (string): The slug of the meeting link, located directly after the domain in the URL.
+  - type (string): The type of the external meeting link. Accepted values are: PERSONAL_LINK, GROUP_CALENDAR, ROUND_ROBIN_CALENDAR.
+  - updatedAt (string): The Unix time in milliseconds when the meeting link was last updated.
+  - userIdsOfLinkMembers (array): 
+
+### ExternalCommunicationConsentCheckbox
+  - communicationTypeId (string): The ID of the communication consent form being recorded.
+  - label (string): The text label describing the consent being given.
+  - required (boolean): Whether the consent checkbox is required.
+
+### NextPage
+  - after (string): A paging cursor token for retrieving subsequent pages.
+  - link (string): A URL that can be used to retrieve the next page results.

@@ -1,0 +1,158 @@
+# Sequences
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /automation/sequences/2026-03
+Retrieve sequences
+  - userId (query, req): 
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - limit (query, opt): The maximum number of results to display per page.
+  - name (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /automation/sequences/2026-03/enrollments
+Enroll a contact in a sequence
+  - userId (query, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /automation/sequences/2026-03/enrollments/contact/{contactId}
+Retrieve the enrollment status of a contact
+  - contactId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /automation/sequences/2026-03/{sequenceId}
+Retrieve details for a sequence
+  - sequenceId (path, req): 
+  - userId (query, req): 
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### CollectionResponseWithTotalPublicSequenceLiteResponse
+  - paging (): 
+  - results (array): An array of PublicSequenceLiteResponse objects, each representing a lightweight version of a sequence.
+  - total (integer): An integer representing the total number of sequence items available.
+
+### PublicSequenceStepDependencyResponse
+  - createdAt (string): The date and time when the step dependency was created.
+  - dependencyType (string): The type of dependency between sequence steps with accepted values being TASK_COMPLETION or MANUAL_PAUSE.
+  - id (string): The unique identifier of the step dependency.
+  - reliesOnSequenceStepId (string): The unique identifier of the sequence step that is responsible for creating and resolving this dependency.
+  - reliesOnStepOrder (integer): The order number of the step that is responsible for creating and resolving this dependency.
+  - requiredBySequenceStepId (string): The unique identifier of the sequence step that requires this dependency.
+  - requiredByStepOrder (integer): The order number of the step that requires this dependency.
+  - updatedAt (string): The date and time when the step dependency was last updated.
+
+### Paging
+  - next (): 
+  - prev (): 
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### PublicSequenceEnrollmentResponse
+  - enrolledAt (string): The date and time when the contact was enrolled in the sequence.
+  - enrolledBy (string): The identifier of the user who enrolled the contact in the sequence.
+  - enrolledByEmail (string): The email address of the user who enrolled the contact in the sequence.
+  - id (string): The unique identifier for the sequence enrollment.
+  - sequenceId (string): The unique identifier of the sequence in which the contact is enrolled.
+  - sequenceName (string): The name of the sequence in which the contact is enrolled.
+  - toEmail (string): The email address of the contact enrolled in the sequence.
+  - updatedAt (string): The date and time when the sequence enrollment was last updated.
+
+### PublicSequenceStepResponse
+  - actionType (string): The type of action to be performed in the sequence step.
+  - createdAt (string): The date and time when the sequence step was created.
+  - delayMillis (integer): The delay in milliseconds before the sequence step is executed.
+  - emailPattern (): 
+  - id (string): The unique identifier of the sequence step.
+  - stepOrder (integer): The order of the step within the sequence.
+  - taskPattern (): 
+  - updatedAt (string): The date and time when the sequence step was last updated.
+
+### PublicSequenceEnrollmentLiteResponse
+  - enrolledAt (string): The date and time when the contact was enrolled in the sequence.
+  - id (string): The unique identifier for the sequence enrollment.
+  - toEmail (string): The email address of the contact enrolled in the sequence.
+  - updatedAt (string): The date and time when the sequence enrollment was last updated.
+
+### PublicSequenceResponse
+  - createdAt (string): The date and time when the sequence was created.
+  - dependencies (array): An array of dependencies for the sequence steps, each represented as a PublicSequenceStepDependencyResponse object.
+  - folderId (string): The identifier of the folder containing the sequence.
+  - id (string): The unique identifier for the sequence.
+  - name (string): The name of the sequence.
+  - settings (): 
+  - steps (array): An array of steps included in the sequence, each represented by a PublicSequenceStepResponse object.
+  - updatedAt (string): The date and time when the sequence was last updated.
+  - userId (string): The ID of the user associated with the sequence.
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### PublicSequenceLiteResponse
+  - createdAt (string): The date and time when the sequence was created.
+  - folderId (string): The ID of the folder containing the sequence.
+  - id (string): The unique identifier of the sequence.
+  - name (string): The name of the sequence.
+  - updatedAt (string): The date and time when the sequence was last updated.
+  - userId (string): The ID of the user associated with the sequence.
+
+### PublicEmailPatternResponse
+  - createdAt (string): The date and time when the email pattern was created.
+  - id (string): The unique identifier of the email pattern.
+  - templateId (string): The unique identifier of the email template associated with the pattern.
+  - threadEmailToStepOrder (integer): The order identifying the previous step to which the email thread is linked.
+  - updatedAt (string): The date and time when the email pattern was last updated.
+
+### PublicSequenceSettingsResponse
+  - createdAt (string): The timestamp of when the sequence settings were created.
+  - eligibleFollowUpDays (string): Specifies the days on which follow-up actions are allowed.
+  - id (string): The unique identifier for the sequence settings.
+  - individualTaskRemindersEnabled (boolean): Indicates whether individual task reminders are enabled.
+  - sellingStrategy (string): (deprecated) Defines the unenrollment strategy, with accepted values being ACCOUNT_BASED or LEAD_BASED. If ACCOUNT_BASED is used, all contacts associated with the same company will be unenrolled if one contact meets any of the unenrollment criteria.
+  - sendWindowEndMinute (integer): Indicates the end minute of the time window during which automated emails can be sent.
+  - sendWindowStartMinute (integer): Indicates the start minute of the time window during which automated emails can be sent.
+  - taskReminderMinute (integer): Specifies the minute of day at which task reminders are triggered.
+  - updatedAt (string): The timestamp of when the sequence settings were last updated.
+
+### PreviousPage
+  - before (string): A string token used to identify the position before the current page in the pagination sequence.
+  - link (string): A URL string that provides a direct link to the previous page of results.
+
+### PublicSequenceEnrollmentRequest
+  - contactId (string): The unique identifier of the contact to be enrolled in the sequence.
+  - senderAliasAddress (string): The alias email address used by the sender when enrolling the contact.
+  - senderEmail (string): The email address of the sender enrolling the contact in the sequence.
+  - sequenceId (string): The unique identifier of the sequence in which the contact will be enrolled.
+
+### NextPage
+  - after (string): A paging cursor token for retrieving subsequent pages.
+  - link (string): A URL that can be used to retrieve the next page results.
+
+### PublicTaskPatternResponse
+  - createdAt (string): The date and time when the task pattern was created.
+  - id (string): The unique identifier for the task pattern.
+  - notes (string): Additional notes or comments associated with the task.
+  - queueId (integer): The identifier for the queue associated with the task.
+  - subject (string): The subject line of the task.
+  - taskPriority (string): The priority level assigned to the task.
+  - taskType (string): The type of task, such as an email or call.
+  - templateId (integer): The identifier for the template used in the task.
+  - threadEmailToStepOrder (integer): The order of the step to which the email thread is related.
+  - updatedAt (string): The date and time when the task pattern was last updated.

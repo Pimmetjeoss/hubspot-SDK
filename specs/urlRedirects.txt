@@ -1,0 +1,99 @@
+# Url Redirects
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /cms/url-redirects/2026-03
+Retrieve redirects
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/url-redirects/2026-03
+Create redirect
+  Response 201: successful operation
+  Response default: 
+
+### GET /cms/url-redirects/2026-03/{urlRedirectId}
+Get details for a redirect
+  - urlRedirectId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /cms/url-redirects/2026-03/{urlRedirectId}
+Delete a redirect
+  - urlRedirectId (path, req): 
+  Response 204: No content
+  Response default: 
+
+### PATCH /cms/url-redirects/2026-03/{urlRedirectId}
+Update a redirect
+  - urlRedirectId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### UrlMapping
+  - created (string): The date and time when the URL mapping was initially created.
+  - destination (string): The destination URL, where the target URL should be redirected if it matches the `routePrefix`.
+  - id (string): The unique ID of this URL redirect.
+  - isMatchFullUrl (boolean): Whether the `routePrefix` should match on the entire URL, including the domain.
+  - isMatchQueryString (boolean): Whether the `routePrefix` should match on the entire URL path, including the query string.
+  - isOnlyAfterNotFound (boolean): Whether the URL redirect mapping should apply only if a live page on the URL isn't found. If False, the URL redirect mapping will take precedence over any existing page.
+  - isPattern (boolean): Whether the `routePrefix` should match based on pattern.
+  - isProtocolAgnostic (boolean): Whether the `routePrefix` should match both HTTP and HTTPS protocols.
+  - isTrailingSlashOptional (boolean): Whether a trailing slash will be ignored.
+  - precedence (integer): Used to prioritize URL redirection. If a given URL matches more than one redirect, the one with the **lower** precedence will be used.
+  - redirectStyle (integer): The type of redirect to create. Options include: 301 (permanent), 302 (temporary), or 305 (proxy). Find more details [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).
+  - routePrefix (string): The target incoming URL, path, or pattern to match for redirection.
+  - updated (string): The date and time when the URL mapping was last modified.
+
+### ForwardPaging
+  - next (): 
+
+### UrlMappingCreateRequestBody
+  - destination (string): The destination URL, where the target URL should be redirected if it matches the `routePrefix`.
+  - isMatchFullUrl (boolean): Whether the `routePrefix` should match on the entire URL, including the domain.
+  - isMatchQueryString (boolean): Whether the `routePrefix` should match on the entire URL path, including the query string.
+  - isOnlyAfterNotFound (boolean): Whether the URL redirect mapping should apply only if a live page on the URL isn't found. If False, the URL redirect mapping will take precedence over any existing page.
+  - isPattern (boolean): Whether the `routePrefix` should match based on pattern.
+  - isProtocolAgnostic (boolean): Whether the `routePrefix` should match both HTTP and HTTPS protocols.
+  - isTrailingSlashOptional (boolean): Whether a trailing slash will be ignored.
+  - precedence (integer): Used to prioritize URL redirection. If a given URL matches more than one redirect, the one with the **lower** precedence will be used.
+  - redirectStyle (integer): The type of redirect to create. Options include: 301 (permanent), 302 (temporary), or 305 (proxy). Find more details [here](https://knowledge.hubspot.com/cos-general/how-to-redirect-a-hubspot-page).
+  - routePrefix (string): The target incoming URL, path, or pattern to match for redirection.
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### NextPage
+  - after (string): The cursor value indicating where to begin fetching the next page of results in a paginated collection.
+  - link (string): An optional URL for directly accessing the next page of results.
+
+### CollectionResponseWithTotalUrlMappingForwardPaging
+  - paging (): 
+  - results (array): An array of UrlMapping objects, each representing a specific URL mapping.
+  - total (integer): The total number of URL mappings available.

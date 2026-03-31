@@ -1,0 +1,98 @@
+# CMS Source Code
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### POST /cms/source-code/2026-03/extract/async
+Extract a zip file
+  Response 202: accepted
+  Response default: 
+
+### GET /cms/source-code/2026-03/extract/async/tasks/{taskId}/status
+Get extraction status
+  - taskId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/source-code/2026-03/{environment}/content/{path}
+Download a file
+  - environment (path, req): 
+  - path (path, req): 
+  Response default: 
+
+### PUT /cms/source-code/2026-03/{environment}/content/{path}
+Create or update a file
+  - environment (path, req): 
+  - path (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/source-code/2026-03/{environment}/content/{path}
+Create a file
+  - environment (path, req): 
+  - path (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /cms/source-code/2026-03/{environment}/content/{path}
+Delete a file
+  - environment (path, req): 
+  - path (path, req): 
+  Response 204: No content
+  Response default: 
+
+### GET /cms/source-code/2026-03/{environment}/metadata/{path}
+Get the metadata for a file
+  - environment (path, req): 
+  - path (path, req): 
+  - properties (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/source-code/2026-03/{environment}/validate/{path}
+Validate the contents of a file
+  - environment (path, req): 
+  - path (path, req): 
+  Response default: 
+
+## Schemas
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### AssetFileMetadata
+  - archivedAt (integer): Timestamp of when the object was archived (deleted).
+  - children (array): If the object is a folder, contains the filenames of the files within the folder.
+  - createdAt (integer): Timestamp of when the object was first created.
+  - folder (boolean): Determines whether or not this path points to a folder.
+  - hash (string): A unique identifier for the file's content, used to verify data integrity.
+  - id (string): The path of the file in the CMS Developer File System.
+  - name (string): The name of the file.
+  - updatedAt (integer): Timestamp of when the object was last updated.
+
+### FileExtractRequest
+  - path (string): The file system location where the zip file is to be extracted.
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### ActionResponse
+  - completedAt (string): The timestamp indicating when the action was completed.
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - requestedAt (string): The timestamp indicating when the action was requested.
+  - startedAt (string): The timestamp indicating when the action was started.
+  - status (string): The current status of the action, with possible values: CANCELED, COMPLETE, PENDING, PROCESSING.
+
+### TaskLocator
+  - id (string): The unique identifier for the task.
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps

@@ -1,0 +1,54 @@
+# Account Account Info
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /account-info/2026-03/api-usage/daily/private-apps
+Retrieve private app daily API usage
+  Response 200: successful operation
+  Response default: 
+
+### GET /account-info/2026-03/details
+Retrieve account details
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### ApiUsage
+  - collectedAt (string): Indicates when the cache was last updated.
+  - currentUsage (integer): How many API calls an account has made for the current day.
+  - fetchStatus (string): Status of fetching the information, including if the data came from the cache.
+  - name (string): Name of the limit type.
+  - resetsAt (string): Time that the limit will reset.
+  - usageLimit (integer): Limits by which a single integration can consume the HubSpot public APIs.
+
+### PortalInformationResponse
+  - accountType (string): The type of account, such as APP_DEVELOPER, DEVELOPER_TEST, SANDBOX, or STANDARD.
+  - additionalCurrencies (array): 
+  - companyCurrency (string): The primary currency used by the company.
+  - dataHostingLocation (string): The location where the account's data is hosted.
+  - portalId (integer): The unique identifier for the HubSpot account.
+  - timeZone (string): The time zone in which the account operates.
+  - uiDomain (string): The domain used for accessing the HubSpot user interface.
+  - utcOffset (string): The time zone offset from UTC in hours and minutes.
+  - utcOffsetMilliseconds (integer): The time zone offset from UTC in milliseconds.
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### CollectionResponseApiUsageNoPaging
+  - results (array): 

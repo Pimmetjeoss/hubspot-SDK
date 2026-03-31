@@ -1,0 +1,467 @@
+# Hubdb
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /cms/hubdb/2026-03/tables
+Get all published tables
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - contentType (query, opt): 
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - isGetLocalizedSchema (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/hubdb/2026-03/tables
+Create a table
+  Response 201: successful operation
+  Response default: 
+
+### GET /cms/hubdb/2026-03/tables/draft
+Return all draft tables
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - contentType (query, opt): 
+  - createdAfter (query, opt): 
+  - createdAt (query, opt): 
+  - createdBefore (query, opt): 
+  - isGetLocalizedSchema (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - sort (query, opt): 
+  - updatedAfter (query, opt): 
+  - updatedAt (query, opt): 
+  - updatedBefore (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/hubdb/2026-03/tables/{tableIdOrName}
+Get details of a published table
+  - tableIdOrName (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  - includeForeignIds (query, opt): 
+  - isGetLocalizedSchema (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /cms/hubdb/2026-03/tables/{tableIdOrName}
+Archive a table
+  - tableIdOrName (path, req): 
+  Response 204: No content
+  Response default: 
+
+### GET /cms/hubdb/2026-03/tables/{tableIdOrName}/draft
+Get details for a draft table
+  - tableIdOrName (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  - includeForeignIds (query, opt): 
+  - isGetLocalizedSchema (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### PATCH /cms/hubdb/2026-03/tables/{tableIdOrName}/draft
+Update an existing table
+  - tableIdOrName (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  - includeForeignIds (query, opt): 
+  - isGetLocalizedSchema (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/hubdb/2026-03/tables/{tableIdOrName}/draft/clone
+Clone a table
+  - tableIdOrName (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/hubdb/2026-03/tables/{tableIdOrName}/draft/export
+Export a draft table
+  - tableIdOrName (path, req): 
+  - format (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/hubdb/2026-03/tables/{tableIdOrName}/draft/import
+Import data into draft table
+  - tableIdOrName (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/hubdb/2026-03/tables/{tableIdOrName}/draft/publish
+Publish a table from draft
+  - tableIdOrName (path, req): 
+  - includeForeignIds (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/hubdb/2026-03/tables/{tableIdOrName}/draft/reset
+Reset a table draft
+  - tableIdOrName (path, req): 
+  - includeForeignIds (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/hubdb/2026-03/tables/{tableIdOrName}/export
+Export a published version of a table
+  - tableIdOrName (path, req): 
+  - format (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/hubdb/2026-03/tables/{tableIdOrName}/rows
+Get rows for a table
+  - tableIdOrName (path, req): 
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - limit (query, opt): The maximum number of results to display per page.
+  - offset (query, opt): 
+  - properties (query, opt): 
+  - sort (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/hubdb/2026-03/tables/{tableIdOrName}/rows
+Add a row to a table
+  - tableIdOrName (path, req): 
+  Response 201: successful operation
+  Response default: 
+
+### POST /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/batch/read
+Get a set of rows
+  - tableIdOrName (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/draft
+Get rows from draft table
+  - tableIdOrName (path, req): 
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - archived (query, opt): Whether to return only results that have been archived.
+  - limit (query, opt): The maximum number of results to display per page.
+  - offset (query, opt): 
+  - properties (query, opt): 
+  - sort (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/draft/batch/clone
+Clone rows in batch
+  - tableIdOrName (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/draft/batch/create
+Create rows in batch
+  - tableIdOrName (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/draft/batch/purge
+Delete rows
+  - tableIdOrName (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/draft/batch/read
+Get a set of rows from draft table
+  - tableIdOrName (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/draft/batch/replace
+Replace rows in batch in draft table
+  - tableIdOrName (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/draft/batch/update
+Update rows in batch in draft table
+  - tableIdOrName (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/{rowId}
+Get a table row
+  - rowId (path, req): 
+  - tableIdOrName (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/{rowId}/draft
+Get a row from the draft table
+  - rowId (path, req): 
+  - tableIdOrName (path, req): 
+  - archived (query, opt): Whether to return only results that have been archived.
+  Response 200: successful operation
+  Response default: 
+
+### PUT /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/{rowId}/draft
+Replace an existing row
+  - rowId (path, req): 
+  - tableIdOrName (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/{rowId}/draft
+Permanently deletes a row
+  - rowId (path, req): 
+  - tableIdOrName (path, req): 
+  Response 204: No content
+  Response default: 
+
+### PATCH /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/{rowId}/draft
+Update a row
+  - rowId (path, req): 
+  - tableIdOrName (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/hubdb/2026-03/tables/{tableIdOrName}/rows/{rowId}/draft/clone
+Clone a row
+  - rowId (path, req): 
+  - tableIdOrName (path, req): 
+  - name (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/hubdb/2026-03/tables/{tableIdOrName}/unpublish
+Unpublish a table
+  - tableIdOrName (path, req): 
+  - includeForeignIds (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /cms/hubdb/2026-03/tables/{tableIdOrName}/versions/{versionId}
+Delete a table version
+  - tableIdOrName (path, req): 
+  - versionId (path, req): 
+  Response 204: No content
+  Response default: 
+
+## Schemas
+
+### BatchInputString
+  - inputs (array): 
+
+### StandardError
+  - category (string): Specifies the main category of the error, determining the broad area of issue.
+  - context (object): An object containing context-specific information pertinent to the error.
+  - errors (array): The detailed error objects.
+  - id (string): The unique ID of the error instance.
+  - links (object): An object containing links related to the error, such as documentation URLs or support contact pages.
+  - message (string): A detailed message describing the error.
+  - status (string): The HTTP status code associated with the error.
+  - subCategory (object): Identifies the subcategory of the error, providing more specific context within the main category.
+
+### BoundedNextPage
+  - link (string): A URL that can be used to retrieve the next set of results.
+  - offset (integer): The offset value indicating the starting point for the next set of results.
+
+### HubDbTableCloneRequest
+  - copyRows (boolean): Specifies whether to copy the rows during clone
+  - isHubspotDefined (boolean): Indicates whether the table is defined by HubSpot.
+  - newLabel (string): The new label for the cloned table
+  - newName (string): The new name for the cloned table
+
+### SimpleUser
+  - email (string): The email address of the user.
+  - firstName (string): The first name of the user.
+  - id (string): The unique identifier for the user.
+  - lastName (string): The last name of the user.
+
+### BoundedPaging
+  - next (): 
+
+### BatchInputHubDbTableRowBatchCloneRequest
+  - inputs (array): 
+
+### BatchInputHubDbTableRowV3Request
+  - inputs (array): 
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### HubDbTableRowBatchCloneRequest
+  - id (string): The ID of the row to be cloned.
+  - name (string): The name for the cloned row.
+
+### UnifiedCollectionResponseWithTotalBaseHubDbTableRowV3
+
+### Column
+  - createdAt (string): The timestamp when the column was created.
+  - createdBy (): 
+  - createdByUserId (integer): The ID of the user who created the column.
+  - deleted (boolean): Indicates whether the column has been deleted.
+  - description (string): The description of the column.
+  - foreignColumnId (integer): Foreign Column id
+  - foreignIds (array): Foreign Ids
+  - foreignIdsById (object): Foreign ids
+  - foreignIdsByName (object): Foreign ids by name
+  - foreignTableId (integer): Foreign table id referenced
+  - id (string): Column Id
+  - label (string): Label of the column
+  - name (string): Name of the column
+  - optionCount (integer): Number of options available
+  - options (array): Options to choose for select and multi-select columns
+  - type (string): Type of the column
+  - updatedAt (string): The timestamp when the column was last updated.
+  - updatedBy (): 
+  - updatedByUserId (integer): The ID of the user who last updated the column.
+  - width (integer): Column width for HubDB UI
+
+### StreamingCollectionResponseWithTotalHubDbTableRowV3
+  - paging (): 
+  - results (array): 
+  - total (integer): The total number of rows available in the collection.
+  - type (string): Indicates the type of response, which is 'STREAMING' by default.
+
+### HubDbTableV3
+  - allowChildTables (boolean): Specifies whether child tables can be created
+  - allowPublicApiAccess (boolean): Specifies whether the table can be read by public without authorization
+  - columnCount (integer): Number of columns including deleted
+  - columns (array): List of columns in the table
+  - createdAt (string): Timestamp at which the table is created
+  - createdBy (): 
+  - deleted (boolean): Specifies whether the table is marked as deleted.
+  - deletedAt (string): The timestamp indicating when the table was deleted.
+  - dynamicMetaTags (object): Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
+  - enableChildTablePages (boolean): Specifies creation of multi-level dynamic pages using child tables
+  - id (string): Id of the table
+  - isOrderedManually (boolean): Indicates whether the table rows are ordered manually.
+  - label (string): Label of the table
+  - name (string): Name of the table
+  - published (boolean): Indicates whether the table is currently published.
+  - publishedAt (string): Timestamp at which the table is published recently
+  - rowCount (integer): Number of rows in the table
+  - updatedAt (string): Timestamp at which the table is updated recently
+  - updatedBy (): 
+  - useForPages (boolean): Specifies whether the table can be used for creation of dynamic pages
+
+### BatchResponseHubDbTableRowV3
+  - completedAt (string): The timestamp indicating when the batch processing was completed.
+  - errors (array): 
+  - links (object): A collection of related links associated with the batch response.
+  - numErrors (integer): 
+  - requestedAt (string): The timestamp indicating when the batch request was made.
+  - results (array): 
+  - startedAt (string): The timestamp indicating when the batch processing began.
+  - status (string): The current status of the batch operation, with possible values: CANCELED, COMPLETE, PENDING, PROCESSING.
+
+### CollectionResponseWithTotalHubDbTableV3
+  - paging (): 
+  - results (array): 
+  - total (integer): 
+
+### ForeignId
+  - id (string): Unique identifier for the foreign ID.
+  - name (string): Name of the foreign ID.
+  - type (string): Type of the foreign ID.
+
+### RandomAccessCollectionResponseWithTotalHubDbTableRowV3
+  - paging (): 
+  - results (array): 
+  - total (integer): The total number of rows available in the collection.
+  - type (string): Indicates the type of response, which is 'RANDOM_ACCESS' by default.
+
+### ImportResult
+  - duplicateRows (integer): Specifies number of duplicate rows
+  - errors (array): List of errors during import
+  - rowLimitExceeded (boolean): Specifies whether row limit exceeded during import
+  - rowsImported (integer): Specifies number of rows imported
+
+### Paging
+  - next (): 
+  - prev (): 
+
+### HubDbTableV3Request
+  - allowChildTables (boolean): Specifies whether child tables can be created
+  - allowPublicApiAccess (boolean): Specifies whether the table can be read by public without authorization
+  - columns (array): List of columns in the table
+  - dynamicMetaTags (object): Specifies the key value pairs of the [metadata fields](https://developers.hubspot.com/docs/cms/guides/dynamic-pages/hubdb#dynamic-pages) with the associated column IDs.
+  - enableChildTablePages (boolean): Specifies creation of multi-level dynamic pages using child tables
+  - label (string): Label of the table
+  - name (string): Name of the table
+  - useForPages (boolean): Specifies whether the table can be used for creation of dynamic pages
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### ColumnRequest
+  - foreignColumnId (integer): The id of the column from another table to which the column refers/points to.
+  - foreignTableId (integer): The id of another table to which the column refers/points to.
+  - id (integer): Column Id
+  - label (string): Label of the column
+  - maxNumberOfCharacters (integer): Defines the maximum number of characters allowed in the column.
+  - maxNumberOfOptions (integer): Specifies the maximum number of options that can be set for select and multi-select columns.
+  - name (string): Name of the column
+  - options (array): Options to choose for select and multi-select columns
+  - type (string): Type of the column
+
+### Variant
+
+### HubDbTableRowV3BatchUpdateRequest
+  - childTableId (integer): Specifies the value for the column child table id
+  - displayIndex (integer): The index position for displaying the row within the table.
+  - id (string): The id of the table row
+  - name (string): Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+  - path (string): Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
+  - values (object): List of key value pairs with the column name and column value
+
+### PreviousPage
+  - before (string): A paging cursor token for retrieving previous pages.
+  - link (string): A URL that can be used to retrieve the previous pages' results.
+
+### HubDbTableRowV3
+  - childTableId (string): Specifies the value for the column child table id
+  - createdAt (string): Timestamp at which the row is created
+  - id (string): The id of the table row
+  - name (string): Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+  - path (string): Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
+  - publishedAt (string): The timestamp indicating when the row was last published, in date-time format.
+  - updatedAt (string): Timestamp at which the row is updated last time
+  - values (object): List of key value pairs with the column name and column value
+
+### HubDbTableRowV3Request
+  - childTableId (integer): Specifies the value for the column child table id
+  - displayIndex (integer): The index position for displaying the row within the table.
+  - name (string): Specifies the value for `hs_name` column, which will be used as title in the dynamic pages
+  - path (string): Specifies the value for `hs_path` column, which will be used as slug in the dynamic pages
+  - values (object): List of key value pairs with the column name and column value
+
+### Option
+  - createdAt (string): The timestamp when the option was created, in ISO 8601 format.
+  - createdBy (): 
+  - createdByUserId (integer): The ID of the user who created the option.
+  - id (string): The unique ID of the option.
+  - label (string): A user-friendly label that identifies the option.
+  - name (string): An internal name assigned to the option, distinct from the label.
+  - order (integer): The order in which the option appears, represented as an integer.
+  - type (string): Indicates the category or data type of the option (e.g., string, number).
+  - updatedAt (string): The timestamp when the option was last updated, in ISO 8601 format.
+  - updatedBy (): 
+  - updatedByUserId (integer): The ID of the user who last updated the option.
+
+### NextPage
+  - after (string): A paging cursor token for retrieving subsequent pages.
+  - link (string): A URL that can be used to retrieve the next page results.
+
+### BatchInputHubDbTableRowV3BatchUpdateRequest
+  - inputs (array): 

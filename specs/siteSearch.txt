@@ -1,0 +1,94 @@
+# Site Search
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /cms/site-search/2026-03/indexed-data/{contentId}
+Get indexed properties
+  - contentId (path, req): 
+  - type (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### GET /cms/site-search/2026-03/search
+Search your site
+  - analytics (query, opt): 
+  - autocomplete (query, opt): 
+  - boostLimit (query, opt): 
+  - boostRecent (query, opt): 
+  - domain (query, opt): 
+  - groupId (query, opt): 
+  - hubdbQuery (query, opt): 
+  - language (query, opt): 
+  - length (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - matchPrefix (query, opt): 
+  - offset (query, opt): 
+  - pathPrefix (query, opt): 
+  - popularityBoost (query, opt): 
+  - property (query, opt): 
+  - q (query, opt): 
+  - tableId (query, opt): 
+  - type (query, opt): 
+  - types (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### ContentSearchResult
+  - authorFullName (string): Name of the author.
+  - category (string): The error category
+  - combinedId (string): The ID of the document in HubSpot.
+  - contentType (string): 
+  - description (string): The result's description. The content will be determined by the value of `length` in the request.
+  - domain (string): The domain the document is hosted on.
+  - featuredImageUrl (string): URL of the featured image.
+  - id (integer): The ID of the content.
+  - inBeta (boolean): 
+  - isPrivate (boolean): 
+  - language (string): The document's language.
+  - publishedDate (integer): The date the content was published.
+  - rowId (integer): If a dynamic page, the row ID in the HubDB table.
+  - score (number): The matching score of the document.
+  - subcategory (string): For knowledge articles, the subcategory of the article.
+  - tableId (integer): If a dynamic page, the ID of the HubDB table.
+  - tags (array): If a blog post, the tags associated with it.
+  - title (string): The title of the returned document.
+  - type (string): The type of document. Can be `SITE_PAGE`, `LANDING_PAGE`, `BLOG_POST`, `LISTING_PAGE`, or `KNOWLEDGE_ARTICLE`.
+  - url (string): The url of the document.
+
+### PublicSearchResults
+  - limit (integer): The number of results returned in a single response.
+  - offset (integer): The starting point for the next set of results in pagination.
+  - page (integer): The current page number in the paginated results.
+  - results (array): 
+  - searchTerm (string): The term used in the search query.
+  - total (integer): The total number of results found for the search term.
+
+### IndexedData
+  - fields (object): The indexed fields in HubSpot.
+  - id (string): The ID of the document in HubSpot.
+  - type (string): The type of document. Can be `SITE_PAGE`, `LANDING_PAGE`, `BLOG_POST`, `LISTING_PAGE`, or `KNOWLEDGE_ARTICLE`.
+
+### IndexedField
+  - metadataField (boolean): Indicates whether the field is a metadata field.
+  - name (string): The name of the indexed field.
+  - value (object): The primary value of the indexed field.
+  - values (array): 
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error

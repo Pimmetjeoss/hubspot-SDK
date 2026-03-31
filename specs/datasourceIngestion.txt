@@ -1,0 +1,137 @@
+# Data Studio Datasource Ingestion
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### POST /data-studio/2026-03/data-source
+
+  Response default: 
+
+### GET /data-studio/2026-03/data-source/{datasourceId}
+
+  - datasourceId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### PUT /data-studio/2026-03/data-source/{datasourceId}
+
+  - datasourceId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /data-studio/2026-03/data-source/{datasourceId}
+
+  - datasourceId (path, req): 
+  Response default: 
+
+## Schemas
+
+### BodyPart
+  - contentDisposition (): 
+  - entity (object): An object representing the actual content or payload of the body part.
+  - headers (object): An object containing the headers associated with this body part, where each header can have multiple string values.
+  - mediaType (): 
+  - messageBodyWorkers (object): An object representing workers that handle the processing of the message body.
+  - parameterizedHeaders (object): An object containing headers with parameters, where each header can have multiple ParameterizedHeader objects.
+  - parent (): 
+  - providers (object): An object representing providers that supply additional handling or processing for the body part.
+
+### ParameterizedHeader
+  - parameters (object): An object containing additional parameters for the header, where each key is a parameter name and each value is a string representing the parameter's value.
+  - value (string): A string representing the main value of the header.
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### FileColumn
+  - name (string): The name of the column, represented as a string.
+  - type (string): The data type of the column, represented as a string.
+
+### DataSourceUpdateResponse
+  - datasourceId (integer): The unique identifier for the data source. It is an integer formatted as int64.
+  - datasourceName (string): The name of the data source. It is a string.
+  - previewLink (string): A URL string that provides a preview link for the data source.
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### MultiPart
+  - bodyParts (array): An array of BodyPart objects, each representing a distinct part of the multipart entity.
+  - contentDisposition (): 
+  - entity (object): An object that holds the main content or payload of the multipart entity.
+  - headers (object): An object containing a map of header names to their respective values, where each value is an array of strings.
+  - mediaType (): 
+  - messageBodyWorkers (object): An object that may contain workers for processing the message body, though its specific properties are not detailed.
+  - parameterizedHeaders (object): An object containing a map of header names to arrays of ParameterizedHeader objects, which include additional parameters for each header.
+  - parent (): 
+  - providers (object): An object that may contain providers related to the multipart entity, though its specific properties are not detailed.
+
+### ContentDisposition
+  - creationDate (string): The date and time when the file was created, formatted as a date-time string.
+  - fileName (string): The name of the file as a string, indicating the file's name in the content disposition.
+  - modificationDate (string): The date and time when the file was last modified, formatted as a date-time string.
+  - parameters (object): An object containing additional parameters for the content disposition, with each parameter represented as a key-value pair of strings.
+  - readDate (string): The date and time when the file was last read, formatted as a date-time string.
+  - size (integer): The size of the file as an integer, representing the file's size in bytes.
+  - type (string): The type of content disposition, typically a string indicating how the content should be handled.
+
+### FormDataBodyPart
+  - contentDisposition (): 
+  - entity (object): An object representing the entity of the form data part, which contains the actual data being submitted.
+  - formDataContentDisposition (): 
+  - headers (object): An object containing the headers associated with this form data part, where each header can have multiple string values.
+  - mediaType (): 
+  - messageBodyWorkers (object): An object representing the message body workers, which are responsible for processing the body of the message.
+  - name (string): The name of the form data part, typically used to identify the part within the multipart request.
+  - parameterizedHeaders (object): An object containing parameterized headers, where each header can have multiple values represented as ParameterizedHeader objects.
+  - parent (): 
+  - providers (object): An object representing the providers associated with this form data part.
+  - simple (boolean): A boolean indicating whether the form data part is simple, typically meaning it does not contain complex nested structures.
+  - value (string): The string value of the form data part, representing the actual data being submitted as a string.
+
+### FormDataMultiPart
+  - bodyParts (array): An array of BodyPart objects, each representing a part of the multipart form data.
+  - contentDisposition (): 
+  - entity (object): An object representing the entity of the multipart form data, containing the actual data to be processed.
+  - fields (object): An object containing fields of the multipart form data, where each field can have multiple FormDataBodyPart items.
+  - headers (object): An object containing headers associated with the multipart form data, where each header can have multiple string values.
+  - mediaType (): 
+  - messageBodyWorkers (object): An object representing workers that process the message body of the multipart form data.
+  - parameterizedHeaders (object): An object containing parameterized headers, where each header can have multiple ParameterizedHeader items.
+  - parent (): 
+  - providers (object): An object representing providers associated with the multipart form data.
+
+### MediaType
+  - parameters (object): An object containing additional parameters for the media type, where each key-value pair is a string.
+  - subtype (string): The specific subtype of the media, represented as a string.
+  - type (string): The primary type of the media, represented as a string.
+  - wildcardSubtype (boolean): A boolean indicating whether the media subtype is a wildcard.
+  - wildcardType (boolean): A boolean indicating whether the media type is a wildcard.
+
+### DataSourceGetResponse
+  - columns (array): An array of FileColumn objects representing the columns in the data source.
+  - createdAt (string): The creation date and time of the data source, represented as a string.
+  - datasourceId (integer): The unique identifier for the data source, represented as a 64-bit integer.
+  - datasourceName (string): The name of the data source, represented as a string.
+  - datasourceType (string): The type of the data source, which is a string with a valid value of 'FILE'.
+  - lastIngestionStatus (string): The status of the last data ingestion process, represented as a string. Valid values include 'SUCCESSFUL', 'IN_PROGRESS', and 'FAILED'.
+
+### FormDataContentDisposition
+  - creationDate (string): The date and time when the file was created, in ISO 8601 format.
+  - fileName (string): A string indicating the name of the file associated with this content disposition.
+  - modificationDate (string): The date and time when the file was last modified, in ISO 8601 format.
+  - name (string): A string representing the name associated with this content disposition.
+  - parameters (object): An object containing additional parameters for the content disposition, with each parameter represented as a string.
+  - readDate (string): The date and time when the file was last read, in ISO 8601 format.
+  - size (integer): An integer representing the size of the file in bytes.
+  - type (string): A string representing the type of content disposition.

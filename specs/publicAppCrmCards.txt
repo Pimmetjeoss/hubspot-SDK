@@ -1,0 +1,201 @@
+# Public App Crm Cards
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /crm/extensions/cards-dev/2026-03/sample-response
+Get sample card detail response
+Response 200: successful operation
+Response default: 
+
+### GET /crm/extensions/cards-dev/2026-03/{appId}
+Get all cards
+Parameters:
+  - appId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### POST /crm/extensions/cards-dev/2026-03/{appId}
+Create a new card
+Parameters:
+  - appId (path, required): 
+Request body: CardCreateRequest
+Response 201: successful operation
+Response default: 
+
+### POST /crm/extensions/cards-dev/2026-03/{appId}/views/migrate
+
+Parameters:
+  - appId (path, required): 
+Request body: CardMigrateViewsRequest
+Response 200: successful operation
+Response default: 
+
+### GET /crm/extensions/cards-dev/2026-03/{appId}/{cardId}
+Get a card.
+Parameters:
+  - appId (path, required): 
+  - cardId (path, required): 
+Response 200: successful operation
+Response default: 
+
+### DELETE /crm/extensions/cards-dev/2026-03/{appId}/{cardId}
+Delete a card
+Parameters:
+  - appId (path, required): 
+  - cardId (path, required): 
+Response 204: No content
+Response default: 
+
+### PATCH /crm/extensions/cards-dev/2026-03/{appId}/{cardId}
+Update a card
+Parameters:
+  - appId (path, required): 
+  - cardId (path, required): 
+Request body: CardPatchRequest
+Response 200: successful operation
+Response default: 
+
+## Schemas
+
+### CardCreateRequest
+  - actions (CardActions, required): 
+  - display (CardDisplayBody, required): 
+  - fetch (CardFetchBody, required): 
+  - title (string, required): The top-level title for this card. Displayed to users in the CRM UI.
+
+### CardFetchBodyPatch
+  - cardType (string, optional): A deprecated field to determine the type of card returned.
+  - objectTypes (array, required): An array of CRM object types where this card should be displayed. HubSpot will call your target URL whenever a user visits a record page of the types defined here.
+  - serverlessFunction (string, optional): A deprecated field to specify serverless functionality with the card
+  - targetUrl (string, optional): URL to a service endpoint that will respond with details for this card. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.
+
+### CardDisplayProperty
+  - dataType (string, required): Type of data represented by this property.
+  - label (string, required): The label for this property as you'd like it displayed to users.
+  - name (string, required): An internal identifier for this property. This value must be unique TODO.
+  - options (array, required): An array of available options that can be displayed. Only used in when `dataType` is `STATUS`.
+
+### IntegratorObjectResult
+  - actions (array, required): A list of actions associated with the card, which can include action hooks, confirmation action hooks, or iframes.
+  - id (string, required): The unique identifier for the card.
+  - linkUrl (string, optional): A URL used on the title of the card
+  - title (string, required): The top-level title for this card. Displayed to users in the CRM UI.
+  - tokens (array, required): A collection of tokens representing specific properties related to the card.
+
+### CardFetchBody
+  - cardType (string, required): A deprecated field to determine the type of card returned.
+  - objectTypes (array, required): An array of CRM object types where this card should be displayed. HubSpot will call your data fetch URL whenever a user visits a record page of the types defined here.
+  - serverlessFunction (string, optional): A deprecated field to specify serverless functionality with the card
+  - targetUrl (string, required): URL to a service endpoints that will respond with card details. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.
+
+### CardObjectTypeBody
+  - name (string, required): A CRM object type where this card should be displayed.
+  - propertiesToSend (array, required): An array of properties that should be sent to this card's target URL when the data fetch request is made. Must be valid properties for the corresponding CRM object type.
+
+### Error
+  - category (string, required): The error category
+  - context (object, optional): Context about the error condition
+  - correlationId (string, required): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array, optional): further information about the error
+  - links (object, optional): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### PublicCardFetchBody
+  - objectTypes (array, required): An array of CRM object types where this card should be displayed. HubSpot will call your target URL whenever a user visits a record page of the types defined here.
+  - targetUrl (string, required): URL to a service endpoint that will respond with details for this card. HubSpot will call this endpoint each time a user visits a CRM record page where this card should be displayed.
+
+### TopLevelActions
+  - primary (, optional): Defines the primary action for a card, which can be either an action hook or an iframe.
+  - secondary (array, required): Specifies a list of secondary actions for a card, each of which can be an action hook or an iframe.
+  - settings (IFrameActionBody, optional): 
+
+### DisplayOption
+  - label (string, required): The text that will be displayed to users for this option.
+  - name (string, required): JSON-friendly unique name for option.
+  - type (string, required): The type of status.
+
+### ActionHookActionBody
+  - confirmation (ActionConfirmationBody, optional): 
+  - httpMethod (string, required): The HTTP method to be used when making the call, which can be set to GET, POST, PUT, DELETE, or PATCH. If using GET or DELETE
+  - label (string, optional): The label for this property as you'd like it displayed to users.
+  - propertyNamesIncluded (array, required): A list of property names that will be included on the action. See the documentation for more information
+  - type (string, required): The type of status.
+  - url (string, required): The URL endpoint that will be called when the action is triggered.
+
+### ErrorDetail
+  - code (string, optional): The status code associated with the error detail
+  - context (object, optional): Context about the error condition
+  - in (string, optional): The name of the field or parameter in which the error was found.
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string, optional): A specific category that contains more specific detail about the error
+
+### ObjectToken
+  - dataType (string, optional): Type of data represented by this property.
+  - label (string, optional): The label for this property as you'd like it displayed to users.
+  - name (string, optional): An internal identifier for this property. This value must be unique TODO.
+  - value (string, required): The value of the property
+
+### PublicCardResponse
+  - actions (CardActions, required): 
+  - auditHistory (array, required): A list of actions performed on the card, including creation, deletion, and updates.
+  - createdAt (string, optional): The date and time when the card was created.
+  - display (CardDisplayBody, required): 
+  - fetch (PublicCardFetchBody, required): 
+  - id (string, required): The unique id of the card.
+  - title (string, required): The top-level title for this card. Displayed to users in the CRM UI.
+  - updatedAt (string, optional): The date and time when the card was last updated.
+
+### CardMigrateViewsResponse
+  - message (string, required): A human readable message describing the error along with remediation steps where appropriate
+
+### ActionConfirmationBody
+  - cancelButtonLabel (string, required): The label for the button that cancels the action.
+  - confirmButtonLabel (string, required): The label for the button that confirms the action.
+  - prompt (string, required): The message displayed to the user to confirm the action.
+
+### IFrameActionBody
+  - height (integer, required): The height of the iframe in pixels.
+  - label (string, optional): The label for this property as you'd like it displayed to users.
+  - propertyNamesIncluded (array, required): A list of property names that will be included on the url of the iframe.
+  - type (string, required): The type of status.
+  - url (string, required): The URL endpoint that will be loaded in the iframe when triggered.
+  - width (integer, required): The width of the iframe in pixels.
+
+### IntegratorCardPayloadResponse
+  - allItemsLinkUrl (string, optional): URL to a page the integrator has built that displays all details for this card. This URL will be displayed to users under a `See more [x]` link if there are more than five items in your response, where `[x]` is the value of `itemLabel`.
+  - cardLabel (string, optional): The label to be used for the `allItemsLinkUrl` link (e.g. 'See more tickets'). If not provided, this falls back to the card's title.
+  - responseVersion (string, required): The number version of the response.
+  - sections (array, required): A list of up to five valid card sub categories.
+  - topLevelActions (TopLevelActions, optional): 
+  - totalCount (integer, required): The total number of card properties that will be sent in this response.
+
+### PublicCardListResponse
+  - results (array, required): A list of card responses
+
+### CardDisplayBody
+  - properties (array, required): Card display properties. These will will be rendered as "label : value" pairs in the card UI. See the [example card](#) in the overview docs for more details.
+
+### CardMigrateViewsRequest
+  - appCardId (integer, required): 
+  - helpdeskAppCardId (integer, optional): 
+  - legacyCrmCardId (integer, required): 
+
+### CardPatchRequest
+  - actions (CardActions, optional): 
+  - display (CardDisplayBody, optional): 
+  - fetch (CardFetchBodyPatch, optional): 
+  - title (string, optional): The top-level title for this card. Displayed to users in the CRM UI.
+
+### CardActions
+  - baseUrls (array, required): A list of URL prefixes that will be accepted for card action URLs. If your data fetch response includes an action URL that doesn't begin with one of these values, it will result in an error and the card will not be displayed.
+
+### CardAuditResponse
+  - actionType (string, required): The type of action performed, with possible values: CREATE, DELETE, UPDATE.
+  - applicationId (integer, required): The ID of the application associated with the card.
+  - authSource (string, required): The source of authentication for the action, with possible values: APP, EXTERNAL, INTERNAL.
+  - changedAt (integer, required): The timestamp indicating when the change occurred.
+  - initiatingUserId (integer, required): The ID of the user who initiated the action.
+  - objectTypeId (integer, required): The ID of the card.
+

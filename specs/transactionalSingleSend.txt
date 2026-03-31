@@ -1,0 +1,112 @@
+# Transactional Single Send
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### POST /marketing/transactional/2026-03/single-email/send
+Send a single send transactional email asynchronously.
+  Response 200: successful operation
+  Response default: 
+
+### GET /marketing/transactional/2026-03/smtp-tokens
+Query SMTP API tokens by campaign name or an emailCampaignId.
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - campaignName (query, opt): 
+  - emailCampaignId (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  Response 200: successful operation
+  Response default: 
+
+### POST /marketing/transactional/2026-03/smtp-tokens
+Create a SMTP API token.
+  Response 201: successful operation
+  Response default: 
+
+### GET /marketing/transactional/2026-03/smtp-tokens/{tokenId}
+Query a single token by ID.
+  - tokenId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+### DELETE /marketing/transactional/2026-03/smtp-tokens/{tokenId}
+Delete a single token by ID.
+  - tokenId (path, req): 
+  Response 204: No content
+  Response default: 
+
+### POST /marketing/transactional/2026-03/smtp-tokens/{tokenId}/password-reset
+Reset the password of an existing token.
+  - tokenId (path, req): 
+  Response 200: successful operation
+  Response default: 
+
+## Schemas
+
+### CollectionResponseSmtpApiTokenViewForwardPaging
+  - paging (): 
+  - results (array): 
+
+### EmailSendStatusView
+  - completedAt (string): Time when the send was completed.
+  - eventId (): 
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - requestedAt (string): Time when the send was requested.
+  - sendResult (string): Result of the send.
+  - startedAt (string): Time when the send began processing.
+  - status (string): Status of the send request.
+  - statusId (string): Identifier used to query the status of the send.
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### SmtpApiTokenRequestEgg
+  - campaignName (string): A name for the campaign tied to the SMTP API token.
+  - createContact (boolean): Indicates whether a contact should be created for email recipients.
+
+### ForwardPaging
+  - next (): 
+
+### PublicSingleSendRequestEgg
+  - contactProperties (object): The contactProperties field is a map of contact property values. Each contact property value contains a name and value property. Each property will get set on the contact record and will be visible in the template under {{ contact.NAME }}. Use these properties when you want to set a contact property while youâ€™re sending the email. For example, when sending a reciept you may want to set a last_paid_date property, as the sending of the receipt will have information about the last payment.
+  - customProperties (object): The customProperties field is a map of property values. Each property value contains a name and value property. Each property will be visible in the template under {{ custom.NAME }}.
+Note: Custom properties do not currently support arrays. To provide a listing in an email, one workaround is to build an HTML list (either with tables or ul) and specify it as a custom property.
+  - emailId (integer): The content ID for the transactional email, which can be found in email tool UI.
+  - message (): 
+
+### EventIdView
+  - created (string): Time of event creation.
+  - id (string): Identifier of event.
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### SmtpApiTokenView
+  - campaignName (string): A name for the campaign tied to the token.
+  - createContact (boolean): Indicates whether a contact should be created for email recipients.
+  - createdAt (string): Timestamp generated when a token is created.
+  - createdBy (string): Email address of the user that sent the token creation request.
+  - emailCampaignId (string): Identifier assigned to the campaign provided in the token creation request.
+  - id (string): User name to log into the HubSpot SMTP server.
+  - password (string): Password used to log into the HubSpot SMTP server.
+
+### NextPage
+  - after (string): A paging cursor token for retrieving subsequent pages.
+  - link (string): A URL that can be used to retrieve the next page results.
+
+### PublicSingleSendEmail
+  - bcc (array): List of email addresses to send as Bcc.
+  - cc (array): List of email addresses to send as Cc.
+  - from (string): The From header for the email.
+  - replyTo (array): List of Reply-To header values for the email.
+  - sendId (string): ID for a particular send. No more than one email will be sent per sendId.
+  - to (string): The recipient of the email.

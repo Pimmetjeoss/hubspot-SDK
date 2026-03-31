@@ -1,0 +1,81 @@
+# Cms Content Audit
+Basepom for all HubSpot Projects
+
+## Endpoints
+
+### GET /cms/audit-logs/2026-03
+
+  - after (query, opt): The paging cursor token of the last successfully read resource will be returned as the `paging.next.after` JSON property of a paged response containing more results.
+  - before (query, opt): 
+  - eventType (query, opt): 
+  - limit (query, opt): The maximum number of results to display per page.
+  - objectId (query, opt): 
+  - objectType (query, opt): 
+  - sort (query, opt): 
+  - userId (query, opt): 
+  Response 200: successful operation
+  Response default: 
+
+### POST /cms/audit-logs/2026-03/export
+
+  Response 204: No content
+  Response default: 
+
+## Schemas
+
+### ErrorDetail
+  - code (string): The status code associated with the error detail
+  - context (object): Context about the error condition
+  - in (string): The name of the field or parameter in which the error was found.
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### CollectionResponsePublicAuditLog
+  - paging (): 
+  - results (array): 
+
+### PreviousPage
+  - before (string): Pre-constructed URL that can be used to directly fetch the previous page of results without manually building the query.
+  - link (string): Cursor token representing the boundary timestamp before which to fetch the previous page of results. Pass this value as the before query parameter to retrieve earlier audit logs.
+
+### Paging
+  - next (): 
+  - prev (): 
+
+### Error
+  - category (string): The error category
+  - context (object): Context about the error condition
+  - correlationId (string): A unique identifier for the request. Include this value with any error reports or support tickets
+  - errors (array): further information about the error
+  - links (object): A map of link names to associated URIs containing documentation about the error or recommended remediation steps
+  - message (string): A human readable message describing the error along with remediation steps where appropriate
+  - subCategory (string): A specific category that contains more specific detail about the error
+
+### PublicAuditLog
+  - event (string): The type of event that took place (CREATED, UPDATED, PUBLISHED, DELETED, UNPUBLISHED).
+  - fullName (string): The name of the user who caused the event.
+  - meta (object): Supplementary metadata associated with the audit log entry. It provides additional context about the audited event (ex: rows deleted/updated for a HubDB event, the specific fields that were changed for a Content Settings event).
+  - objectId (string): The ID of the object.
+  - objectName (string): The internal name of the object in HubSpot.
+  - objectType (string): The type of the object (BLOG, LANDING_PAGE, DOMAIN, HUBDB_TABLE etc.)
+  - timestamp (string): The timestamp at which the event occurred.
+  - userId (string): The ID of the user who caused the event.
+
+### CmsAuditLoggingExportSettings
+  - email (string): 
+  - filters (): 
+  - format (string): 
+  - partition (integer): 
+  - portalId (integer): 
+  - recipientUserIds (array): 
+  - shouldMarkExportFileAsSensitive (boolean): 
+  - type (string): 
+  - userId (integer): 
+  - userTimeZone (string): 
+
+### CmsAuditLoggingExportFilters
+  - objectType (array): 
+
+### NextPage
+  - after (string): Cursor token representing the boundary timestamp after which to fetch the next page of results. Pass this value as the after query parameter to retrieve later audit logs.
+  - link (string): Pre-constructed URL that can be used to directly fetch the next page of results without manually building the query.
