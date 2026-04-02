@@ -9,13 +9,36 @@ src/hubspot_sdk/       # SDK package
   core/                # HTTP client, models, exceptions, pagination
   auth/                # OAuth2 + private app token auth
   crm/                 # CRM objects, associations, pipelines, properties, lists, etc.
+    objects.py         # Generic CrmObjectClient (CRUD + batch + search)
+    contacts.py        # Contacts (merge, GDPR delete)
+    companies.py       # Companies (merge, GDPR delete)
+    deals.py           # Deals (merge, deal splits)
+    tickets.py         # Tickets (merge)
+    activities.py      # Calls, Emails, Meetings, Notes, Tasks, Communications, PostalMail
+    extended_objects.py # Leads, FeedbackSubmissions, Contracts, Projects, GoalTargets, Users, Services, Courses, Listings, Partners, TaxRates
+    associations.py    # Association CRUD + schema
+    pipelines.py       # Pipeline stages
+    properties.py      # Property CRUD
+    property_validations.py # Validation rules
+    lists.py           # List/segment management
+    imports_exports.py # Data import/export
+    schemas.py         # Custom object schema definitions
+    owners.py          # CRM owners
+    extensions.py      # Calling, CRM cards, video conferencing
+    timeline.py        # Integrator timeline events
+    transcriptions.py  # Call transcriptions
+    limits.py          # Account limits tracking
+    forecasts.py       # Forecast type settings
+    object_library.py  # Object enablement status
+    meetings_scheduler.py # Scheduler meetings/booking (not CRM meetings)
+  commerce/            # Commerce objects (products, line_items, quotes, invoices, orders, carts, payments, subscriptions, discounts, fees, taxes)
   cms/                 # Pages, blog, HubDB, domains, source code, redirects
   marketing/           # Campaigns, forms, marketing events, transactional email
   automation/          # Workflow actions, sequences
-  conversations/       # Threads, messages, custom channels
+  conversations/       # Threads, messages, custom channels, visitor identification
   events/              # Event definitions, send, occurrences
   files/               # File upload/management
-  settings/            # Multicurrency, user provisioning
+  settings/            # Multicurrency, user provisioning, feature flags, data sources
   webhooks/            # Webhook subscriptions
   account/             # Account info, audit logs, business units, subscriptions
   client.py            # Main HubSpotClient facade

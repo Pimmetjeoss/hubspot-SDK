@@ -2,72 +2,126 @@
 
 from __future__ import annotations
 
-from hubspot_sdk.core.http import HttpClient, API_VERSION, BASE_URL
-
-# CRM
-from hubspot_sdk.crm.objects import CrmObjectClient
-from hubspot_sdk.crm.contacts import ContactsClient
-from hubspot_sdk.crm.companies import CompaniesClient
-from hubspot_sdk.crm.deals import DealsClient
-from hubspot_sdk.crm.tickets import TicketsClient
-from hubspot_sdk.crm.associations import AssociationsClient, AssociationsSchemaClient
-from hubspot_sdk.crm.pipelines import PipelinesClient
-from hubspot_sdk.crm.properties import PropertiesClient
-from hubspot_sdk.crm.lists import ListsClient
-from hubspot_sdk.crm.imports_exports import ImportsClient, ExportsClient
-from hubspot_sdk.crm.schemas import SchemasClient
-from hubspot_sdk.crm.owners import OwnersClient
-from hubspot_sdk.crm.extensions import CallingExtensionsClient, CrmCardsClient, VideoConferencingClient
-
-# CMS
-from hubspot_sdk.cms.pages import PagesClient
-from hubspot_sdk.cms.blog import BlogPostsClient, BlogAuthorsClient, BlogTagsClient, BlogSettingsClient
-from hubspot_sdk.cms.hubdb import HubDbClient
-from hubspot_sdk.cms.domains import DomainsClient
-from hubspot_sdk.cms.source_code import SourceCodeClient
-from hubspot_sdk.cms.url_redirects import UrlRedirectsClient
-from hubspot_sdk.cms.site_search import SiteSearchClient
-from hubspot_sdk.cms.audit import CmsAuditClient
-
-# Marketing
-from hubspot_sdk.marketing.campaigns import CampaignsClient
-from hubspot_sdk.marketing.forms import FormsClient
-from hubspot_sdk.marketing.events import MarketingEventsClient
-from hubspot_sdk.marketing.transactional import TransactionalEmailClient
-from hubspot_sdk.marketing.emails import SingleSendClient
-
-# Automation
-from hubspot_sdk.automation.actions import ActionsClient
-from hubspot_sdk.automation.sequences import SequencesClient
-
-# Conversations
-from hubspot_sdk.conversations.threads import ThreadsClient
-from hubspot_sdk.conversations.messages import MessagesClient
-from hubspot_sdk.conversations.channels import CustomChannelsClient
-
-# Events
-from hubspot_sdk.events.definitions import EventDefinitionsClient
-from hubspot_sdk.events.send import EventSendClient
-from hubspot_sdk.events.occurrences import EventOccurrencesClient
-
-# Files
-from hubspot_sdk.files.files import FilesClient
-
-# Settings
-from hubspot_sdk.settings.currency import CurrencyClient
-from hubspot_sdk.settings.users import UserProvisioningClient
-
-# Webhooks
-from hubspot_sdk.webhooks.webhooks import WebhooksClient
+from hubspot_sdk.account.audit_logs import AuditLogsClient
+from hubspot_sdk.account.business_units import BusinessUnitsClient
 
 # Account
 from hubspot_sdk.account.info import AccountInfoClient
-from hubspot_sdk.account.audit_logs import AuditLogsClient
-from hubspot_sdk.account.business_units import BusinessUnitsClient
 from hubspot_sdk.account.subscriptions import SubscriptionsClient
 
 # Auth
 from hubspot_sdk.auth.oauth import OAuthClient
+
+# Automation
+from hubspot_sdk.automation.actions import ActionsClient
+from hubspot_sdk.automation.sequences import SequencesClient
+from hubspot_sdk.cms.audit import CmsAuditClient
+from hubspot_sdk.cms.blog import BlogAuthorsClient, BlogPostsClient, BlogSettingsClient, BlogTagsClient
+from hubspot_sdk.cms.domains import DomainsClient
+from hubspot_sdk.cms.hubdb import HubDbClient
+
+# CMS
+from hubspot_sdk.cms.pages import PagesClient
+from hubspot_sdk.cms.site_search import SiteSearchClient
+from hubspot_sdk.cms.source_code import SourceCodeClient
+from hubspot_sdk.cms.url_redirects import UrlRedirectsClient
+
+# Commerce
+from hubspot_sdk.commerce.commerce import (
+    CartsClient,
+    CommerceSubscriptionsClient,
+    DiscountsClient,
+    FeesClient,
+    InvoicesClient,
+    LineItemsClient,
+    OrdersClient,
+    PaymentsClient,
+    ProductsClient,
+    QuotesClient,
+    TaxesClient,
+)
+from hubspot_sdk.conversations.channels import CustomChannelsClient
+from hubspot_sdk.conversations.messages import MessagesClient
+
+# Conversations
+from hubspot_sdk.conversations.threads import ThreadsClient
+from hubspot_sdk.conversations.visitor_identification import VisitorIdentificationClient
+from hubspot_sdk.core.http import API_VERSION, BASE_URL, HttpClient
+
+# CRM – activities
+from hubspot_sdk.crm.activities import (
+    CallsClient,
+    CommunicationsClient,
+    EmailsClient,
+    MeetingsClient,
+    NotesClient,
+    PostalMailClient,
+    TasksClient,
+)
+from hubspot_sdk.crm.associations import AssociationsClient, AssociationsSchemaClient
+from hubspot_sdk.crm.companies import CompaniesClient
+from hubspot_sdk.crm.contacts import ContactsClient
+from hubspot_sdk.crm.deals import DealsClient
+
+# CRM – extended objects
+from hubspot_sdk.crm.extended_objects import (
+    ContractsClient,
+    CoursesClient,
+    CrmUsersClient,
+    FeedbackSubmissionsClient,
+    GoalTargetsClient,
+    LeadsClient,
+    ListingsClient,
+    PartnerClientsClient,
+    PartnerServicesClient,
+    ProjectsClient,
+    ServicesClient,
+    TaxRatesClient,
+)
+from hubspot_sdk.crm.extensions import CallingExtensionsClient, CrmCardsClient, VideoConferencingClient
+
+# CRM – specialized
+from hubspot_sdk.crm.forecasts import ForecastsClient
+from hubspot_sdk.crm.imports_exports import ExportsClient, ImportsClient
+from hubspot_sdk.crm.limits import LimitsClient
+from hubspot_sdk.crm.lists import ListsClient
+from hubspot_sdk.crm.meetings_scheduler import MeetingsSchedulerClient
+from hubspot_sdk.crm.object_library import ObjectLibraryClient
+
+# CRM – core
+from hubspot_sdk.crm.objects import CrmObjectClient
+from hubspot_sdk.crm.owners import OwnersClient
+from hubspot_sdk.crm.pipelines import PipelinesClient
+from hubspot_sdk.crm.properties import PropertiesClient
+from hubspot_sdk.crm.property_validations import PropertyValidationsClient
+from hubspot_sdk.crm.schemas import SchemasClient
+from hubspot_sdk.crm.tickets import TicketsClient
+from hubspot_sdk.crm.timeline import TimelineClient
+from hubspot_sdk.crm.transcriptions import TranscriptionsClient
+
+# Events
+from hubspot_sdk.events.definitions import EventDefinitionsClient
+from hubspot_sdk.events.occurrences import EventOccurrencesClient
+from hubspot_sdk.events.send import EventSendClient
+
+# Files
+from hubspot_sdk.files.files import FilesClient
+
+# Marketing
+from hubspot_sdk.marketing.campaigns import CampaignsClient
+from hubspot_sdk.marketing.emails import SingleSendClient
+from hubspot_sdk.marketing.events import MarketingEventsClient
+from hubspot_sdk.marketing.forms import FormsClient
+from hubspot_sdk.marketing.transactional import TransactionalEmailClient
+
+# Settings
+from hubspot_sdk.settings.currency import CurrencyClient
+from hubspot_sdk.settings.data_sources import DataSourcesClient
+from hubspot_sdk.settings.feature_flags import FeatureFlagsClient
+from hubspot_sdk.settings.users import UserProvisioningClient
+
+# Webhooks
+from hubspot_sdk.webhooks.webhooks import WebhooksClient
 
 
 class HubSpotClient:
@@ -187,13 +241,170 @@ class HubSpotClient:
     def objects(self, object_type: str) -> CrmObjectClient:
         """Get a generic CRM object client for any object type.
 
-        Useful for custom objects or less common types like line_items,
-        products, quotes, tasks, notes, emails, calls, meetings, etc.
+        Useful for custom objects or less common types.
         """
         key = f"objects_{object_type}"
         if key not in self._cache:
             self._cache[key] = CrmObjectClient(self._http, object_type)
         return self._cache[key]  # type: ignore[return-value]
+
+    # -- CRM Activities -------------------------------------------------------
+
+    @property
+    def calls(self) -> CallsClient:
+        return self._get("calls", CallsClient)  # type: ignore[return-value]
+
+    @property
+    def emails(self) -> EmailsClient:
+        return self._get("emails", EmailsClient)  # type: ignore[return-value]
+
+    @property
+    def meetings(self) -> MeetingsClient:
+        return self._get("meetings", MeetingsClient)  # type: ignore[return-value]
+
+    @property
+    def notes(self) -> NotesClient:
+        return self._get("notes", NotesClient)  # type: ignore[return-value]
+
+    @property
+    def tasks(self) -> TasksClient:
+        return self._get("tasks", TasksClient)  # type: ignore[return-value]
+
+    @property
+    def communications(self) -> CommunicationsClient:
+        return self._get("communications", CommunicationsClient)  # type: ignore[return-value]
+
+    @property
+    def postal_mail(self) -> PostalMailClient:
+        return self._get("postal_mail", PostalMailClient)  # type: ignore[return-value]
+
+    # -- CRM Extended Objects -------------------------------------------------
+
+    @property
+    def leads(self) -> LeadsClient:
+        return self._get("leads", LeadsClient)  # type: ignore[return-value]
+
+    @property
+    def feedback_submissions(self) -> FeedbackSubmissionsClient:
+        return self._get("feedback_submissions", FeedbackSubmissionsClient)  # type: ignore[return-value]
+
+    @property
+    def contracts(self) -> ContractsClient:
+        return self._get("contracts", ContractsClient)  # type: ignore[return-value]
+
+    @property
+    def projects(self) -> ProjectsClient:
+        return self._get("projects", ProjectsClient)  # type: ignore[return-value]
+
+    @property
+    def goal_targets(self) -> GoalTargetsClient:
+        return self._get("goal_targets", GoalTargetsClient)  # type: ignore[return-value]
+
+    @property
+    def crm_users(self) -> CrmUsersClient:
+        return self._get("crm_users", CrmUsersClient)  # type: ignore[return-value]
+
+    @property
+    def services(self) -> ServicesClient:
+        return self._get("services", ServicesClient)  # type: ignore[return-value]
+
+    @property
+    def courses(self) -> CoursesClient:
+        return self._get("courses", CoursesClient)  # type: ignore[return-value]
+
+    @property
+    def listings(self) -> ListingsClient:
+        return self._get("listings", ListingsClient)  # type: ignore[return-value]
+
+    @property
+    def partner_clients(self) -> PartnerClientsClient:
+        return self._get("partner_clients", PartnerClientsClient)  # type: ignore[return-value]
+
+    @property
+    def partner_services(self) -> PartnerServicesClient:
+        return self._get("partner_services", PartnerServicesClient)  # type: ignore[return-value]
+
+    @property
+    def tax_rates(self) -> TaxRatesClient:
+        return self._get("tax_rates", TaxRatesClient)  # type: ignore[return-value]
+
+    # -- CRM Specialized ------------------------------------------------------
+
+    @property
+    def timeline(self) -> TimelineClient:
+        return self._get("timeline", TimelineClient)  # type: ignore[return-value]
+
+    @property
+    def transcriptions(self) -> TranscriptionsClient:
+        return self._get("transcriptions", TranscriptionsClient)  # type: ignore[return-value]
+
+    @property
+    def property_validations(self) -> PropertyValidationsClient:
+        return self._get("property_validations", PropertyValidationsClient)  # type: ignore[return-value]
+
+    @property
+    def limits(self) -> LimitsClient:
+        return self._get("limits", LimitsClient)  # type: ignore[return-value]
+
+    @property
+    def forecasts(self) -> ForecastsClient:
+        return self._get("forecasts", ForecastsClient)  # type: ignore[return-value]
+
+    @property
+    def object_library(self) -> ObjectLibraryClient:
+        return self._get("object_library", ObjectLibraryClient)  # type: ignore[return-value]
+
+    @property
+    def meetings_scheduler(self) -> MeetingsSchedulerClient:
+        return self._get("meetings_scheduler", MeetingsSchedulerClient)  # type: ignore[return-value]
+
+    # =========================================================================
+    # Commerce
+    # =========================================================================
+
+    @property
+    def products(self) -> ProductsClient:
+        return self._get("products", ProductsClient)  # type: ignore[return-value]
+
+    @property
+    def line_items(self) -> LineItemsClient:
+        return self._get("line_items", LineItemsClient)  # type: ignore[return-value]
+
+    @property
+    def quotes(self) -> QuotesClient:
+        return self._get("quotes", QuotesClient)  # type: ignore[return-value]
+
+    @property
+    def invoices(self) -> InvoicesClient:
+        return self._get("invoices", InvoicesClient)  # type: ignore[return-value]
+
+    @property
+    def orders(self) -> OrdersClient:
+        return self._get("orders", OrdersClient)  # type: ignore[return-value]
+
+    @property
+    def carts(self) -> CartsClient:
+        return self._get("carts", CartsClient)  # type: ignore[return-value]
+
+    @property
+    def payments(self) -> PaymentsClient:
+        return self._get("payments", PaymentsClient)  # type: ignore[return-value]
+
+    @property
+    def commerce_subscriptions(self) -> CommerceSubscriptionsClient:
+        return self._get("commerce_subscriptions", CommerceSubscriptionsClient)  # type: ignore[return-value]
+
+    @property
+    def discounts(self) -> DiscountsClient:
+        return self._get("discounts", DiscountsClient)  # type: ignore[return-value]
+
+    @property
+    def fees(self) -> FeesClient:
+        return self._get("fees", FeesClient)  # type: ignore[return-value]
+
+    @property
+    def taxes(self) -> TaxesClient:
+        return self._get("taxes", TaxesClient)  # type: ignore[return-value]
 
     # =========================================================================
     # CMS
@@ -295,6 +506,10 @@ class HubSpotClient:
     def custom_channels(self) -> CustomChannelsClient:
         return self._get("custom_channels", CustomChannelsClient)  # type: ignore[return-value]
 
+    @property
+    def visitor_identification(self) -> VisitorIdentificationClient:
+        return self._get("visitor_identification", VisitorIdentificationClient)  # type: ignore[return-value]
+
     # =========================================================================
     # Events
     # =========================================================================
@@ -330,6 +545,17 @@ class HubSpotClient:
     @property
     def user_provisioning(self) -> UserProvisioningClient:
         return self._get("user_provisioning", UserProvisioningClient)  # type: ignore[return-value]
+
+    def feature_flags(self, app_id: str) -> FeatureFlagsClient:
+        """Get a feature flags client for a specific app."""
+        key = f"feature_flags_{app_id}"
+        if key not in self._cache:
+            self._cache[key] = FeatureFlagsClient(self._http, app_id)
+        return self._cache[key]  # type: ignore[return-value]
+
+    @property
+    def data_sources(self) -> DataSourcesClient:
+        return self._get("data_sources", DataSourcesClient)  # type: ignore[return-value]
 
     # =========================================================================
     # Webhooks
